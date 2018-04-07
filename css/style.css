@@ -345,7 +345,7 @@ h1, h2, h3, h4, h5, h6, figure {
           color: #000; }
         #colorlib-hero .flexslider .slider-text > .slider-text-inner .head-1 {
           font-weight: 700;
-          font-size: 60px;
+          font-size: 55px;
           margin-bottom: 5px; }
         #colorlib-hero .flexslider .slider-text > .slider-text-inner .head-2 {
           font-size: 30px;
@@ -353,7 +353,7 @@ h1, h2, h3, h4, h5, h6, figure {
           margin-bottom: 10px;
           letter-spacing: 5px; }
         #colorlib-hero .flexslider .slider-text > .slider-text-inner .head-3 {
-          font-size: 50px;
+          font-size: 40px;
           font-weight: 100;
           margin-bottom: 10px; }
         #colorlib-hero .flexslider .slider-text > .slider-text-inner .category {
@@ -730,7 +730,7 @@ h1, h2, h3, h4, h5, h6, figure {
       padding: 1.5em 1em !important;
       border: none;
       display: block;
-      color: #4d4d4d;
+      color: #eeeeee;
       background: #fafafa;
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
