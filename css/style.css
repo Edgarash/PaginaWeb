@@ -418,7 +418,7 @@ h1, h2, h3, h4, h5, h6, figure {
           margin-left: 0; }
 
 .colorlib-light-grey {
-  background: #a6a6a6; }
+  background: #bfbfbf; }
 
 #colorlib-featured-product,
 .colorlib-shop,
@@ -731,7 +731,7 @@ h1, h2, h3, h4, h5, h6, figure {
       border: none;
       display: block;
       color: #e6e6e6;
-      background: #a6a6a6;
+      background: #bfbfbf;
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
       -ms-border-radius: 2px;
@@ -785,7 +785,7 @@ h1, h2, h3, h4, h5, h6, figure {
     width: 80px;
     height: 80px;
     display: table;
-    border: 2px solid #a6a6a6;
+    border: 2px solid #bfbfbf;
     margin: 0 auto;
     margin-bottom: 20px;
     background: #fff;
@@ -1121,7 +1121,7 @@ h1, h2, h3, h4, h5, h6, figure {
     -ms-appearance: none;
     -o-appearance: none;
     appearance: none;
-    background: #a6a6a6 !important;
+    background: #bfbfbf !important;
     border: 2px solid rgba(0, 0, 0, 0.05) !important;
     color: rgba(0, 0, 0, 0.7); }
     .sidebar .colorlib-form-2 .form-control:active, .sidebar .colorlib-form-2 .form-control:focus {
@@ -1431,7 +1431,7 @@ h1, h2, h3, h4, h5, h6, figure {
       font-size: 16px; }
 
 .article-entry {
-  background: #a6a6a6; }
+  background: #bfbfbf; }
   .article-entry .blog-img {
     height: 250px;
     display: block; }

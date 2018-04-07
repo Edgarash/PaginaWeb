@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Store Template</title>
+    <title>TecnoCompra</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -85,20 +85,16 @@
                                     <a href="shop.html">
                                         <i class="icon-tags"></i> Comprar</a>
                                 </li>
-                                <!--<li class="has-dropdown">
-                                                    <a href="shop.html">Comprar</a>
-                                                    <ul class="dropdown">
-                                                        <li><a href="product-detail.html">Product Detail</a></li>
-                                                        <li><a href="cart.html">Shipping Cart</a></li>
-                                                        <li><a href="checkout.html">Checkout</a></li>
-                                                        <li><a href="order-complete.html">Order Complete</a></li>
-                                                        <li><a href="add-to-wishlist.html">Wishlist</a></li>
-                                                    </ul>
-                                                </li>!-->
-                                <li class="active">
-                                    <a href="#">
-                                        <i class="icon-user"></i> Mi perfil</a>
-                                </li>
+                                <li class="active has-dropdown">
+									<a href="Profile.html"><i class="icon-user"></i> Mi cuenta</a>
+									<ul class="dropdown">
+										<li><a href="Profile.html">Mi Perfil</a></li>
+										<li><a href="payment.html">Forma de Pago</a></li>
+										<li><a href="bought.html">Mis Compras</a></li>
+										<li><a href="add-to-wishlist.html">Favoritos</a></li>
+										<li><a href="cart.html">Carrito</a></li>
+									</ul>
+								</li>
                                 <li>
                                     <a href="add-to-wishlist.html">
                                         <i class="icon-heart"></i> Favoritos</a>
@@ -166,14 +162,6 @@
                                             </div>
                                             <div class="panel">
                                                 <h4 class="panel-title">
-                                                    <a href="sell.html">
-                                                        <i class="icon-tags"></i>
-                                                        Mis Ventas
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div class="panel">
-                                                <h4 class="panel-title">
                                                     <a href="bought.html">
                                                         <i class="icon-tag"></i>
                                                         Mis Compras
@@ -230,12 +218,15 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="cv">CV</label>
-                                        <input type="text" name="cv" id="cv" class="form-control" placeholder="CV" maxlength="4">
+                                        <label for="cv">CVC</label>
+                                        <input type="text" name="cv" id="cv" class="form-control" placeholder="CVC" maxlength="4">
                                     </div>
                                 </div>
+                                
                             </div>
+                            
                         </form>
+                        <p><a href="#" class="btn btn-primary"><i class="icon-credit-card"></i> Enviar información de tarjeta de crédito</a></p>
                     </div>
                 </div>
             </div>
@@ -300,6 +291,9 @@
                                 </li>
                                 <li>
                                     <a href="#">Almacenamiento</a>
+                                </li>
+                                <li>
+                                        <a href="#">Accesorios</a>
                                 </li>
                             </ul>
                         </p>

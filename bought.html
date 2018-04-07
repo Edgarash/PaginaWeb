@@ -22,7 +22,6 @@
     <meta name="twitter:card" content="" />
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="css/animate.css">
@@ -84,11 +83,25 @@
                                 </li>
                                 <li>
                                     <a href="shop.html">
-                                            <i class="material-icons" style="font-size:15px">shopping_basket</i> Tienda</a>
+                                        <i class="icon-tags"></i> Comprar</a>
                                 </li>
-                                <li class="active">
-                                    <a href="#">
-                                        <i class="icon-barcode"></i> Vender</a>
+                                <li class="active has-dropdown">
+									<a href="Profile.html"><i class="icon-user"></i> Mi cuenta</a>
+									<ul class="dropdown">
+										<li><a href="Profile.html">Mi Perfil</a></li>
+										<li><a href="payment.html">Forma de Pago</a></li>
+										<li><a href="bought.html">Mis Compras</a></li>
+										<li><a href="add-to-wishlist.html">Favoritos</a></li>
+										<li><a href="cart.html">Carrito</a></li>
+									</ul>
+								</li>
+                                <li>
+                                    <a href="add-to-wishlist.html">
+                                        <i class="icon-heart"></i> Favoritos</a>
+                                </li>
+                                <li>
+                                    <a href="cart.html">
+                                        <i class="icon-shopping-cart"></i> Carrito (0)</a>
                                 </li>
                             </ul>
                         </div>
@@ -105,7 +118,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
                                     <div class="slider-text-inner text-center">
-                                        <h1>Añadir un artículo</h1>
+                                        <h1>Compras</h1>
                                         <h2 class="bread">
                                             <span>
                                                 <a href="index.html">
@@ -127,23 +140,47 @@
                     <div class="col-md-3">
                         <div class="sidebar">
                             <div class="side">
-                                <h2>Configuración</h2>
+                                <h2>Mi Perfil</h2>
                                 <div class="fancy-collapse-panel">
                                     <div class="panel-group" role="tablist">
                                         <div class="panel panel-default">
                                             <div class="panel">
                                                 <h4 class="panel-title">
-                                                    <a href="sell.html">
-                                                        <i class="icon-barcode"></i>
-                                                        Vender
+                                                    <a href="profile.html">
+                                                        <i class="icon-user"></i>
+                                                        Datos Generales
                                                     </a>
                                                 </h4>
                                             </div>
                                             <div class="panel">
                                                 <h4 class="panel-title">
-                                                    <a href="shop.html">
-                                                            <i class="material-icons" style="font-size:15px">shopping_basket</i>
-                                                        Tienda
+                                                    <a href="payment.html">
+                                                        <i class="icon-credit-card"></i>
+                                                        Formas de Pago
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div class="panel">
+                                                <h4 class="panel-title" style="color:#cc0000">
+                                                    <a href="bought.html">
+                                                        <i class="icon-tag"></i>
+                                                        Mis Compras
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div class="panel">
+                                                <h4 class="panel-title">
+                                                    <a href="add-to-wishlist.html">
+                                                        <i class="icon-heart"></i>
+                                                        Favoritos
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div class="panel">
+                                                <h4 class="panel-title">
+                                                    <a href="cart.html">
+                                                        <i class="icon-shopping-cart"></i>
+                                                        Carrito [0]
                                                     </a>
                                                 </h4>
                                             </div>
@@ -154,66 +191,41 @@
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <form method="post" class="colorlib-form">
-                            <div class="row">
-                                <h2>
-                                    <i class="icon-plus"></i> Añadir un Artículo</h2>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="cc">
-                                            <i class="icon-tag"> </i> Nombre del Artículo</label>
-                                        <input type="text" name="cc" id="cc" class="form-control" placeholder="Nombre del Artículo">
-                                    </div>
+                            <div class="col-md-4">
+                                    <article class="article-entry">
+                                        <a href="blog.html" class="blog-img" style="background-image: url(images/nuevo4.jpg);"></a>
+                                        <div class="desc">
+                                            <p class="meta"><span class="day">05</span><span class="month">Abril</span></p>
+                                            <p class="admin"><span>Cámaras</span></p>
+                                            <h2><a href="#">Canon EOS Rebel T6</a></h2>
+                                            <p>Ideal para los que les gusta la fotografía y van iniciando con una cámara réflex, que desean  calidad.</p>
+                                        </div>
+                                    </article>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="pv"><i class="icon-dollar-sign"></i> Precio de Venta</label>
-                                        <input type="text" name="pv" id="pv" class="form-control" placeholder="Precio de Venta">
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                        <div class="form-group">
-                                                <label for="country">Categoría</label>
-                                               <div class="form-field">
-                                                   <i class="icon icon-arrow-down3"></i>
-                                                  <select name="people" id="people" class="form-control">
-                                                        <option value="#">Seleccione categoría</option>
-                                                      <option value="#">Accesorios</option>
-                                                      <option value="#">Almacenamiento</option>
-                                                      <option value="#">Computadoras</option>
-                                                      <option value="#">Cámaras</option>
-                                                      <option value="#">Impresoras</option>
-                                                  </select>
-                                               </div>
+                                        <article class="article-entry">
+                                            <a href="blog.html" class="blog-img" style="background-image: url(images/nuevo2.jpg);"></a>
+                                            <div class="desc">
+                                                <p class="meta"><span class="day">06</span><span class="month">Abril</span></p>
+                                                <p class="admin"><span>Impresoras</span></p>
+                                                <h2><a href="#">Impresora Inalámbrica HP</a></h2>
+                                                <p>Ya no estás limitado a colocar tu impresora dentro del rango del cable; ahora puedes ponerla en cualquier lado.</p>
                                             </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="stock">Disponibilidad</label>
-                                        <input type="number" name="stock" id="stock" class="form-control" placeholder="Stock">
+                                        </article>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="cars">Características</label>
-                                        <textarea name="cars" id="cars" cols="30" rows="3" class="form-control" placeholder="Características del Artículo"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="img">Imágenes</label>
-                                        <input type="file" name="img" id="img" class="form-control" placeholder="Imágenes" style="padding:0;">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="des">Descripción</label>
-                                        <textarea name="des" id="des" cols="30" rows="5" class="form-control" placeholder="Descripción del Artículo"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <p><a href="#" class="btn btn-primary"><i class="icon-plus"></i> Añadir</a></p>
+                                    <div class="col-md-4">
+                                            <article class="article-entry">
+                                                <a href="blog.html" class="blog-img" style="background-image: url(images/nuevo3.png);"></a>
+                                                <div class="desc">
+                                                    <p class="meta"><span class="day">07</span><span class="month">Abril</span></p>
+                                                    <p class="admin"><span>Accesorios</p>
+                                                    <h2><a href="#">Audífonos inalámbricos RP-BTD10</a></h2>
+                                                    <p> Los audífonos BTD10 te permiten disfrutar de la música de manera inteligente.</p>
+                                                </div>
+                                            </article>
+                                        </div>
+                                       
+                       
                     </div>
                 </div>
             </div>
