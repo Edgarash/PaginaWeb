@@ -156,6 +156,7 @@
         }
 
         public function setApellidos($Apellidos) {
+            #if (strlen($Apellidos) <= 100) {
             if ($this->Val->soloLetrasUnaPalabra($Apellidos)) {
                 $this->Apellidos = $Apellidos;
             } else {

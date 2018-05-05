@@ -45,7 +45,7 @@
             }
         }
         catch (Exception $e) {
-            echo $e->getMessage();
+            $MensajeError = $e->getMessage();
         }
     }
 ?>
