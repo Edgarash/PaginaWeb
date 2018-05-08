@@ -1,6 +1,14 @@
 <?php
     session_start();
     include_once('php/Tablas.php');
+    if (isset($_SESSION['Empleado']) && !empty($_SESSION['Empleado'])) {
+        $Usuario = new usuario('', $_SESSION['Usuario'], '', $_SESSION['Info']);
+        $Usuario = $Usuario->HacerLogin();
+        if ($Usuario->getPuesto() != 'Administrador') {
+            header('Location: index');
+            exit();
+        }
+    }
     $TablasDisponibles = array('usuario',
     'articulo',
     'categoria',

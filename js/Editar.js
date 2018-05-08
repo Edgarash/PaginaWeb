@@ -108,8 +108,19 @@ function ActualizarTabla(Sending) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status==200) {
-            $('#Tabla').html(this.responseText);
-            AJAXCallUpdate();
+            if (this.responseText != "ERROR") {
+                $('#Tabla').html(this.responseText);
+                AJAXCallUpdate();
+                $.alert({
+                    title: 'Mensaje',
+                    content: 'Base de datos actualizada con éxito'
+                });
+            } else {
+                $.alert({
+                    title: 'Mensaje',
+                    content: 'Hubo algún error, por favor intente más tarde.'
+                });
+            }
         }
     }
     xhttp.open("POST", "php/AJAX.php", true);

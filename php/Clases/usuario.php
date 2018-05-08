@@ -13,6 +13,7 @@
         private $FechaAlta;
         private $Activo;
         private $Val;
+        private $Error;
 
         function __construct() {
             $this->Val = new validaciones();
@@ -64,7 +65,8 @@
                 $STMT->execute();
                 $fila = $STMT->rowCount();
             } catch (PDOException $e) {
-                echo "ERROR: ".$SQL."<br>".$e->getMessage();
+                $this->Error = true;
+                #echo "ERROR: ".$SQL."<br>".$e->getMessage();
             }
         }
 
@@ -79,7 +81,8 @@
                 $Existe = $STMT->rowCount() > 0;
             } catch (PDOException $e) {
                 $Existe = false;
-                echo "ERROR: ".$SQL."<br>".$e->getMessage();
+                $this->Error = true;
+                #echo "ERROR: ".$SQL."<br>".$e->getMessage();
             }
             return $Existe;
         }
@@ -99,18 +102,21 @@
                         $fila['Nombre'], $fila['Apellidos'], $fila['Telefono'],
                         $fila['Email'], $fila['FechaAlta'], $fila['Activo']
                     );
-                    print $this->Contraseña.' vs '.$User->getContraseña();
+                    #print $this->Contraseña.' vs '.$User->getContraseña();
                     if ($this->Contraseña === $User->getContraseña()) {
                         return $User;
                     } else {
+                        $this->Error = true;
                         return false;
                     }
                     return $User;
                 } else {
+                    $this->Error = true;
                     return false;
                 }
             } catch (PDOException $e) {
-                echo "ERROR: ".$SQL."<br>".$e->getMessage();
+                $this->Error = true;
+                #echo "ERROR: ".$SQL."<br>".$e->getMessage();
             }
         }
 
@@ -145,6 +151,7 @@
                 $STMT->execute();
                 return 'Modificacion Lograda';
             } catch (PDOException $e) {
+                $this->Error = true;
                 echo "ERROR: ".$SQL."<br>".$e->getMessage();
             }
         }
@@ -160,7 +167,8 @@
                 $STMT->execute();
                 'Eliminacion Lograda';
             } catch (PDOException $e) {
-                echo "ERROR: ".$SQL."<br>".$e->getMessage();
+                $this->Error = true;
+                #echo "ERROR: ".$SQL."<br>".$e->getMessage();
             }
         }
         
@@ -194,6 +202,9 @@
         }
         public function getActivo() {
             return $this->Activo;
+        }
+        public function getError() {
+            return $this->Error;
         }
     }
 

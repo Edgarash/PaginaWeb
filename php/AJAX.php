@@ -39,7 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         );
         $Usuario->registrarUsuario();
     }
-    $Tabla = new TablaInfo('usuario');
-    $Tabla->getTabla();
+    if (isset($Usuario)) {
+        if ($Usuario->getError()) {
+            echo 'ERROR';
+        } else {
+            $Tabla = new TablaInfo('usuario');
+            $Tabla->getTabla();
+        }
+    }
 }
 ?>
