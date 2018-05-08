@@ -21,6 +21,16 @@
             $params = func_get_args();
             $num_params = func_num_args();
             $funcion_constructor = '__construct'.$num_params;
+            $this->setID($ID);
+            $this->setNombre($Nombre);
+            $this->setPrecio($Precio);
+            $this->setID($Caracteristicas);
+            $this->setID($Descripcion);
+            $this->setID($Stock);
+            $this->setID($IDSubCat);
+            $this->setID($IDEmpAlta);
+            $this->setID($Activo);
+            
             if (method_exists($this, $funcion_constructor)) {
                 call_user_func_array(array($this, $funcion_constructor), $params);
             }
@@ -127,6 +137,49 @@
         }
         public function getActivo() {
             return $this->Activo;
+        }
+
+        public function registrarArticulo() {
+            try {
+                $SQL = "insert into articulo(ID,Nombre,Precio,Caracteristicas,Descripcion,Stock,IDSubCat,IDEmpAlta,FechaAlta,Activo) values (?,?,?,?,?,?,?,?,?,?);";
+                $conex = new conexion();
+                $Conn = $conex->conectar();
+                $STMT = $Conn->prepare($SQL);
+                $STMT->bindParam(':ID', $this->ID);
+                $STMT->bindParam(':Nombre',$this->Nombre);
+                $STMT->bindParam(':Precio',$this->Precio);
+                $STMT->bindParam(':Caracteristicas',$this->Caracteristicas);
+                $STMT->bindParam(':Descripcion',$this->Descripcion);
+                $STMT->bindParam(':Stock',$this->Stock);
+                $STMT->bindParam(':IDSubCat',$this->IDSubCat);
+                $STMT->bindParam(':IDEmpAlta',$this->IDEmpAlta);
+                $STMT->bindParam(':FechaAlta',$this->FechaAlta);
+                $STMT->bindParam(':Activo',$this->Activo);
+
+                $STMT->execute();
+                //echo "Registro creado exitosamente";
+                $filas = $STMT->rowCount();
+                $conex->desconectar();
+            } catch (PDOException $e) {
+                echo "ERROR: ".$SQL."<br>".$e->getMessage();
+            }
+            $Conn = null;
+            return $filas;
+        }
+        public function existeArticulo() {
+            try {
+                $SQL = "SELECT ID FROM articulo WHERE ID = :Id;";
+                $conex = new conexion();
+                $Conn = $conex->conectar();
+                $STMT = $Conn->prepare($SQL);
+                $STMT->bindParam(':Id', $this->ID);
+                $STMT->execute();
+                $Existe = $STMT->rowCount() > 0;
+            } catch (PDOException $e) {
+                $Existe = false;
+                echo "ERROR: ".$SQL."<br>".$e->getMessage();
+            }
+            return $Existe;
         }
     }
 ?>
