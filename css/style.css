@@ -2114,3 +2114,16 @@ input[type="text"] {
 
 .js .animate-box {
   opacity: 0; }
+
+.selectable-link:hover {
+  color:#cc0000;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.selectable-link {
+  transition: 0.5s;
+  /*
+  color:black;
+  */
+}

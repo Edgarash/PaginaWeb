@@ -1,10 +1,18 @@
 <?php
+include_once('Clases/usuario.php');
 $Nombre;
 $Link;
 $CierraSesion='';
 if (isset($_SESSION['Sesion'])) {
     $Nombre = $_SESSION['Nombre'];
+    if (isset($_SESSION['Empleado'])) {
+        $Usuario = new usuario('', $_SESSION['Usuario'], '', $_SESSION['Info']);
+        $Usuario = $Usuario->hacerLogin();
+        $Puesto = $Usuario->getPuesto();
+        $Link = $Puesto == 'Administrador' ? 'Manage?Tabla=usuario': 'index';
+    } else {
     $Link = "Profile";
+    }
     $CierraSesion=
     '<li>
         <a href=php/cerrarSesion>
