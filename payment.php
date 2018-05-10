@@ -31,7 +31,7 @@ session_start();
                                         <h1>Formas de Pago</h1>
                                         <h2 class="bread">
                                             <span>
-                                                <a href="index.html">
+                                                <a href="index">
                                                     <i class="icon-home"></i>
                                                 </a>
                                             </span>
@@ -56,7 +56,7 @@ session_start();
                                         <div class="panel panel-default">
                                             <div class="panel">
                                                 <h4 class="panel-title">
-                                                    <a href="profile.html">
+                                                    <a href="profile">
                                                         <i class="icon-user"></i>
                                                         Datos Generales
                                                     </a>
@@ -64,7 +64,7 @@ session_start();
                                             </div>
                                             <div class="panel">
                                                 <h4 class="panel-title" style="color:#cc0000">
-                                                    <a href="payment.html">
+                                                    <a href="payment">
                                                         <i class="icon-credit-card"></i>
                                                         Formas de Pago
                                                     </a>
@@ -72,7 +72,7 @@ session_start();
                                             </div>
                                             <div class="panel">
                                                 <h4 class="panel-title">
-                                                    <a href="sell.html">
+                                                    <a href="sell">
                                                         <i class="icon-tags"></i>
                                                         Mis Ventas
                                                     </a>
@@ -80,7 +80,7 @@ session_start();
                                             </div>
                                             <div class="panel">
                                                 <h4 class="panel-title">
-                                                    <a href="bought.html">
+                                                    <a href="bought">
                                                         <i class="icon-tag"></i>
                                                         Mis Compras
                                                     </a>
@@ -88,7 +88,7 @@ session_start();
                                             </div>
                                             <div class="panel">
                                                 <h4 class="panel-title">
-                                                    <a href="add-to-wishlist.html">
+                                                    <a href="add-to-wishlist">
                                                         <i class="icon-heart"></i>
                                                         Favoritos
                                                     </a>
@@ -96,7 +96,7 @@ session_start();
                                             </div>
                                             <div class="panel">
                                                 <h4 class="panel-title">
-                                                    <a href="cart.html">
+                                                    <a href="cart">
                                                         <i class="icon-shopping-cart"></i>
                                                         Carrito [0]
                                                     </a>

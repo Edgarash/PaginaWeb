@@ -112,12 +112,19 @@ function ActualizarTabla(Sending) {
                 $('#Tabla').html(this.responseText);
                 AJAXCallUpdate();
                 $.alert({
-                    title: 'Mensaje',
+                    title: 'Hurra!!!',
+                    icon: 'fa fa-check',
+                    theme: 'modern',
+                    type: 'green',
+                    escapeKey: true,
                     content: 'Base de datos actualizada con éxito'
                 });
             } else {
                 $.alert({
-                    title: 'Mensaje',
+                    title: 'ERROR :(',
+                    icon: 'fa fa-window-close',
+                    theme: 'modern',
+                    type: 'red',
                     content: 'Hubo algún error, por favor intente más tarde.'
                 });
             }

@@ -27,7 +27,7 @@ session_start();
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Pagar Orden</h1>
-				   					<h2 class="bread"><span><a href="index.html"><i class="icon-home"></i></a></span> <span><a href="cart.html">Carrito</a></span> <span>Pagar</span></h2>
+				   					<h2 class="bread"><span><a href="index"><i class="icon-home"></i></a></span> <span><a href="cart">Carrito</a></span> <span>Pagar</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -44,15 +44,15 @@ session_start();
 						<div class="process-wrap">
 							<div class="process text-center active">
 								<p><span>01</span></p>
-								<h3><a href="cart.html">Orden</a></h3>
+								<h3><a href="cart">Orden</a></h3>
 							</div>
 							<div class="process text-center active">
 								<p><span>02</span></p>
-								<h3><a href="checkout.html">Pagar Orden</a></h3>
+								<h3><a href="checkout">Pagar Orden</a></h3>
 							</div>
 							<div class="process text-center">
 								<p><span>03</span></p>
-								<h3><a href="order-complete.html">Orden Completada</a></h3>
+								<h3><a href="order-complete">Orden Completada</a></h3>
 							</div>
 						</div>
 					</div>
@@ -213,12 +213,12 @@ session_start();
 									<div class="cart">
 										<p>
 											<span class="addtocart">
-												<a href="cart.html">
+												<a href="cart">
 													<i class="icon-shopping-cart"></i>
 												</a>
 											</span>
 											<span>
-												<a href="product-detail.html">
+												<a href="product-detail">
 													<i class="icon-eye"></i>
 												</a>
 											</span>
@@ -232,7 +232,7 @@ session_start();
 								</div>
 								<div class="desc">
 									<h3>
-										<a href="shop.html">Lenovo Desktop Rs 18000</a>
+										<a href="shop">Lenovo Desktop Rs 18000</a>
 									</h3>
 									<p class="price">
 										<span>$15,000.00</span>
@@ -247,12 +247,12 @@ session_start();
 									<div class="cart">
 										<p>
 											<span class="addtocart">
-												<a href="cart.html">
+												<a href="cart">
 													<i class="icon-shopping-cart"></i>
 												</a>
 											</span>
 											<span>
-												<a href="product-detail.html">
+												<a href="product-detail">
 													<i class="icon-eye"></i>
 												</a>
 											</span>
@@ -266,7 +266,7 @@ session_start();
 								</div>
 								<div class="desc">
 									<h3>
-										<a href="shop.html">Alienware 15 R3 Supreme Gaming</a>
+										<a href="shop">Alienware 15 R3 Supreme Gaming</a>
 									</h3>
 									<p class="price">
 										<span>$25,000.00</span>
@@ -283,12 +283,12 @@ session_start();
 									<div class="cart">
 										<p>
 											<span class="addtocart">
-												<a href="cart.html">
+												<a href="cart">
 													<i class="icon-shopping-cart"></i>
 												</a>
 											</span>
 											<span>
-												<a href="product-detail.html">
+												<a href="product-detail">
 													<i class="icon-eye"></i>
 												</a>
 											</span>
@@ -302,7 +302,7 @@ session_start();
 								</div>
 								<div class="desc">
 									<h3>
-										<a href="shop.html">LG V30+Dual-SIM LG-H930DS</a>
+										<a href="shop">LG V30+Dual-SIM LG-H930DS</a>
 									</h3>
 									<p class="price">
 										<span>$10,000.00</span>
@@ -317,12 +317,12 @@ session_start();
 									<div class="cart">
 										<p>
 											<span class="addtocart">
-												<a href="cart.html">
+												<a href="cart">
 													<i class="icon-shopping-cart"></i>
 												</a>
 											</span>
 											<span>
-												<a href="product-detail.html">
+												<a href="product-detail">
 													<i class="icon-eye"></i>
 												</a>
 											</span>
@@ -336,7 +336,7 @@ session_start();
 								</div>
 								<div class="desc">
 									<h3>
-										<a href="shop.html">Audífonos Sony Mdrxb650bt Bluetooth</a>
+										<a href="shop">Audífonos Sony Mdrxb650bt Bluetooth</a>
 									</h3>
 									<p class="price">
 										<span>$1,859.00</span>

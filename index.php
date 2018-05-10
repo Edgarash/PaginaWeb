@@ -81,7 +81,7 @@ session_start();
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<a href="shop.html" class="f-product-1" style="background-image: url(images/publi1.png);">
+						<a href="shop" class="f-product-1" style="background-image: url(images/publi1.png);">
 							<div class="desc">
 								<h2>Smart <br>phones</h2>
 							</div>
@@ -129,15 +129,15 @@ session_start();
 								<p class="tag"><span class="new">Nuevo</span></p>
 								<div class="cart">
 									<p>
-										<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
 										
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">Canon EOS Rebel T6</a></h3>
+								<h3><a href="shop">Canon EOS Rebel T6</a></h3>
 								<p class="price"><span>$12,279.00</span></p>
 							</div>
 						</div>
@@ -148,15 +148,15 @@ session_start();
 								<p class="tag"><span class="new">Nuevo</span></p>
 								<div class="cart">
 									<p>
-										<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
 									
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">Impresora Inalámbrica HP</a></h3>
+								<h3><a href="shop">Impresora Inalámbrica HP</a></h3>
 								<p class="price"><span>$1,289.00</span></p>
 							</div>
 						</div>
@@ -167,15 +167,15 @@ session_start();
 								<p class="tag"><span class="new">Nuevo</span></p>
 								<div class="cart">
 									<p>
-										<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
 							
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">Audífonos inalámbricos RP-BTD10</a></h3>
+								<h3><a href="shop">Audífonos inalámbricos RP-BTD10</a></h3>
 								<p class="price"><span>$3,575.00</span></p>
 							</div>
 						</div>
@@ -186,15 +186,15 @@ session_start();
 								<p class="tag"><span class="new">Nuevo</span></p>
 								<div class="cart">
 									<p>
-										<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
 										
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">Laptop Hp Stream 11</a></h3>
+								<h3><a href="shop">Laptop Hp Stream 11</a></h3>
 								<p class="price"><span>$5,399.00</span></p>
 							</div>
 						</div>
@@ -222,7 +222,7 @@ session_start();
 								<div class="text-rights">
 									<h3 class="title">Apresúrate oferta limitada!</h3>
 									<h2>Laptops</h2>
-									<p><a href="shop.html" class="btn btn-primary">Ver Colección</a></p>
+									<p><a href="shop" class="btn btn-primary">Ver Colección</a></p>
 								</div>
 							</div>
 						</div>
@@ -245,14 +245,14 @@ session_start();
 								<p class="tag"><span class="sale">Oferta</span></p>
 								<div class="cart">
 									<p>
-										<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">Lenovo Desktop Rs 18000</a></h3>
+								<h3><a href="shop">Lenovo Desktop Rs 18000</a></h3>
 								<p class="price"><span>$15,000.00</span> <span class="sale">$18,000.00</span> </p>
 							</div>
 						</div>
@@ -262,14 +262,14 @@ session_start();
 							<div class="product-img" style="background-image: url(images/vendido2.jpg);">
 								<div class="cart">
 									<p>
-										<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">Alienware 15 R3 Supreme Gaming</a></h3>
+								<h3><a href="shop">Alienware 15 R3 Supreme Gaming</a></h3>
 								<p class="price"><span>$25,000.00</span></p>
 							</div>
 						</div>
@@ -280,14 +280,14 @@ session_start();
 								<p class="tag"><span class="new">New</span></p>
 								<div class="cart">
 									<p>
-										<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">LG V30+Dual-SIM LG-H930DS</a></h3>
+								<h3><a href="shop">LG V30+Dual-SIM LG-H930DS</a></h3>
 								<p class="price"><span>$10,000.00</span></p>
 							</div>
 						</div>
@@ -298,14 +298,14 @@ session_start();
 								
 								<div class="cart">
 									<p>
-										<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">Samsung Galaxy J7</a></h3>
+								<h3><a href="shop">Samsung Galaxy J7</a></h3>
 								<p class="price"><span>$2,300.00</span></p>
 							</div>
 						</div>
@@ -316,14 +316,14 @@ session_start();
 								
 								<div class="cart">
 									<p>
-										<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">Audífonos Sony Mdrxb650bt Bluetooth</a></h3>
+								<h3><a href="shop">Audífonos Sony Mdrxb650bt Bluetooth</a></h3>
 								<p class="price"><span>$1,859.00</span></p>
 							</div>
 						</div>
@@ -333,14 +333,14 @@ session_start();
 							<div class="product-img" style="background-image: url(images/vendido6.jpg);">
 								<div class="cart">
 									<p>
-										<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">Ropch Funda para Ordenadores Portátiles</a></h3>
+								<h3><a href="shop">Ropch Funda para Ordenadores Portátiles</a></h3>
 								<p class="price"><span>$730.00</span></p>
 							</div>
 						</div>
@@ -351,14 +351,14 @@ session_start();
 								<p class="tag"><span class="new">New</span></p>
 								<div class="cart">
 									<p>
-										<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">Zelotes F-14 Wireless gaming </a></h3>
+								<h3><a href="shop">Zelotes F-14 Wireless gaming </a></h3>
 								<p class="price"><span>$642.00</span></p>
 							</div>
 						</div>
@@ -368,14 +368,14 @@ session_start();
 							<div class="product-img" style="background-image: url(images/vendido8.jpg);">
 								<div class="cart">
 									<p>
-										<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">Huawei GR3 2017</a></h3>
+								<h3><a href="shop">Huawei GR3 2017</a></h3>
 								<p class="price"><span>$2,500.00</span></p>
 							</div>
 						</div>

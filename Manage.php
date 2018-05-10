@@ -54,7 +54,7 @@
                                         <h1>Administración de Usuarios</h1>
                                         <h2 class="bread">
                                             <span>
-                                                <a href="index.html">
+                                                <a href="index">
                                                     <i class="icon-home"></i>
                                                 </a>
                                             </span>

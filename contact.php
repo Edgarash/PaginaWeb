@@ -27,7 +27,7 @@ session_start();
 								<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 									<div class="slider-text-inner text-center">
 										<h1>Contáctanos</h1>
-										<h2 class="bread"><span><a href="index.html"><i class="icon-home"></i></a></span> <span>Contacto</span></h2>
+										<h2 class="bread"><span><a href="index"><i class="icon-home"></i></a></span> <span>Contacto</span></h2>
 									</div>
 								</div>
 							</div>

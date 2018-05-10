@@ -27,7 +27,7 @@ session_start();
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Detalle del producto</h1>
-				   					<h2 class="bread"><span><a href="index.html"><i class="icon-home"></i></a></span> <span><a href="shop.html">Productos</a></span> <span>Detalle</span></h2>
+				   					<h2 class="bread"><span><a href="index"><i class="icon-home"></i></a></span> <span><a href="shop">Productos</a></span> <span>Detalle</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -105,7 +105,7 @@ session_start();
                                  	</div>
                         			</div>
 										</div>
-										<p><a href="cart.html" class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i>Añadir al carrito</a></p>
+										<p><a href="cart" class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i>Añadir al carrito</a></p>
 									</div>
 								</div>
 							</div>
@@ -167,14 +167,14 @@ session_start();
 								<div class="cart">
 									<p>
 										<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
-										<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+										<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">HP LAPTOP PAVILION</a></h3>
+								<h3><a href="shop">HP LAPTOP PAVILION</a></h3>
 								<p class="price"><span>$6,499.00</span></p>
 							</div>
 						</div>
@@ -186,14 +186,14 @@ session_start();
 								<div class="cart">
 									<p>
 										<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
-										<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+										<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">HP STREAM INTEL</a></h3>
+								<h3><a href="shop">HP STREAM INTEL</a></h3>
 								<p class="price"><span>$3,990.00</span></p>
 							</div>
 						</div>
@@ -205,14 +205,14 @@ session_start();
 								<div class="cart">
 									<p>
 										<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
-										<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+										<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">DELL VOSTRO 3250</a></h3>
+								<h3><a href="shop">DELL VOSTRO 3250</a></h3>
 								<p class="price"><span>$11,500.00</span></p>
 							</div>
 						</div>
@@ -224,14 +224,14 @@ session_start();
 								<div class="cart">
 									<p>
 										<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
-										<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+										<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop.html">TECLADO RAZER CYNOSA PRO</a></h3>
+								<h3><a href="shop">TECLADO RAZER CYNOSA PRO</a></h3>
 								<p class="price"><span>$700.00</span></p>
 							</div>
 						</div>

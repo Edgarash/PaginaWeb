@@ -27,7 +27,7 @@ session_start();
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Orden Completada</h1>
-				   					<h2 class="bread"><span><a href="index.html"><i class="icon-home"></i></a></span> <span><a href="cart.html">Carrito</a></span> <span><a href="checkout.html"> Pagar</a></span><span>Completado</span></h2>
+				   					<h2 class="bread"><span><a href="index"><i class="icon-home"></i></a></span> <span><a href="cart">Carrito</a></span> <span><a href="checkout"> Pagar</a></span><span>Completado</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -44,15 +44,15 @@ session_start();
 						<div class="process-wrap">
 								<div class="process text-center active">
 										<p><span>01</span></p>
-										<h3><a href="cart.html">Orden</a></h3>
+										<h3><a href="cart">Orden</a></h3>
 									</div>
 									<div class="process text-center active">
 										<p><span>02</span></p>
-										<h3><a href="checkout.html">Pagar Orden</a></h3>
+										<h3><a href="checkout">Pagar Orden</a></h3>
 									</div>
 									<div class="process text-center">
 										<p><span>03</span></p>
-										<h3><a href="order-complete.html">Orden Completada</a></h3>
+										<h3><a href="order-complete">Orden Completada</a></h3>
 									</div>
 						</div>
 					</div>
@@ -62,8 +62,8 @@ session_start();
 						<span class="icon"><i class="icon-shopping-cart"></i></span>
 						<h2>Gracias por comprar, su orden está completa</h2>
 						<p>
-							<a href="index.html"class="btn btn-primary"><i class="icon-home"></i></a>
-							<a href="shop.html"class="btn btn-primary btn-outline">Continua Comprando</a>
+							<a href="index"class="btn btn-primary"><i class="icon-home"></i></a>
+							<a href="shop"class="btn btn-primary btn-outline">Continua Comprando</a>
 						</p>
 					</div>
 				</div>

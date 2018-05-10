@@ -27,7 +27,7 @@ session_start();
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Productos</h1>
-				   					<h2 class="bread"><span><a href="index.html"><i class="icon-home"></i></a></span> <span>Comprar</span></h2>
+				   					<h2 class="bread"><span><a href="index"><i class="icon-home"></i></a></span> <span>Comprar</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -67,15 +67,15 @@ session_start();
 										<p class="tag"><span class="new">Nuevo</span></p>
 										<div class="cart">
 											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+												<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+												<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+												<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 											</p>
 										</div>
 									</div>
 									<div class="desc">
-										<h3><a href="product-detail.html">Xiaomi Redmi 4</a></h3>
+										<h3><a href="product-detail">Xiaomi Redmi 4</a></h3>
 										<p class="price"><span>$300.00</span></p>
 									</div>
 								</div>
@@ -86,15 +86,15 @@ session_start();
 										<p class="tag"><span class="sale">Oferta</span></p>
 										<div class="cart">
 											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+												<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+												<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+												<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 											</p>
 										</div>
 									</div>
 									<div class="desc">
-										<h3><a href="product-detail.html">SAMSUNG GALAXY S8 64GB</a></h3>
+										<h3><a href="product-detail">SAMSUNG GALAXY S8 64GB</a></h3>
 										<p class="price"><span>$9,500.00</span> <span class="sale">$11,000.00</span> </p>
 									</div>
 								</div>
@@ -105,15 +105,15 @@ session_start();
 										<p class="tag"><span class="new">Nuevo</span></p>
 										<div class="cart">
 											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+												<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+												<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+												<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 											</p>
 										</div>
 									</div>
 									<div class="desc">
-										<h3><a href="product-detail.html">Cámara SLR Nikon D D7200</a></h3>
+										<h3><a href="product-detail">Cámara SLR Nikon D D7200</a></h3>
 										<p class="price"><span>$10,400.00</span></p>
 									</div>
 								</div>
@@ -123,15 +123,15 @@ session_start();
 									<div class="product-img" style="background-image: url(images/eduardo-audifonos.jpg);">
 										<div class="cart">
 											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+												<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+												<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+												<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 											</p>
 										</div>
 									</div>
 									<div class="desc">
-										<h3><a href="product-detail.html">Original Bluedio T4</a></h3>
+										<h3><a href="product-detail">Original Bluedio T4</a></h3>
 										<p class="price"><span>$182.00</span></p>
 									</div>
 								</div>
@@ -142,15 +142,15 @@ session_start();
 										
 										<div class="cart">
 											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+												<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+												<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+												<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 											</p>
 										</div>
 									</div>
 									<div class="desc">
-										<h3><a href="product-detail.html">Teclado Razer Cynosa Pro </a></h3>
+										<h3><a href="product-detail">Teclado Razer Cynosa Pro </a></h3>
 										<p class="price"><span>$700.00</span> 
 									</div>
 								</div>
@@ -161,15 +161,15 @@ session_start();
 										<p class="tag"><span class="new">Nuevo</span></p>
 										<div class="cart">
 											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+												<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+												<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+												<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 											</p>
 										</div>
 									</div>
 									<div class="desc">
-										<h3><a href="product-detail.html">Sony Cyber Shot Dsc-h300</a></h3>
+										<h3><a href="product-detail">Sony Cyber Shot Dsc-h300</a></h3>
 										<p class="price"><span>$4,690.00</span></p>
 									</div>
 								</div>
@@ -179,15 +179,15 @@ session_start();
 									<div class="product-img" style="background-image: url(images/eduardo-Laptop.jpg);">
 										<div class="cart">
 											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+												<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+												<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+												<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 											</p>
 										</div>
 									</div>
 									<div class="desc">
-										<h3><a href="product-detail.html">Hp Laptop Pavilion</a></h3>
+										<h3><a href="product-detail">Hp Laptop Pavilion</a></h3>
 										<p class="price"><span>$6,499.00</span></p>
 									</div>
 								</div>
@@ -198,15 +198,15 @@ session_start();
 										<p class="tag"><span class="new">Nuevo</span></p>
 										<div class="cart">
 											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+												<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+												<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+												<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 											</p>
 										</div>
 									</div>
 									<div class="desc">
-										<h3><a href="product-detail.html">Usb Kingston Usb 3.0 16gb </a></h3>
+										<h3><a href="product-detail">Usb Kingston Usb 3.0 16gb </a></h3>
 										<p class="price"><span>$120.00</span></p>
 									</div>
 								</div>
@@ -218,15 +218,15 @@ session_start();
 										<p class="tag"><span class="new">Nuevo</span></p>
 										<div class="cart">
 											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+												<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+												<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+												<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 											</p>
 										</div>
 									</div>
 									<div class="desc">
-										<h3><a href="product-detail.html">Hp Stream Intel </a></h3>
+										<h3><a href="product-detail">Hp Stream Intel </a></h3>
 										<p class="price"><span>$3,990.00</span></p>
 									</div>
 								</div>
@@ -237,15 +237,15 @@ session_start();
 										<p class="tag"><span class="new">Nuevo</span></p>
 										<div class="cart">
 											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+												<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+												<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+												<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 											</p>
 										</div>
 									</div>
 									<div class="desc">
-										<h3><a href="product-detail.html">Multifuncional Hp Officejet Pro 6970</a></h3>
+										<h3><a href="product-detail">Multifuncional Hp Officejet Pro 6970</a></h3>
 										<p class="price"><span>$1,300.00</span></p>
 									</div>
 								</div>
@@ -256,15 +256,15 @@ session_start();
 										<p class="tag"><span class="new">Nuevo</span></p>
 										<div class="cart">
 											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+												<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+												<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+												<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 											</p>
 										</div>
 									</div>
 									<div class="desc">
-										<h3><a href="product-detail.html">Dell Vostro 3250</a></h3>
+										<h3><a href="product-detail">Dell Vostro 3250</a></h3>
 										<p class="price"><span>$11,500.00</span></p>
 									</div>
 								</div>
@@ -275,15 +275,15 @@ session_start();
 										<p class="tag"><span class="new">Nuevo</span></p>
 										<div class="cart">
 											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+												<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+												<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+												<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
 											</p>
 										</div>
 									</div>
 									<div class="desc">
-										<h3><a href="product-detail.html">Redlemon Audífonos Deportivos</a></h3>
+										<h3><a href="product-detail">Redlemon Audífonos Deportivos</a></h3>
 										<p class="price"><span>$189.00</span></p>
 									</div>
 								</div>
