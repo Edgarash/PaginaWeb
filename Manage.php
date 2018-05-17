@@ -14,9 +14,9 @@
     }
     $TablasDisponibles = array(
         array('usuario', 'Usuarios', 'fa fa-user'),
-        array('articulo', 'Articulos', 'fa fa-shopping-bag'),
-        array('categoria', 'Categorias', 'fa fa-cog'),
-        array('subcategoria', 'Subcategorias', 'fa fa-cogs'),
+        array('articulo', 'Artículos', 'fa fa-shopping-bag'),
+        array('categoria', 'Categorías', 'fa fa-cog'),
+        array('subcategoria', 'Subcategorías', 'fa fa-cogs'),
         array('cliente', 'Clientes', 'fa fa-address-card'),
         array('imagenes', 'Imágenes', 'fa fa-camera')
     );
@@ -118,7 +118,10 @@
                                     ?>
                                 </div>
                             </div>
-                            <button class="btn btn-primary" name="addUser" id="addUser">Agregar Usuario</button>
+                            <?php
+                            if (isset($TablaActual) && $TablaActual[0]!="imagenes") 
+                                echo '<button class="btn btn-primary" name="addUser" id="addUser">Agregar '.substr($TablaActual[1], 0, strlen($TablaActual[1])-1).'</button>'
+                            ?>
                         </div>
                     </div>
                 </div>

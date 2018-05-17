@@ -5,36 +5,20 @@ $(document).on('ready',function() {
 function AJAXCallUpdate() {
     $('#addUser').off('click');
     $('th > i.fa-edit').on('click', function(){
-        var Usuario = $(this).parent().siblings();
+        var Articulo = $(this).parent().siblings();
         $.confirm({
-            title: 'Editar Usuario',
+            title: 'Editar Artículo',
             icon: 'fa fa-edit',
             theme: 'supervan',
             columnClass: 'col-md-10 col-md-offset-1',
-            content: Actualizar(
-                Usuario.eq(0).text(),
-                Usuario.eq(1).text(),
-                Usuario.eq(2).text(),
-                Usuario.eq(3).text(),
-                Usuario.eq(4).text(),
-                Usuario.eq(5).text(),
-                Usuario.eq(6).text(),
-            ),
+            content: '',
             buttons: {
                 formSubmit: {
                     btnClass: 'btn btn-green btn-green',
                     text: 'Guardar',
-                    action: function(){ ActualizarTabla(
-                        'ID='+Usuario.eq(0).text()+
-                        '&Usuario='+Usuario.eq(1).text()+
-                        '&Puesto='+$('#Puesto').val()+
-                        '&Contraseña='+$('#Password').val()+
-                        '&Nombre='+$('#Nombre').val()+
-                        '&Apellidos='+$('#Apellidos').val()+
-                        '&Telefono='+$('#Telefono').val()+
-                        '&Email='+$('#Email').val()+
-                        '&Activo='+$('#Activo').prop('checked')+
-                        '&Modificar=true')}
+                    action: function(){ 
+
+                    }
                 },
                 cancel: {
                     text: 'Cancelar',
@@ -44,22 +28,19 @@ function AJAXCallUpdate() {
         });
     });
     $('th > i.fa-trash').on('click', function(){
-        var Usuario = $(this).parent().siblings();
+        var Articulo = $(this).parent().siblings();
         $.confirm({
             title: 'AVISO',
-            content: '¿Esta seguro que desea eliminar este usuario?',
+            content: '¿Esta seguro que desea eliminar este artículo?',
             type: 'red',
-            icon: 'fa fa-user-times',
+            icon: 'fa fa-window-close',
             theme: 'modern',
             buttons: {
                 Eliminar: {
                     text: 'ELIMINAR',
                     btnClass: 'btn-red',
                     action: function() {
-                        ActualizarTabla(
-                            'ID='+Usuario.eq(0).text()+
-                            '&Eliminar=true'
-                        )
+                        
                     }
                 },
                 cancel: {
@@ -71,7 +52,7 @@ function AJAXCallUpdate() {
     
     $('#addUser').on('click', function() {
         $.confirm({
-            title: 'Agregar Usuario',
+            title: 'Agregar Artículo',
             theme: 'supervan',
             content: Registrar(),
             columnClass: 'col-md-10 col-md-offset-1',
@@ -80,17 +61,8 @@ function AJAXCallUpdate() {
                 submit: {
                     text: 'Registrar',
                     btnClass: 'btn-green',
-                    action: function() {
-                        ActualizarTabla(
-                        '&Usuario='+$('#Usuario').val()+
-                        '&Puesto='+$('#Puesto').val()+
-                        '&Contraseña='+$('#Password').val()+
-                        '&Nombre='+$('#Nombre').val()+
-                        '&Apellidos='+$('#Apellidos').val()+
-                        '&Telefono='+$('#Telefono').val()+
-                        '&Email='+$('#Email').val()+
-                        '&Registrar=true'
-                        );
+                    action: {
+                        
                     }
                 },
                 cancel: {
@@ -130,153 +102,74 @@ function ActualizarTabla(Sending) {
             }
         }
     }
-    xhttp.open("POST", "php/AJAXusuario.php", true);
+    xhttp.open("POST", "php/AJAXArticulo.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(Sending);
 }
 
-
-function Actualizar(ID = '', Usuario = '' , Puesto = '', Nombre = '', Apellidos = '', Telefono = '', Email = '') {
-    Puestos = getPuestos();
-    opciones = "";
-    Puestos.forEach(function(cadena, indice, array){
-        opciones+='<option value="'+cadena+'" '+ (cadena == Puesto ? 'selected' : '') + '>'+cadena+'</option>';
-    });
-    return ''+
-    '<form action="" class="colorlib-form" style="color:black;">'+
-        '<div class="row">'+
-            '<div class="form-group">'+
-                //ID
-                '<div class="col-md-1">'+
-                    '<label>ID: '+ ID +'</label>'+
-                '</div>'+
-                //Usuario
-                '<div class="col-md-8">'+
-                    '<label>USUARIO: '+ Usuario +'</label>'+
-                '</div>'+
-                //Activo
-                '<div class="col-md-3">'+
-                    '<input class="form-check-input" type="checkbox" name="activo" id="Activo" checked="true">'+
-                    '<label for="activo" class="form-check label">Activo</label>'+
-                '</div>'+
-            '</div>'+
-            '<div class="form-group">'+
-                //Puesto
-                '<div class="col-md-6">'+
-                    '<label>Puesto: </label>'+
-                    '<select id="Puesto" name="Puesto" class="form-control" value="'+ /*Puesto +*/'">'+
-                        opciones+
-                    '</select>'+
-                '</div>'+
-            '</div>'+
-            '<div class="form-group">'+
-                //Nombre
-                '<div class="col-md-4">'+
-                    '<label>NOMBRE: </label>'+
-                    '<input class="form-control" type="text" name="fname"'+
-                    'maxlength="100" placeholder="Nombre" id="Nombre"'+
-                    ' value="'+ Nombre +'" required>'+
-                '</div>'+
-                //Apellidos
-                '<div class="col-md-4">'+
-                    '<label>Apellidos: </label>'+
-                    '<input class="form-control" type="text" name="lname"'+
-                    'maxlength="100" placeholder="Apellidos" id="Apellidos"'+
-                    ' value="'+ Apellidos +'" required>'+
-                '</div>'+
-                //Telefono
-                '<div class="col-md-4">'+
-                    '<label>Teléfono: </label>'+
-                    '<input class="form-control" type="tel" name="tel"'+
-                    'maxlength="10" placeholder="Teléfono" id="Telefono"'+
-                    ' value="'+ Telefono +'" required>'+
-                '</div>'+
-            '</div>'+
-            '<div class="form-group">'+
-                '<div class="col-md-6">'+
-                    '<label>Email:</label>'+
-                    '<input class="form-control" type="email" name="email"'+
-                    'maxlength="100" placeholder="Email" id="Email"'+
-                    ' value="' + Email+'" required>'+
-                '</div>'+
-                '<div class="col-md-6">'+
-                    '<label>Contraseña:</label>'+
-                    '<input class="form-control" type="password" name="Password"'+
-                    'maxlength="16" placeholder="Contraseña" id="Password"'+
-                    ' value="" required>'+
-                '</div>'+
-            '</div>'+
-        '</div>'+
-    '</form>'
-}
-
 function Registrar() {
-    Puestos = getPuestos();
-    opciones = "";
-    Puestos.forEach(function(cadena, indice, array){
-        opciones+='<option value="'+cadena+'" '+ (cadena == 'Empleado' ? 'selected' : '') + '>'+cadena+'</option>';
-    });
-    return '<form action="" class="colorlib-form" style="color:black;">'+
+    return ''+
+    '<form class="colorlib-form" style="color:black;">'+
         '<div class="row">'+
             '<div class="form-group">'+
-                //Usuario
+                //Nombre Artículo
                 '<div class="col-md-6">'+
-                    '<label>USUARIO:</label>'+
-                    '<input type="text" class="form-control" name="Usuario" id="Usuario" placeholder="Usuario" required>'+
+                    '<label>Nombre</label>'+
+                    '<input type="text" class="form-control" name="Nombre" id="Nombre" placeholder="Nombre" required>'+
                 '</div>'+
-                //Password
-                '<div class="col-md-6">'+
-                    '<label>Contraseña:</label>'+
-                    '<input class="form-control" type="password" name="Password"'+
-                    'maxlength="16" placeholder="Contraseña" id="Password"'+
-                    ' value="" required>'+
-                    '</div>'+
-                '<div class="form-group">'+
-            '</div>'+
-            '</div>'+
-            '<div class="form-group">'+
-                //Nombre
-                '<div class="col-md-4">'+
-                    '<label>NOMBRE: </label>'+
-                    '<input class="form-control" type="text" name="fname"'+
-                    'maxlength="100" placeholder="Nombre" id="Nombre"'+
-                    ' value="" required>'+
+                //Precio
+                '<div class="col-md-3">'+
+                    '<label>Precio</label>'+
+                    '<input type="number" step="any" min="0" name="Precio" id="Precio" placeholder="Precio" class="form-control" required>'+
                 '</div>'+
-                //Apellidos
-                '<div class="col-md-4">'+
-                    '<label>Apellidos: </label>'+
-                    '<input class="form-control" type="text" name="lname"'+
-                    'maxlength="100" placeholder="Apellidos" id="Apellidos"'+
-                    ' value="" required>'+
-                '</div>'+
-                //Telefono
-                '<div class="col-md-4">'+
-                    '<label>Teléfono: </label>'+
-                    '<input class="form-control" type="tel" name="tel"'+
-                    'maxlength="10" placeholder="Teléfono" id="Telefono"'+
-                    ' value="" required>'+
+                //Stock
+                '<div class="col-md-3">'+
+                    '<label>Stock</label>'+
+                    '<input type="number" step="1" min="0" max="9999" name="Stock" id="Stock" placeholder="Stock" class="form-control" required>'+
                 '</div>'+
             '</div>'+
             '<div class="form-group">'+
-                //Email
+                //Características
                 '<div class="col-md-6">'+
-                    '<label>Email:</label>'+
-                    '<input class="form-control" type="email" name="email"'+
-                    'maxlength="100" placeholder="Email" id="Email"'+
-                    ' value="" required>'+
+                    '<label>Características</label>'+
+                    '<textarea class="form-control" name="Caracteristicas" id="Caracteristicas" placeholder="Características"></textarea>'+
                 '</div>'+
-                //Puesto
+                //Descripcion
                 '<div class="col-md-6">'+
-                    '<label>Puesto: </label>'+
-                    '<select id="Puesto" name="Puesto" class="form-control" value="'+ /*Puesto +*/'">'+
-                        opciones+
-                    '</select>'+
+                    '<label>Descripción</label>'+
+                    '<textarea class="form-control" name="Descripcion" id="Descripcion" placeholder="Descripción"></textarea>'+
+                '</div>'+
+            '</div>'+
+            '<div class="form-group">'+
+                '<input id="files" name="files" type="file" required style="margin: 0 auto;" multiple onchange="readURL(this);">'+
+                '<div id="img" style="overflow:auto;border:1px dashed black;width:80%;'+
+                'min-height:100px;margin:10px auto;" ondrop="" ondragover="">'+
+                    '<img id="uploaded" src="nothing.jpg" alt="Arrastre aquí para subir archivos\nMáximo 4 imágenes" style="max-width:100%;padding:10px">'+
                 '</div>'+
             '</div>'+
         '</div>'+
-    '</form>'
+    '</form>';
 }
 
-function getPuestos() {
-    return new Array('Administrador', 'CDC', 'Empleado', 'Finanzas');
+function readURL(input) {
+    if (input.files) {
+        setImage(input.files);
+    }
+}
+
+function setImage(Files) {
+    var reader1 = new FileReader();
+    reader1.onload = function(e) {
+        window.archivo = Files;
+    }
+    reader1.readAsDataURL(Files[0]);
+    if (Files.length > 4) {
+        $.alert({
+            title: 'ERROR:',
+            content: 'No se pueden subir más de 4 archivos',
+            icon: 'fa fa-window-close',
+            theme: 'supervan'
+        });
+        $('#files').val('');
+    }
 }
