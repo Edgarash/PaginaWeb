@@ -1,5 +1,6 @@
 <?php
 include_once('Clases/usuario.php');
+include_once('Clases/articulos.php');
 include_once('Clases/imagenes.php');
 class TablaInfo {
     private $Tabla;
@@ -27,6 +28,9 @@ class TablaInfo {
                 $this->TablaUsuarios();
             } elseif ($temp === 'imagenes') {
                 $this->TablaImgPrincipal();
+            }
+            elseif ($temp === 'articulo') {
+                $this->TablaArticulo();
             }
             $this->CerrarTabla();
         }
@@ -87,6 +91,41 @@ class TablaInfo {
         unset($usuario);
     }
     
+    private function TablaArticulo() {
+        echo '<thead><tr>'.
+                '<th>ID</th>'.
+                '<th>Nombre</th>'.
+                '<th>Precio</th>'.
+                '<th>Caracteristicas</th>'.
+                '<th>Descripcion</th>'.
+                '<th>Stock</th>'.
+                '<th>IDSubCat</th>'.
+                '<th>IDEmpleado</th>'.
+                '<th>FechaALta</th>'.
+                '<th>Acciones</th>'.
+            '</tr></thead><tbody>';
+        $temp = ObtenerArticulos();
+        foreach ($temp as $articulo) {
+            $Activ = ($articulo->getActivo() == 1);
+            echo '<tr class="'.($Activ ? 'success' : 'danger').'">'.
+            '<th>'.$articulo->getID().'</th>'.
+            '<th>'.$articulo->getNombre().'</th>'.
+            '<th>'.$articulo->getPrecio().'</th>'.
+            '<th>'.$articulo->getCaracteristicas().'</th>'.
+            '<th>'.$articulo->getDescripcion().'</th>'.
+            '<th>'.$articulo->getStock().'</th>'.
+            '<th>'.$articulo->getIDSubCat().'</th>'.
+            '<th>'.$articulo->IDEmpleado().'</th>'.
+            '<th>'.$articulo->FechaALta().'</th>'.
+            '<th class="text-center">'.
+            '<i class="fa fa-edit selectable-link""></i> '.
+            ($Activ ? '<i class="fa fa-trash selectable-link"></i>' : '').
+            '</th></tr>';
+        }
+        echo '</tbody>';
+        unset($articulo);
+    }
+
     private function AbrirTabla() {
         echo '<div class="container col-md-11 table-responsive" style="margin: 0 auto;float:none;">
         <table class="table table-bordered table-condensed col-md-12" style="background:white">';
