@@ -1,8 +1,10 @@
 <?php
 include_once('Clases/usuario.php');
+
 $Nombre;
 $Link;
 $CierraSesion='';
+define('_IMAGENES', 'http://'.$_SERVER['SERVER_NAME'].'/images/');
 if (isset($_SESSION['Sesion'])) {
     $Nombre = $_SESSION['Nombre'];
     if (isset($_SESSION['Empleado'])) {

@@ -3,7 +3,8 @@
     include_once('validaciones.php');
     class imagen {
         private $ID;
-        private $URLS;
+        private $Nombre;
+        private $URL;
         private $Val;
 
         function __construct() {
@@ -21,13 +22,22 @@
             $this->setID($ID);
         }
 
-        private function __construct4($Email, $Contraseña, $Nombre, $Apellidos) {
-            $this->__construct2($Email, $Contraseña);
-            $this->setNombre($Nombre); $this->setApellidos($Apellidos);
+        private function __construct2($ID, $URL) {
+            $this->__construct1($ID); $this->setURL($URL);
+        }
+
+        private function __construct3($ID, $Nombre, $URL) {
+            $this->__construct2($ID, $URL);
+            $this->setNombre($Nombre);
+        }
+
+        private function __construct4($ID, $Nombre, $URL, $IDEmp) {
+            $this->__construct3($ID, $Nombre, $URL);
+            $this->setIDEmp($IDEmp);
         }
 
         private function setVacios() {
-            $this->URLS = new array(); $this->ID = "";
+            $this->URLS = ""; $this->ID = "";
         }
         
         //GET's
@@ -35,8 +45,16 @@
             return $this->ID;
         }
 
-        public function getURLS() {
-            return $this->URLS;
+        public function getURL() {
+            return $this->URL;
+        }
+
+        public function getNombre() {
+            return $this->Nombre;
+        }
+
+        public function getIDEmp() {
+            return $this->IDEmp;
         }
 
         //SET's
@@ -44,8 +62,38 @@
             $this->ID = $ID;
         }
 
-        public function agregarURL($URL) {
-            $this->URLS[] = $URL;
+        public function setURL($URL) {
+            $this->URL = $URL;
         }
+
+        public function setNombre($Nombre) {
+            $this->Nombre = $Nombre;
+        }
+
+        public function setIDEmp($IDEmp) {
+            $this->IDEmp = $IDEmp;
+        }
+    }
+
+    function ObtenerPrincipales() {
+        $Resultdo = array();
+        try {
+            $SQL = "SELECT * FROM imgPrincipal;";
+            $conex = new Conexion();
+            $Conn = $conex->conectar();
+            $STMT = $Conn->prepare($SQL);
+            $STMT->execute();
+            while ($fila = $STMT->fetch()) {
+                $img = new Imagen(
+                    $fila['ID'],
+                    $fila['Nombre'],
+                    $fila['URL']
+                );
+                $Resultdo[] = $img;
+            }
+        } catch (PDOException $e) {
+            echo "ERROR: ".$SQL."<br>".$e->getMessage();
+        }
+        return $Resultdo;
     }
 ?>

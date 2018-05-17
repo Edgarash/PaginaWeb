@@ -8,19 +8,26 @@
             header('Location: index');
             exit();
         }
+    } else {
+        header('Location: index');
+        exit();
     }
-    $TablasDisponibles = array('usuario',
-    'articulo',
-    'categoria',
-    'subcategoria',
-    'cliente',
-    'usuario'
+    $TablasDisponibles = array(
+        array('usuario', 'Usuarios', 'fa fa-user'),
+        array('articulo', 'Articulos', 'fa fa-shopping-bag'),
+        array('categoria', 'Categorias', 'fa fa-cog'),
+        array('subcategoria', 'Subcategorias', 'fa fa-cogs'),
+        array('cliente', 'Clientes', 'fa fa-address-card'),
+        array('imagenes', 'Imágenes', 'fa fa-camera')
     );
-    unset($Tabla);
+    unset($Tabla, $TableName, $TablaActual);
     if (isset($_GET['Tabla'])&& !empty($_GET['Tabla'])) {
-        foreach ($TablasDisponibles as  $NombreTabla) {
-            if ($NombreTabla === $_GET['Tabla'])
-                $Tabla = new TablaInfo($NombreTabla);
+        $TableName = $_GET['Tabla'];
+        foreach ($TablasDisponibles as $Tablas) {
+            if ($Tablas[0] === $TableName) {
+                $Tabla = new TablaInfo($TableName);
+                $TablaActual = $Tablas;
+            }
         }
     }
 ?>
@@ -76,16 +83,22 @@
                                 <h2>Mi Perfil</h2>
                                 <div class="fancy-collapse-panel">
                                     <div class="panel-group" role="tablist">
-                                        <div class="panel panel-default">
-                                            <div class="panel">
-                                                <h4 class="panel-title" style="color:#cc0000">
-                                                    <a href="<?php echo $_SERVER['PHP_SELF'].'?Tabla=usuario'; ?>">
-                                                        <i class="icon-user"></i>
-                                                        Usuarios
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                        </div>
+                                        <?php
+                                        for ($i=0; $i < count($TablasDisponibles); $i++) {
+                                            $Active = (isset($_GET['Tabla']) && !empty($_GET['Tabla']) && $_GET['Tabla']===$TablasDisponibles[$i][0]) ? ' Active' : '';
+                                            echo '
+                                            <div class="panel panel-default">
+                                                <div class="panel">
+                                                    <h4 class="panel-title">
+                                                        <a href="Manage?Tabla='.$TablasDisponibles[$i][0].'" class="selectable-link'.$Active.'">'.
+                                                        '<i class="'.$TablasDisponibles[$i][2].'"></i> '.
+                                                        $TablasDisponibles[$i][1].
+                                                    '</a>
+                                                    </h4>
+                                                </div>
+                                            </div>';
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +107,10 @@
                     <div class="col-md-9">
                         <div class="colorlib-form">
                             <div class="row">
-                                <h2><i class="icon-user"></i> Usuarios</h2>
+                                <?php
+                                if (isset($TablaActual))
+                                    echo '<h2><i class="'.$TablaActual[2].'"></i> '.$TablaActual[1].'</h2>';
+                                ?>
                                 <div id="Tabla" class="row">
                                     <?php
                                     if (isset($Tabla))
@@ -126,8 +142,9 @@
 
         <?php
         include_once('php/footer.php');
+        if (isset($TablaActual))
+            echo '<script src="js/Editar'.$TablaActual[0].'.js"></script>';
         ?>
-        <script src="js/Editar.js"></script>
 </body>
 
 </html>

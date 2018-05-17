@@ -100,7 +100,6 @@ function AJAXCallUpdate() {
             }
         });
     });
-    
 }
 
 function ActualizarTabla(Sending) {
@@ -108,7 +107,8 @@ function ActualizarTabla(Sending) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status==200) {
-            if (this.responseText != "ERROR") {
+            alert(this.responseText.substring(0,5));
+            if (this.responseText.substr(0,5) != "ERROR") {
                 $('#Tabla').html(this.responseText);
                 AJAXCallUpdate();
                 $.alert({
@@ -130,7 +130,7 @@ function ActualizarTabla(Sending) {
             }
         }
     }
-    xhttp.open("POST", "php/AJAX.php", true);
+    xhttp.open("POST", "php/AJAXusuario.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(Sending);
 }

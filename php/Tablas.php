@@ -1,6 +1,6 @@
 <?php
 include_once('Clases/usuario.php');
-
+include_once('Clases/imagenes.php');
 class TablaInfo {
     private $Tabla;
     private $Index;
@@ -23,8 +23,10 @@ class TablaInfo {
         $temp = $this->Tabla;
         if (!empty($temp)) {
             $this->AbrirTabla();
-            if ($temp == 'usuario') {
+            if ($temp === 'usuario') {
                 $this->TablaUsuarios();
+            } elseif ($temp === 'imagenes') {
+                $this->TablaImgPrincipal();
             }
             $this->CerrarTabla();
         }
@@ -32,6 +34,20 @@ class TablaInfo {
 
     private function setVacios() {
         $this->Tabla = ""; $this->Index = 1;
+    }
+
+    private function TablaImgPrincipal() {
+        $temp = ObtenerPrincipales();
+        foreach ($temp as $Imagen) {
+            $URL = _IMAGENES.$Imagen->getURL();
+            $Nombre = $Imagen->getNombre();
+            echo '<div idd="'.$Imagen->getID().'" url="'.$Imagen->getURL().'"><h4><i class="fa fa-edit selectable-link"></i> '.$Nombre.'</h4>';
+            echo '<div style="margin:10px 0;">
+                <img style="max-width:100%" src="'.$URL.'" alt="'.$Nombre.'">
+            </div></div>';
+            echo '<hr>';
+        }
+        unset($Imagen);
     }
 
     private function TablaUsuarios() {
@@ -49,7 +65,7 @@ class TablaInfo {
                 '<th>Acciones</th>'.
             '</tr></thead><tbody>';
         $temp = ObtenerUsuarios();
-        foreach ($temp as  $usuario) {
+        foreach ($temp as $usuario) {
             $Activ = ($usuario->getActivo() == 1);
             echo '<tr class="'.($Activ ? 'success' : 'danger').'">'.
             '<th>'.$usuario->getID().'</th>'.

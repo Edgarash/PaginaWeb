@@ -3,10 +3,8 @@
     class Conexion
     {
         private $Servidor = "localhost";
-        //private $Usuario = "Tecno";
-        private $Usuario = "root";
-        //private $Contraseña = "TecnoCompra#123";
-        private $Contraseña = "";
+        private $Usuario = "Tecno";
+        private $Contraseña = "TecnoCompra#123";
         private $BD = "TecnoCompra";
 
         //Conectar a la Base de Datos
