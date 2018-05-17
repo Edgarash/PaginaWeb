@@ -4,7 +4,7 @@
     class cliente {
         private $ID;
         private $Email;
-        private $Contraseña;
+        private $Contrasena;
         private $Nombre;
         private $Apellidos;
         private $Telefono;
@@ -20,6 +20,56 @@
         private $FechaAlta;
         private $Activo;
         private $Val;
+        
+        public function getID() {
+            return $this->ID;
+        }
+        public function getEmail() {
+            return $this->Email;
+        }
+        public function getApellidos() {
+            return $this->Apellidos;
+        }
+
+        public function getTelefono() {
+            return $this->Telefono;
+        }
+
+        public function getNumExterior() {
+            return $this->NumExterior;
+        }
+        
+        public function getNumInterior() {
+            return $this->NumInterior;
+        }
+        public function getCalle() {
+            return $this->Calle;
+        }
+        public function getEntreCalles() {
+            return $this->EntreCalles;
+        }
+        public function getReferencia() {
+            return $this->EntreReferencia;
+        }
+        public function getCP() {
+            return $this->CP;
+        }
+        public function getColonia() {
+            return $this->Colonia;
+        }
+        public function getMunicipio() {
+            return $this->Municipio;
+        }
+        public function getEstado() {
+            return $this->Municipio;
+        }
+        public function getFechaAlta() {
+            return $this->FechaAlta;
+        }
+        public function getActivo() {
+            return $this->Activo;
+        }
+        
 
         function __construct() {
             $this->Val = new validaciones();
@@ -180,5 +230,39 @@
         public function getNombre() {
             return $this->Nombre;
         }
+    }
+    function ObtenerClientes() {
+        $Resultado = array();
+        try {
+            $SQL = "SELECT * FROM cliente;";
+            $conex = new conexion();
+            $Conn = $conex->conectar();
+            $STMT = $Conn->prepare($SQL);
+            $STMT->execute();
+            while ($fila = $STMT->fetch()) {
+                $User = new Usuario(
+                    $fila['ID'],
+                    $fila['Email'],
+                    $fila['Contrasena'],
+                    $fila['Nombre'],
+                    $fila['Apellidos'], 
+                    $fila['Telefono'],
+                    $fila['NumExterior'],
+                    $fila['Calle'],
+                    $fila['EntreCalles'],
+                    $fila['Referencia'],
+                    $fila['CP'],
+                    $fila['Colonia'],
+                    $fila['Municipio'],
+                    $fila['Estado'],
+                    $fila['FechaAlta'],
+                    $fila['Activo']
+                );
+                $Resultado[] = $User;
+            }
+        } catch (PDOExeption $e) {
+            echo "ERROR: ".$SQL."<br>".$e->getMessage();
+        }
+        return $Resultado;
     }
 ?>
