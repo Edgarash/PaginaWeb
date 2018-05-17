@@ -204,9 +204,9 @@ class TablaInfo {
                 '<th>Caracteristicas</th>'.
                 '<th>Descripcion</th>'.
                 '<th>Stock</th>'.
-                '<th>IDSubCat</th>'.
-                '<th>IDEmpleado</th>'.
-                '<th>FechaALta</th>'.
+                '<th>ID SubCat</th>'.
+                '<th>ID Empleado</th>'.
+                '<th>Fecha de Alta</th>'.
                 '<th>Acciones</th>'.
             '</tr></thead><tbody>';
         $temp = ObtenerArticulos();
@@ -220,8 +220,8 @@ class TablaInfo {
             '<th>'.$articulo->getDescripcion().'</th>'.
             '<th>'.$articulo->getStock().'</th>'.
             '<th>'.$articulo->getIDSubCat().'</th>'.
-            '<th>'.$articulo->IDEmpleado().'</th>'.
-            '<th>'.$articulo->FechaALta().'</th>'.
+            '<th>'.$articulo->getIDEmpAlta().'</th>'.
+            '<th>'.$articulo->getFechaAlta().'</th>'.
             '<th class="text-center">'.
             '<i class="fa fa-edit selectable-link""></i> '.
             ($Activ ? '<i class="fa fa-trash selectable-link"></i>' : '').
