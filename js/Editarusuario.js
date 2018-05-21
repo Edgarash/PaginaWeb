@@ -81,7 +81,13 @@ function AJAXCallUpdate() {
                     text: 'Registrar',
                     btnClass: 'btn-green',
                     action: function() {
-                        ActualizarTabla(
+                        $('#formuser').submit(
+                            function(e) {
+                                var validate = false;
+                                e.preventDefault();
+                            }
+                        );
+                        /*ActualizarTabla(
                         '&Usuario='+$('#Usuario').val()+
                         '&Puesto='+$('#Puesto').val()+
                         '&Contraseña='+$('#Password').val()+
@@ -90,7 +96,7 @@ function AJAXCallUpdate() {
                         '&Telefono='+$('#Telefono').val()+
                         '&Email='+$('#Email').val()+
                         '&Registrar=true'
-                        );
+                        );*/
                     }
                 },
                 cancel: {
@@ -107,7 +113,6 @@ function ActualizarTabla(Sending) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status==200) {
-            alert(this.responseText.substring(0,5));
             if (this.responseText.substr(0,5) != "ERROR") {
                 $('#Tabla').html(this.responseText);
                 AJAXCallUpdate();
@@ -216,7 +221,7 @@ function Registrar() {
     Puestos.forEach(function(cadena, indice, array){
         opciones+='<option value="'+cadena+'" '+ (cadena == 'Empleado' ? 'selected' : '') + '>'+cadena+'</option>';
     });
-    return '<form action="" class="colorlib-form" style="color:black;">'+
+    return '<form id="formuser" action="" class="colorlib-form" style="color:black;">'+
         '<div class="row">'+
             '<div class="form-group">'+
                 //Usuario

@@ -79,7 +79,6 @@ function ActualizarTabla(Sending) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status==200) {
-            alert(this.responseText.substring(0,5));
             if (this.responseText.substr(0,5) != "ERROR") {
                 $('#Tabla').html(this.responseText);
                 AJAXCallUpdate();
@@ -144,7 +143,7 @@ function Registrar() {
                 '<input id="files" name="files" type="file" required style="margin: 0 auto;" multiple onchange="readURL(this);">'+
                 '<div id="img" style="overflow:auto;border:1px dashed black;width:80%;'+
                 'min-height:100px;margin:10px auto;" ondrop="" ondragover="">'+
-                    '<img id="uploaded" src="nothing.jpg" alt="Arrastre aquí para subir archivos\nMáximo 4 imágenes" style="max-width:100%;padding:10px">'+
+                    '<img id="uploaded1" src="nothing.jpg" alt="Arrastre aquí para subir archivos\nMáximo 4 imágenes" style="max-width:100%;padding:10px">'+
                 '</div>'+
             '</div>'+
         '</div>'+
