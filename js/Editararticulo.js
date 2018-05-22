@@ -142,8 +142,12 @@ function Registrar() {
             '<div class="form-group">'+
                 '<input id="files" name="files" type="file" required style="margin: 0 auto;" multiple onchange="readURL(this);">'+
                 '<div id="img" style="overflow:auto;border:1px dashed black;width:80%;'+
-                'min-height:100px;margin:10px auto;" ondrop="" ondragover="">'+
-                    '<img id="uploaded1" src="nothing.jpg" alt="Arrastre aquí para subir archivos\nMáximo 4 imágenes" style="max-width:100%;padding:10px">'+
+                'min-height:100px;margin:10px auto;" ondrop="drop(event);" ondragover="allowDrop(event);">'+
+                    '<img id="Message4" src="#" alt="Arrastre aquí para subir archivos\nMáximo 4 imágenes" style="max-width:100%;padding:10px">'+
+                    '<img id="U1" src="" alt="" style="Display:none;">'+
+                    '<img id="U2" src="" alt="" style="Display:none;">'+
+                    '<img id="U3" src="" alt="" style="Display:none;">'+
+                    '<img id="U4" src="" alt="" style="Display:none;">'+
                 '</div>'+
             '</div>'+
         '</div>'+
@@ -157,11 +161,8 @@ function readURL(input) {
 }
 
 function setImage(Files) {
-    var reader1 = new FileReader();
-    reader1.onload = function(e) {
-        window.archivo = Files;
-    }
-    reader1.readAsDataURL(Files[0]);
+    $('#U1, #U2, #U3, #U4').css('display', 'none');
+    $('#U1, #U2, #U3, #U4').css('float', 'left');
     if (Files.length > 4) {
         $.alert({
             title: 'ERROR:',
@@ -170,5 +171,34 @@ function setImage(Files) {
             theme: 'supervan'
         });
         $('#files').val('');
+        $('#Message4').css('display', 'block');
+    } else {
+        if (Files.length > 0) {
+            $('#Message4').css('display', 'none');
+            for (let i = 0; i < Files.length; i++) {
+                var r = new FileReader();
+                $('#U1, #U2, #U3, #U4').css('width', (100/Files.length)+'%');
+                r.onload = function(e) {
+                    var $img = $('#U'+(i+1));
+                    $img.attr('src', e.target.result);
+                    $img.css('display', 'block');
+                }
+                r.readAsDataURL(Files[i]);   
+            }
+        }
     }
+}
+
+function drag(ev){
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    if (ev.dataTransfer.files)
+        setImage(ev.dataTransfer.files);
 }
