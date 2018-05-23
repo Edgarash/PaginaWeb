@@ -49,7 +49,7 @@
             return $this->EntreCalles;
         }
         public function getReferencia() {
-            return $this->EntreReferencia;
+            return $this->Referencia;
         }
         public function getCP() {
             return $this->CP;
@@ -210,7 +210,7 @@
             if ($this->Val->soloLetrasUnaPalabra($Apellidos)) {
                 $this->Apellidos = $Apellidos;
             } else {
-                throw new Exception("Apellidos no válidos: ".$Apellidos, 1);
+                //throw new Exception("Apellidos no válidos: ".$Apellidos, 1);
             }
         }
 
@@ -240,7 +240,7 @@
             $STMT = $Conn->prepare($SQL);
             $STMT->execute();
             while ($fila = $STMT->fetch()) {
-                $User = new Usuario(
+                $User = new cliente(
                     $fila['ID'],
                     $fila['Email'],
                     $fila['Contrasena'],
@@ -248,6 +248,7 @@
                     $fila['Apellidos'], 
                     $fila['Telefono'],
                     $fila['NumExterior'],
+                    $fila['NumInterior'],
                     $fila['Calle'],
                     $fila['EntreCalles'],
                     $fila['Referencia'],

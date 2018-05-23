@@ -7,6 +7,7 @@
         Private $IDCat;
         Private $Activo;
         Private $IDEmpMod;
+        private $Error;
 
         function __construct() {
             $this->setVacios();
@@ -16,6 +17,9 @@
             if (method_exists($this, $funcion_constructor)) {
                 call_user_func_array(array($this, $funcion_constructor), $params);
             }
+        }
+        function __construct1($ID) {
+            $this->ID = $ID;
         }
         function __construct5($ID,$Nombre,$IDCat,$Activo,$IDEmpMod){
             $this->ID = $ID;
@@ -39,6 +43,9 @@
         public function getIDEmpMod() {
             return $this->IDEmpMod;
         }
+        public function getError() {
+            return $this->Error;
+        }
 
         private function setVacios() {
             $this->ID = ""; 
@@ -47,6 +54,53 @@
             $this-> Activo= "";    
             $this-> IDEmpMod= "";    
         }
+        public function RegistrarSubCategoria(){
+            try{
+            $SQL = "call RegistrarSubCategoria(:nombre,:IdCat,:IDEmpMod)";
+            $conex = new conexion();
+            $Conn = $conex->conectar();
+            $STMT = $Conn->prepare($SQL);
+            $STMT->bindParam(':nombre', $this->Nombre);
+            $STMT->bindParam(':IdCat', $this->IDCat);
+            $STMT->bindParam(':IDEmpMod', $this->IDEmpMod);
+            $STMT->execute();
+            $filas = $STMT->rowCount();
+            $conex->desconectar();
+            }catch(PDOException $e){
+                $this->Error = true;
+            }
+        }
+        public function EliminarCategoria() {
+            try {
+                #$SQL = "DELETE FROM Categoria WHERE ID = :ID";
+                $SQL = "UPDATE SubCategoria SET Activo = 0 WHERE ID = :ID;";
+                $conex = new conexion();
+                $Conn = $conex->conectar();
+                $STMT = $Conn->prepare($SQL);
+                $STMT->bindParam(':ID', $this->ID);
+                $STMT->execute();
+                
+            } catch (PDOException $e) {
+                $this->Error = true;
+                #echo "ERROR: ".$SQL."<br>".$e->getMessage();
+            }
+        }
+
+        public function llenarTabla(){
+            try {
+                $SQL = "call DesplegarCategorias();";
+                $conex = new conexion();
+                $Conn = $conex->conectar();
+                $STMT = $Conn->prepare($SQL);
+                $temp ->$STMT->execute();
+                return $temp;
+            } catch (PDOException $e) {
+                $this->Error = true;
+                echo "ERROR: ".$SQL."<br>".$e->getMessage();
+                echo 'false';
+            }
+        }
+        
     }
 
     function ObtenerSubCategorias() {
