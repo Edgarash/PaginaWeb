@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteBase /
+RewriteRule ^user/login loginUser.php [NC,R,L]
+RewriteRule ^product$ product-detail [NC,R,L]
+RewriteRule ^product/([0-9]*)$ product-detail?ID=$1 [NC,R,L]

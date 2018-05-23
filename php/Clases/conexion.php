@@ -41,4 +41,10 @@
             return $resultado;
         }
     }
+
+    function ConectarBD($Query) {
+        $Conn = new Conexion();
+        $link = $Conn->Conectar();
+        return ($STMT = $link->prepare($Query));
+    }
 ?>

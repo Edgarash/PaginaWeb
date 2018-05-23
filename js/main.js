@@ -46,7 +46,7 @@
 	var offcanvasMenu = function() {
 
 		$('#page').prepend('<div id="colorlib-offcanvas" />');
-		$('#page').prepend('<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle colorlib-nav-white"><i></i></a>');
+		$('#page').prepend('<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle colorlib-nav-white" style="display:fixed"><i></i></a>');
 		var clone1 = $('.menu-1 > ul').clone();
 		$('#colorlib-offcanvas').append(clone1);
 		var clone2 = $('.menu-2 > ul').clone();
@@ -309,3 +309,14 @@
 
 
 }());
+
+
+
+String.prototype.isEmpty = function () {
+    var x = !this;
+    x = x || this.length === 0;
+    x = x || /^\s*$/.test(this);
+    return x;
+    //return (!this || this.length === 0 || /^\s*$/.test(this));
+    //return (!str || str.length === 0 || /^\s*$/.test(str));
+}
