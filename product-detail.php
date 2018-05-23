@@ -1,6 +1,14 @@
 <?php
 session_start();
-if ($_SERVER[''])
+include_once 'php/Clases/articulos.php';
+if ($_SERVER['REQUEST_METHOD']=='GET') {
+	if (isset($_GET['ID']) && !empty($ID = $_GET['ID']))
+	$Articulo = ObtenerUnArticulo($ID);
+	if (!$Articulo) {
+		header('Location: shop');
+		exit();
+	}
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -21,23 +29,25 @@ if ($_SERVER[''])
 		<aside id="colorlib-hero" class="breadcrumbs">
 			<div class="flexslider">
 				<ul class="slides">
-			   	<li style="background-image: url(images/baner19.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner text-center">
-				   					<h1>Detalle del producto</h1>
-				   					<h2 class="bread"><span><a href="index"><i class="icon-home"></i></a></span> <span><a href="shop">Productos</a></span> <span>Detalle</span></h2>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			  	</ul>
-		  	</div>
+				   <li style="background-image: url(images/baner19.jpg);">
+					   <div class="overlay"></div>
+					   <div class="container-fluid">
+						   <div class="row">
+							   <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
+								   <div class="slider-text-inner text-center">
+									   <h1>Detalle del producto</h1>
+									   <h2 class="bread"><span><a href="index"><i class="icon-home"></i></a></span> <span><a href="shop">Productos</a></span> <span>Detalle</span></h2>
+								   </div>
+							   </div>
+						   </div>
+					   </div>
+				   </li>
+				  </ul>
+			  </div>
 		</aside>
-
+		<?php
+		if (isset($Articulo)) {
+		?>
 		<div class="colorlib-shop">
 			<div class="container">
 				<div class="row row-pb-lg">
@@ -46,21 +56,39 @@ if ($_SERVER[''])
 							<div class="row">
 								<div class="col-md-5">
 									<div class="product-entry">
-										<div class="product-img" style="background-image: url(images/eduardo-lapdella1.jpg);">
-											<p class="tag"><span class="sale">Oferta</span></p>
+										<div class="product-img" style="background-image: 
+										url(<?php
+										echo _ARTICULO.$Articulo->getImagenes()[0];
+										?>);">
+											<!-- Tag de Oferta -->
+											<!-- <p class="tag"><span class="sale">Oferta</span></p> -->
 										</div>
 										<div class="thumb-nail">
-											<a href="#" class="thumb-img" style="background-image: url(images/eduardo-lapdella2.jpg);"></a>
-											<a href="#" class="thumb-img" style="background-image: url(images/eduardo-lapdella3.jpg);"></a>
-											<a href="#" class="thumb-img" style="background-image: url(images/eduardo-lapdella4.jpg);"></a>
+											<a href="#" class="thumb-img" style="background-image: url(
+											<?php
+											echo _ARTICULO.$Articulo->getImagenes()[1];
+											?>
+											);"></a>
+											<a href="#" class="thumb-img" style="background-image: url(
+											<?php
+											echo _ARTICULO.$Articulo->getImagenes()[2];
+											?>
+											);"></a>
+											<a href="#" class="thumb-img" style="background-image: url(
+											<?php
+											echo _ARTICULO.$Articulo->getImagenes()[3];
+											?>
+											);"></a>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-7">
 									<div class="desc">
-										<h3>Notebook HP 14-BS012LA + Funda</h3>
+										<h3><?php echo $Articulo->getNombre(); ?></h3>
 										<p class="price">
-											<span>$8,769.00</span> 
+											<span>$<?php echo $Articulo->getPrecio(); ?></span> 
+											<!-- Rates -->
+											<!--
 											<span class="rate text-right">
 												<i class="icon-star-full"></i>
 												<i class="icon-star-full"></i>
@@ -69,42 +97,32 @@ if ($_SERVER[''])
 												<i class="icon-star-half"></i>
 												(74 Populariad)
 											</span>
+											-->
 										</p>
 										<ul>
-											<li>Procesador Intel Core I3-6006U</li>
-											<li>Windows 10</li>
-											<li>Memoria RAM 4 GB</li>
-											<li>Disco Duro 1TB</li>
-											<li> Pantalla HD de 14" pulgadas</li>
-
+											<?php
+											$lineas = explode("\\n",$Articulo->getCaracteristicas());
+											foreach ($lineas as $Caracteristica) {
+												echo '<li>'.$Caracteristica.'</li>';
+											}
+											?>
 										</ul>
-										<div class="color-wrap">
-											<p class="color-desc">
-												Colores Disponibles: 
-												<a href="#" class="color color-1"></a>
-												<a href="#" class="color color-2"></a>
-												<a href="#" class="color color-3"></a>
-												<a href="#" class="color color-4"></a>
-												<a href="#" class="color color-5"></a>
-											</p>
-										</div>
-										
 										<div class="row row-pb-sm">
 											<div class="col-md-4">
-                                    <div class="input-group">
-                                    	<span class="input-group-btn">
-                                       	<button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
-                                          <i class="icon-minus2"></i>
-                                       	</button>
-                                   		</span>
-                                    	<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
-                                    	<span class="input-group-btn">
-                                       	<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
-                                            <i class="icon-plus2"></i>
-                                        </button>
-                                    	</span>
-                                 	</div>
-                        			</div>
+									<div class="input-group">
+										<span class="input-group-btn">
+										   <button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
+										  <i class="icon-minus2"></i>
+										   </button>
+										   </span>
+										<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+										<span class="input-group-btn">
+										   <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+											<i class="icon-plus2"></i>
+										</button>
+										</span>
+									 </div>
+									</div>
 										</div>
 										<p><a href="cart" class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i>Añadir al carrito</a></p>
 									</div>
@@ -124,41 +142,41 @@ if ($_SERVER[''])
 								</ul>
 								<div class="tab-content">
 									<div id="description" class="tab-pane fade in active">
-										<p>Enfrente su día con confianza con una laptop con estilo creada para mantenerlo conectado y cumplir con sus tareas de todos los días. Con un rendimiento confiable y una batería de larga duración, puede navegar, transmitir datos y mantenerse en contacto con lo que más le importa con facilidad.</p>
-						         </div>
-						         <div id="manufacturer" class="tab-pane fade">
-									<p> SKU: HP688EL02D410LMX </p>
-									<p> Modelo: 1GR66LA#ABM </p>
-									<p>Sistema operativo	Windows 10</p>	
-									<p>Procesador	Intel Core i3</p>	
-									<p></p>Capacidad	1 TB</p>	
-									<p>Memoria RAM	4 GB</p>	
-									<p>Tamaño de la pantalla (pulg)	14.00</p>
-									<p>Tecnologia de pantalla	HD</p>
-									<p>Tamaño (L x P x A cm)	34 x 24 x 2.37 </p>
-									<p>Peso (kg)	1.72</p>
-									<p>Color	Blanca</p>	
-									<p>	Conectividad	Bluetooth|Wifi</p>
-									<p>Velocidad del procesador (Ghz)	2.00</p>	
-									<p>Número de Puertos	HDMI|VGA|USB</p>
-									<p>Tarjeta Gráfica	Intel HD 520</p>	
+									<?php echo $Articulo->getDescripcion(); ?>
+								 </div>
+								 <div id="manufacturer" class="tab-pane fade">
+								 <?php 
+								foreach ($lineas as $Caracteristica) {
+									echo '<p>'.$Caracteristica.'</p>';
+								}
+								?>
 								   </div>
 								   
+									</div>
 								</div>
-					         </div>
-				         </div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
+		<?php
+			} else
+			{
+		?>
+		<div class="colorlib-container">
+		<div class="row">
+		<h1 style="text-align:center">Este artículo no existe</h1>
+		<h2 style="text-align:center">Te invitamos a ver</h2>
+		</div></div>
+		<?php
+			}
+		?>
 		<div class="colorlib-shop">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
-						<h2><span>Productos similares </span></h2>
-						
+						<h2><span>Productos similares</span></h2>
 					</div>
 				</div>
 				<div class="row">
@@ -247,12 +265,12 @@ if ($_SERVER[''])
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
-                        <div class="col-md-12 text-center">
-                         <h3><i class="icon-paperplane"></i>¡Entérate de todo lo que pasa!</h3>
+						<div class="col-md-12 text-center">
+						 <h3><i class="icon-paperplane"></i>¡Entérate de todo lo que pasa!</h3>
 							<h4>Nuevos productos y ofertas </h4>
-                        </div>
-                       
-                    </div>
+						</div>
+					   
+					</div>
 				</div>
 			</div>
 		</div>
@@ -265,35 +283,35 @@ if ($_SERVER[''])
 
 		var quantitiy=0;
 		   $('.quantity-right-plus').click(function(e){
-		        
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		            
-		            $('#quantity').val(quantity + 1);
+				
+				// Stop acting like a button
+				e.preventDefault();
+				// Get the field name
+				var quantity = parseInt($('#quantity').val());
+				
+				// If is not undefined
+					
+					$('#quantity').val(quantity + 1);
 
-		          
-		            // Increment
-		        
-		    });
+				  
+					// Increment
+				
+			});
 
-		     $('.quantity-left-minus').click(function(e){
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		      
-		            // Increment
-		            if(quantity>0){
-		            $('#quantity').val(quantity - 1);
-		            }
-		    });
-		    
+			 $('.quantity-left-minus').click(function(e){
+				// Stop acting like a button
+				e.preventDefault();
+				// Get the field name
+				var quantity = parseInt($('#quantity').val());
+				
+				// If is not undefined
+			  
+					// Increment
+					if(quantity>0){
+					$('#quantity').val(quantity - 1);
+					}
+			});
+			
 		});
 	</script>
 	</body>

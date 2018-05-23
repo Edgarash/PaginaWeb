@@ -1,10 +1,10 @@
 <?php
 include_once('Clases/usuario.php');
-
 $Nombre;
 $Link;
 $CierraSesion='';
 define('_IMAGENES', 'http://'.$_SERVER['SERVER_NAME'].'/images/');
+define('_ARTICULO', 'http://'.$_SERVER['SERVER_NAME'].'/images/articulos/');
 if (isset($_SESSION['Sesion'])) {
     $Nombre = $_SESSION['Nombre'];
     if (isset($_SESSION['Empleado'])) {
@@ -26,7 +26,7 @@ if (isset($_SESSION['Sesion'])) {
     $Link = "Login";
 }
 ?>
-<nav class="colorlib-nav" role="navigation">
+<nav id="NAV" class="colorlib-nav" role="navigation">
 <div class="top-menu">
     <div class="container">
         <div class="row">
@@ -39,7 +39,6 @@ if (isset($_SESSION['Sesion'])) {
             </div>
             <div class="col-xs-10 text-right menu-1">
                 <ul>
-
                     <li>
                         <a href="index">
                             <i class="icon-home"></i>
@@ -68,3 +67,5 @@ if (isset($_SESSION['Sesion'])) {
     </div>
 </div>
 </nav>
+<div id="Falso">
+</div>

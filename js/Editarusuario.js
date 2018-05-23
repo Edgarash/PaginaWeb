@@ -386,12 +386,3 @@ function Registrar() {
 function getPuestos() {
     return new Array('Administrador', 'CDC', 'Empleado', 'Finanzas');
 }
-
-String.prototype.isEmpty = function () {
-    var x = !this;
-    x = x || this.length === 0;
-    x = x || /^\s*$/.test(this);
-    return x;
-    //return (!this || this.length === 0 || /^\s*$/.test(this));
-    //return (!str || str.length === 0 || /^\s*$/.test(str));
-}

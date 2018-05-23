@@ -14,6 +14,7 @@
         private $IDEmpAlta;
         private $FechaAlta;
         private $Activo;
+        private $Imagenes;
         private $Val;
 
         function __construct() {
@@ -27,11 +28,13 @@
             }
         }
 
-        private function __construct10($ID, $Nombre, $Precio, $Caracteristicas,$Descripcion, $Stock, $IDSubCat, $IDEmpAlta,
-                                       $FechaAlta, $Activo) {
+        private function __construct10($ID, $Nombre, $Precio, $Caracteristicas,$Descripcion,
+        $Stock, $IDSubCat, $IDEmpAlta,
+        $FechaAlta, $Activo) {
                 $this->ID = $ID; $this->Nombre = $Nombre; $this->Precio = $Precio; $this->Caracteristicas = $Caracteristicas;
                 $this->Descripcion = $Descripcion; $this->Stock = $Stock; $this->IdSubCat = $IDSubCat; $this->IdEmpAlta = $IDEmpAlta;
                 $this->FechaAlta = $FechaAlta; $this->Activo =$Activo; 
+                $this->Imagenes = $this->cargarImagenes();
         }
 
         //METODOS
@@ -71,10 +74,29 @@
         public function getActivo() {
             return $this->Activo;
         }
+        public function getImagenes() {
+            return $this->Imagenes;
+        }
+        private function cargarImagenes() {
+            try {
+                $SQL = "SELECT IMAGEN FROM IMAGENES WHERE ID = ".$this->ID;
+                $STMT = ConectarBD($SQL);
+                $STMT->execute();
+                while ($fila = $STMT->fetch()) {
+                    $Resultado[] = $fila['IMAGEN'];
+                }
+                return $Resultado;
+            } catch (PDOException $e) {
+                echo "ERROR: ".$e->getMessage();
+                return [];
+            }
+        }
 
         public function registrarArticulo() {
             try {
-                $SQL = "insert into articulo(ID,Nombre,Precio,Caracteristicas,Descripcion,Stock,IDSubCat,IDEmpAlta,FechaAlta,Activo) values (?,?,?,?,?,?,?,?,?,?);";
+                $SQL = "insert into articulo
+                (ID,Nombre,Precio,Caracteristicas,Descripcion,Stock,IDSubCat,IDEmpAlta,FechaAlta,Activo)
+                 values (?,?,?,?,?,?,?,?,?,?);";
                 $conex = new conexion();
                 $Conn = $conex->conectar();
                 $STMT = $Conn->prepare($SQL);
@@ -133,6 +155,32 @@
                 $fila['FechaAlta'],$fila['Activo']
                 );
                 $Resultado[] = $Articulo;
+            }
+        } catch (PDOExeption $e) {
+            echo "ERROR: ".$SQL."<br>".$e->getMessage();
+        }
+        return $Resultado;
+    }
+
+    function ObtenerUnArticulo($ID) {$Resultado = array();
+        try {
+            $SQL = "CALL ObtenerArticulo(:ID)";
+            $conex = new conexion();
+            $Conn = $conex->conectar();
+            $STMT = $Conn->prepare($SQL);
+            $STMT->bindParam(":ID", $ID);
+            $STMT->execute();
+            if ($fila = $STMT->fetch()) {
+                $Articulo= new Articulo(
+                $fila['ID'],$fila['Nombre'],
+                $fila['Precio'],$fila['Caracteristicas'],
+                $fila['Descripcion'],$fila['Stock'],
+                $fila['IDSubCat'],$fila['IDEmpAlta'],
+                $fila['FechaAlta'],$fila['Activo']
+                );
+                $Resultado = $Articulo;
+            } else {
+                $Resultado = null;
             }
         } catch (PDOExeption $e) {
             echo "ERROR: ".$SQL."<br>".$e->getMessage();

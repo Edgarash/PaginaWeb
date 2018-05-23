@@ -154,3 +154,5 @@ if (isset($_SESSION['Sesion'])) {
     <script src="js/main.js"></script>
     <!-- Popup's -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+    <!-- Navegador -->
+    <script src="js/falso.js"></script>

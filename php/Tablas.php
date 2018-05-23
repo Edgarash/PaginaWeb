@@ -107,12 +107,31 @@ class TablaInfo {
         $temp = ObtenerArticulos();
         foreach ($temp as $articulo) {
             $Activ = ($articulo->getActivo() == 1);
+            $Cara = str_replace("\\n", " ", $articulo->getCaracteristicas());
+            $Des = str_replace("\\n", " ", $articulo->getDescripcion());
+            $Longitud = 10;
+            $C1 = substr($Cara, 0, $Longitud);
+            $C2 = substr($Cara, $Longitud);
+            $C3 = substr($Des, 0, $Longitud);
+            $C4 = substr($Des, $Longitud);
             echo '<tr class="'.($Activ ? 'success' : 'danger').'">'.
             '<th>'.$articulo->getID().'</th>'.
             '<th>'.$articulo->getNombre().'</th>'.
-            '<th>'.$articulo->getPrecio().'</th>'.
-            '<th>'.$articulo->getCaracteristicas().'</th>'.
-            '<th>'.$articulo->getDescripcion().'</th>'.
+            '<th>$'.$articulo->getPrecio().'</th>'.
+            '<th>'.
+            '<span>'.$C1.'<span>'.
+            (strlen($C2) > 0 ? 
+            '<span class="texto" style="display:none">'.$C2.'</span><span class="oculto">...</span>
+            <a class="selectable-link active" onclick="Mostrar(this);"> Más</a>'
+            :'').
+            '</th>'.
+            '<th>'.
+            '<span>'.$C3.'<span>'.
+            (strlen($C4) > 0 ? 
+            '<span class="texto" style="display:none">'.$C4.'</span><span class="oculto">...</span>
+            <a class="selectable-link active" onclick="Mostrar(this);"> Más</a>'
+            :'').
+            '</th>'.
             '<th>'.$articulo->getStock().'</th>'.
             '<th>'.$articulo->getIDSubCat().'</th>'.
             '<th>'.$articulo->getIDEmpAlta().'</th>'.
