@@ -33,7 +33,6 @@
             try{
             $SQL = "Call RegistrarCatalogo(:nombre, :IDEmpAlta);";
             $conex = new conexion();
-            $Conn = $conex->conectar();
             $STMT = $Conn->prepare($SQL);
             $STMT->bindParam(':nombre', $this->Nombre);
             $STMT->bindParam(':IDEmpAlta', $this->IDEmpAlta);

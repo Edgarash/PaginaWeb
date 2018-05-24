@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include_once('php/Clases/usuario.php');
     if (isset($_SESSION['Empleado']) && !empty($_SESSION['Empleado'])) {
         $Usuario = new Usuario('', $_SESSION['Usuario'], '', $_SESSION['Info']);
@@ -26,6 +25,7 @@
                     $_SESSION['Empleado'] = true;
                     $_SESSION['Info'] = $Usuario->getContraseña();
                     $_SESSION['Usuario'] = $Usuario->getUsuario();
+                    $_SESSION['Usuario_ID'] = $Usuario->getID();
                     if (isset($_SESSION['URL_Origen'])) {
                         header('Location: '.$_SESSION['URL_Origen']);
                     } else {

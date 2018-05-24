@@ -51,7 +51,7 @@ function AJAXCallUpdate() {
     });
 
     $('#addUser').on('click', function () {
-        $.confirm({
+        var reg = $.confirm({
             title: 'Agregar Artículo',
             theme: 'supervan',
             content: Registrar(),
@@ -60,89 +60,72 @@ function AJAXCallUpdate() {
             buttons: {
                 submit: {
                     text: 'Registrar',
-                    btnClass: 'btn-green',
+                    btnClass: 'btn-green col-xs-5 pull-left',
                     action: function () {
                         var Form = document.getElementById('registrar');
-                        if (Form.checkValidity())
-                        {
+                        if (Form.checkValidity()) {
                             var formData = new FormData(Form);
                             var exito = false;
                             formData.append('Registrar', 'Fierro');
+                            formData.append('SubCategorias', $('#SubCategorias').val())
                             exito = $.ajax({
                                 data: formData,
                                 url: "php/AJAXArticulo.php",
                                 type: 'POST',
                                 processData: false,
                                 contentType: false,
-                                success: function(data, status) {
-                                    $.alert({
-                                        content: data
-                                    });
-                                    exito = true;
+                                success: function (data, status) {
+                                    $.alert({content:data});
+                                    reg.close();
                                 },
-                                error: function(xhr, desc, err) {
-
+                                error: function (xhr, desc, err) {
+                                    MensajeError("Hubo un error, vuelva a intentar más tarde");
                                 }
                             });
-                            return exito;
-                        }
-                        else {
+                            return false;
+                        } else {
                             $('#enviar').click();
                             return false;
                         }
-                    },
-                    cancel: {
-                        text: 'Cancelar',
-                        btnClass: 'btn-red'
                     }
+                },
+                cancel: {
+                    text: 'Cancelar',
+                    btnClass: 'btn-red col-xs-5 pull-right'
                 }
+            },
+            onContentReady: function () {
+                $('#Categorias').on('change', function () {
+                    $.ajax({
+                        data: 'getSubCategoria=&ID='+$('#Categorias').val(),
+                        url: 'php/AJAXCategorias.php?getSubCategorias',
+                        type: 'GET',
+                        processData: false,
+                        contentType: false,
+                        success: function (data, status) {
+                            $('#SubCategorias').html(data);
+                        },
+                        error: function (xhr, desc, err) {
+                            MensajeError("Hubo un error, vuelva a intentar más tarde");
+                        }
+                    });
+                });
+                $.ajax({
+                    data: 'getCategoria=',
+                    url: 'php/AJAXCategorias.php?getCategorias',
+                    type: 'GET',
+                    processData: false,
+                    contentType: false,
+                    success: function (data, status) {
+                        $('#Categorias').html(data);
+                    },
+                    error: function (xhr, desc, err) {
+                        MensajeError("Hubo un error, vuelva a intentar más tarde");
+                    }
+                });
             }
         });
     });
-}
-
-function ActualizarTabla(Sending) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            if (this.responseText.substr(0, 5) != "ERROR") {
-                $('#Tabla').html(this.responseText);
-                AJAXCallUpdate();
-                $.alert({
-                    title: 'Hurra!!!',
-                    icon: 'fa fa-check',
-                    theme: 'modern',
-                    type: 'green',
-                    escapeKey: true,
-                    content: 'Base de datos actualizada con éxito'
-                });
-            } else {
-                $.alert({
-                    title: 'ERROR :(',
-                    icon: 'fa fa-window-close',
-                    theme: 'modern',
-                    type: 'red',
-                    content: 'Hubo algún error, por favor intente más tarde.'
-                });
-            }
-        }
-    }
-    xhttp.open("POST", "php/AJAXArticulo.php", true);
-    //xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    var formdata = new FormData();
-    //formdata.append('Nombre', arguments[0]);
-    //formdata.append('Precio', arguments[1]);
-    //formdata.append('Stock', arguments[2]);
-    //formdata.append('Caracteristicas', arguments[3]);
-    //formdata.append('Descripcion', arguments[4]);
-    for (let i = 0; i < document.getElementById('files[]').files.length; i++) {
-        const element = document.getElementById('files[]').files[i];
-        formdata.append('img' + i, element, element.name);
-    }
-    for (var pair of formdata.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-    }
-    //xhttp.send(Sending);
 }
 
 function Registrar() {
@@ -165,6 +148,24 @@ function Registrar() {
         '<div class="col-md-3">' +
         '<label>Stock</label>' +
         '<input type="number" step="1" min="0" max="9999" name="Stock" id="Stock" placeholder="Stock" class="form-control" required>' +
+        '</div>' +
+        '</div>' +
+        //
+        '<div class="form-group">' +
+        '<div class="col-md-6">' +
+        '<label>Categoria</label>' +
+        '<div class="form-field">' +
+        '<i class="icon icon-arrow-down3"></i>' +
+        '<select id="Categorias" class="form-control" value="" required>'+
+        '</select>' +
+        '</div>' +
+        '</div>' +
+        '<div class="col-md-6">' +
+        '<label>Categoria</label>' +
+        '<div class="form-field">' +
+        '<i class="icon icon-arrow-down3"></i>' +
+        '<select id="SubCategorias" class="form-control" required></select>' +
+        '</div>' +
         '</div>' +
         '</div>' +
         '<div class="form-group">' +
@@ -264,4 +265,13 @@ function Mostrar(Clickeador) {
         oculto.css('display', 'none');
         mas.text(' Más');
     }
+}
+
+function MensajeError(Mensaje, Titulo = "ERROR") {
+    $.alert({
+        title: Titulo,
+        content: Mensaje,
+        theme: 'modern',
+        icon: 'fa fa-close'
+    });
 }

@@ -32,15 +32,14 @@
         $Stock, $IDSubCat, $IDEmpAlta,
         $FechaAlta, $Activo) {
                 $this->ID = $ID; $this->Nombre = $Nombre; $this->Precio = $Precio; $this->Caracteristicas = $Caracteristicas;
-                $this->Descripcion = $Descripcion; $this->Stock = $Stock; $this->IdSubCat = $IDSubCat; $this->IdEmpAlta = $IDEmpAlta;
-                $this->FechaAlta = $FechaAlta; $this->Activo =$Activo; 
-                $this->Imagenes = $this->cargarImagenes();
+                $this->Descripcion = $Descripcion; $this->Stock = $Stock; $this->IDSubCat = $IDSubCat; $this->IDEmpAlta = $IDEmpAlta;
+                $this->FechaAlta = $FechaAlta; $this->Activo =$Activo;
         }
 
         //METODOS
         private function setVacios() {
             $this->ID = ""; $this->Nombre = ""; $this->Precio = ""; $this->Caracteristicas = "";
-            $this->Descripcion = ""; $this->Stock = ""; $this->IdSubCat = ""; $this->IdEmpAlta = "";
+            $this->Descripcion = ""; $this->Stock = ""; $this->IDSubCat = ""; $this->IDEmpAlta = "";
             $this->FechaAlta = ""; $this->Activo = ""; 
         }
 
@@ -66,7 +65,7 @@
             return $this->IDSubCat;
         }
         public function getIDEmpAlta() {
-            return $this->IdEmpAlta;
+            return $this->IDEmpAlta;
         }
         public function getFechaAlta() {
             return $this->FechaAlta;
@@ -75,51 +74,41 @@
             return $this->Activo;
         }
         public function getImagenes() {
-            return $this->Imagenes;
-        }
-        private function cargarImagenes() {
-            try {
-                $SQL = "SELECT IMAGEN FROM IMAGENES WHERE ID = ".$this->ID;
-                $STMT = ConectarBD($SQL);
-                $STMT->execute();
-                while ($fila = $STMT->fetch()) {
-                    $Resultado[] = $fila['IMAGEN'];
-                }
-                return $Resultado;
-            } catch (PDOException $e) {
-                echo "ERROR: ".$e->getMessage();
-                return [];
-            }
+            $ID = $this->getID();
+            return array(
+                $ID.'_1',
+                $ID.'_2',
+                $ID.'_3',
+                $ID.'_4',
+            );
         }
 
         public function registrarArticulo() {
             try {
-                $SQL = "insert into articulo
-                (ID,Nombre,Precio,Caracteristicas,Descripcion,Stock,IDSubCat,IDEmpAlta,FechaAlta,Activo)
-                 values (?,?,?,?,?,?,?,?,?,?);";
-                $conex = new conexion();
-                $Conn = $conex->conectar();
+                $SQL = "CALL RegistrarArticulo(?,?,?,?,?,?,?,?);";
+                $Conn = new Conexion();
+                $Conn = $Conn->conectar();
+                //Empieza transaccion
                 $STMT = $Conn->prepare($SQL);
-                $STMT->bindParam(':ID', $this->ID);
-                $STMT->bindParam(':Nombre',$this->Nombre);
-                $STMT->bindParam(':Precio',$this->Precio);
-                $STMT->bindParam(':Caracteristicas',$this->Caracteristicas);
-                $STMT->bindParam(':Descripcion',$this->Descripcion);
-                $STMT->bindParam(':Stock',$this->Stock);
-                $STMT->bindParam(':IDSubCat',$this->IDSubCat);
-                $STMT->bindParam(':IDEmpAlta',$this->IDEmpAlta);
-                $STMT->bindParam(':FechaAlta',$this->FechaAlta);
-                $STMT->bindParam(':Activo',$this->Activo);
-
-                $STMT->execute();
-                //echo "Registro creado exitosamente";
-                $filas = $STMT->rowCount();
+                //Inserta
+                $STMT->execute(array(
+                    $this->Nombre, $this->Precio,$this->Caracteristicas,$this->Descripcion,
+                    $this->Stock,$this->IDSubCat,$this->IDEmpAlta,date("Y-m-d H:i:s")
+                ));
+                if ($fila = $STMT->fetch()) {
+                    $ID = $fila['ID'];
+                    echo ':B';
+                    return $ID;
+                } else {
+                    throw new PDOException("Articulo no insertado", 1);
+                }
+                #$filas = $STMT->rowCount();
                 $conex->desconectar();
             } catch (PDOException $e) {
                 echo "ERROR: ".$SQL."<br>".$e->getMessage();
             }
             $Conn = null;
-            return $filas;
+            return $ID;
         }
         public function existeArticulo() {
             try {

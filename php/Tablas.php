@@ -41,9 +41,9 @@ class TablaInfo {
             elseif ($temp === 'cliente') {
                 $this->TablaClientes();
             }
-            
-
-            
+            elseif ($temp === 'articulo') {
+                $this->TablaArticulo();
+            }
             $this->CerrarTabla();
         }
     }
