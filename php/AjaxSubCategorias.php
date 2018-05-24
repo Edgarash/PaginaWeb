@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once('Clases/SubCategorias.php');
 include_once('Tablas.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -20,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $subCat->EliminarCategoria();
     }
     elseif (isset($_POST['Registrar'])) {
-        session_start();
         $Usuario = new usuario('', $_SESSION['Usuario'], '', $_SESSION['Info']);
         $Usuario = $Usuario->HacerLogin();
         $temp = $Usuario->getID();
@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     if (isset($subCat)) {
         if ($subCat->getError()) {
+            var_dump($subCat);
             echo 'ERROR';
         } else {
             $Tabla = new TablaInfo('subcategoria');

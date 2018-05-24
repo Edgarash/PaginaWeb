@@ -45,6 +45,8 @@ function AJAXCallUpdate() {
                     contentType: false,
                     success: function (data, status) {
                         $('#Categoria').html(data);
+                        var temp = $('#idCat').text();
+                        $('#Categoria').val(temp);
                     },
                     error: function (xhr, desc, err) {
                         MensajeError("Hubo un error, vuelva a intentar más tarde");
@@ -92,14 +94,13 @@ function AJAXCallUpdate() {
                     btnClass: 'btn-green',
 
                     action: function () {
-                        var id = $('#IDCat'),
-                        no = $('#Nombre'),
-                        ids =$('#IDCat').val(),
-                        nos = $('#Nombre').val();
+                        var formData = new FormData(document.getElementById('formreg'));
+                        formData.append('Registrar', 'Registrar');
+                        var x = $('#formreg').serialize()+'&Registrar=1';
                         ActualizarTabla(
-                            'Nombre=' + $('#Nombre').val() +
-                            '&IDCat=' + $('#IDCat').val() +
-                            '&Registrar=true'
+                            'Nombre='+$('#Nombre').val()+
+                            '&IDCat='+$('#IDCat').val()+
+                            '&Registrar='
                         );
                     }
                 },
@@ -164,6 +165,7 @@ function ActualizarTabla(Sending) {
 function Actualizar(ID = '', Nombre = '', idEmpAlta = '', idCat = '', NombreCat = '') {
     return '' +
         '<form action="" class="colorlib-form" style="color:black;">' +
+        '<div id="idCat" style="display:none">'+idCat+'</div>'+
         '<div class="row">' +
         '<div class="form-group">' +
         //ID
@@ -207,13 +209,13 @@ function Registrar() {
     Puestos.forEach(function (cadena, indice, array) {
         opciones += '<option value="' + cadena + '" ' + (cadena == 'Empleado' ? 'selected' : '') + '>' + cadena + '</option>';
     });
-    return '<form action="" class="colorlib-form" style="color:black;">' +
+    return '<form id="formreg" action="" class="colorlib-form" style="color:black;">' +
         '<div class="row">' +
         '<div class="form-group">' +
         //Usuario
         '<div class="col-md-6">' +
         '<label>NOMBRE: </label>' +
-        '<input class="form-control" type="text" name="fname"' +
+        '<input class="form-control" type="text" name="Nombre"' +
         'maxlength="100" placeholder="Nombre" id="Nombre"' +
         ' value="" required>' +
         '</div>' +
@@ -231,4 +233,13 @@ function Registrar() {
 
 function getPuestos() {
     return new Array(1, 2, 3);
+}
+
+function MensajeError(Mensaje, Titulo = "ERROR") {
+    $.alert({
+        title: Titulo,
+        content: Mensaje,
+        theme: 'modern',
+        icon: 'fa fa-close'
+    });
 }

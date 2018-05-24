@@ -21,13 +21,14 @@
         array('imagenes', 'Imágenes', 'fa fa-camera')
     );
     unset($Tabla, $TableName, $TablaActual);
-    if (isset($_GET['Tabla'])&& !empty($_GET['Tabla'])) {
+    if (isset($_GET['Tabla'])&& !empty($_GET['Tabla']))
         $TableName = $_GET['Tabla'];
-        foreach ($TablasDisponibles as $Tablas) {
-            if ($Tablas[0] === $TableName) {
-                $Tabla = new TablaInfo($TableName);
-                $TablaActual = $Tablas;
-            }
+    else
+        $TableName = 'usuario';
+    foreach ($TablasDisponibles as $Tablas) {
+        if ($Tablas[0] === $TableName) {
+            $Tabla = new TablaInfo($TableName);
+            $TablaActual = $Tablas;
         }
     }
 ?>

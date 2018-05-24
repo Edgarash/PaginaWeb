@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ''
         );
         $ID = $Articulo->registrarArticulo();
-        var_dump($ID);
+        var_dump($Articulo);
         if ($ID) {
             $i = 1; $j = 1;
             foreach ($_FILES['files']['tmp_name'] as $key => $tmp_name) {
@@ -60,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if ($Check !== false) {
                         if (move_uploaded_file($_FILES['files']['tmp_name'][$key], $IMAGENES.$filename)) {
                             echo 'Imagen '.$j.' subida<br>';
+                            $i++;
                         } else {
                             echo 'Imagen '.$j.' no subida<br>';
                         }
@@ -73,13 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo 'ERROR: Artículo no insertado';
         }
     }
-    #if (isset($Usuario)) {
-    #    if ($Usuario->getError()) {
-    #        echo 'ERROR';
-    #    } else {
-    #        $Tabla = new TablaInfo('usuario');
-    #        $Tabla->getTabla();
-    #    }
-    #}
+    if (isset($Articulo)) {
+        $Tabla = new TablaInfo('articulo');
+        $Tabla->getTabla();
+    }
 }
 ?>

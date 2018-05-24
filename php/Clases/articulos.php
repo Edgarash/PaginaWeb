@@ -97,8 +97,12 @@
                 ));
                 if ($fila = $STMT->fetch()) {
                     $ID = $fila['ID'];
-                    echo ':B';
-                    return $ID;
+                    if (!$ID) { 
+                        throw new PDOException("Articulo no insertado: probablemente texto copiado", 1);
+                        return null;
+                    }
+                    else
+                        return $ID;
                 } else {
                     throw new PDOException("Articulo no insertado", 1);
                 }
@@ -106,6 +110,7 @@
                 $conex->desconectar();
             } catch (PDOException $e) {
                 echo "ERROR: ".$SQL."<br>".$e->getMessage();
+                return null;
             }
             $Conn = null;
             return $ID;
@@ -153,7 +158,7 @@
 
     function ObtenerUnArticulo($ID) {$Resultado = array();
         try {
-            $SQL = "CALL ObtenerArticulo(:ID)";
+            $SQL = "CALL ObtenerArticulo(:ID);";
             $conex = new conexion();
             $Conn = $conex->conectar();
             $STMT = $Conn->prepare($SQL);
@@ -170,6 +175,30 @@
                 $Resultado = $Articulo;
             } else {
                 $Resultado = null;
+            }
+        } catch (PDOExeption $e) {
+            echo "ERROR: ".$SQL."<br>".$e->getMessage();
+        }
+        return $Resultado;
+    }
+
+    function obtenerNuevos() {
+        try {
+            $SQL = "CALL obtenerNuevos();";
+            $conex = new conexion();
+            $Conn = $conex->conectar();
+            $STMT = $Conn->prepare($SQL);
+            $STMT->execute();
+            $Resultado = null;
+            while ($fila = $STMT->fetch()) {
+                $Articulo= new Articulo(
+                $fila['ID'],$fila['Nombre'],
+                $fila['Precio'],$fila['Caracteristicas'],
+                $fila['Descripcion'],$fila['Stock'],
+                $fila['IDSubCat'],$fila['IDEmpAlta'],
+                $fila['FechaAlta'],$fila['Activo']
+                );
+                $Resultado[] = $Articulo;
             }
         } catch (PDOExeption $e) {
             echo "ERROR: ".$SQL."<br>".$e->getMessage();

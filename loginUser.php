@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once('php/Clases/usuario.php');
     if (isset($_SESSION['Empleado']) && !empty($_SESSION['Empleado'])) {
         $Usuario = new Usuario('', $_SESSION['Usuario'], '', $_SESSION['Info']);
@@ -6,7 +7,8 @@
         if ($Usuario->getPuesto() != 'Administrador')
             header('Location: Index');
         else
-        header('Location: Manage?Tabla=usuario');
+            header('Location: Manage?Tabla=usuario');
+        exit();
     }
     //Inicio de Sesión
     $luser = "";

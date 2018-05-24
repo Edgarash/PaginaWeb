@@ -75,7 +75,8 @@ function AJAXCallUpdate() {
                                 processData: false,
                                 contentType: false,
                                 success: function (data, status) {
-                                    $.alert({content:data});
+                                    //$.alert({content:data});
+                                    $('#Tabla').html(data);
                                     reg.close();
                                 },
                                 error: function (xhr, desc, err) {
@@ -161,7 +162,7 @@ function Registrar() {
         '</div>' +
         '</div>' +
         '<div class="col-md-6">' +
-        '<label>Categoria</label>' +
+        '<label>SubCategoria</label>' +
         '<div class="form-field">' +
         '<i class="icon icon-arrow-down3"></i>' +
         '<select id="SubCategorias" class="form-control" required></select>' +

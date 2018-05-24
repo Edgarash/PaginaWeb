@@ -1,5 +1,8 @@
 <?php
 session_start();
+include_once 'php/Clases/articulos.php';
+$Nuevos=null;
+$Nuevos = obtenerNuevos();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -117,88 +120,114 @@ session_start();
 		</div>
 		<div class="colorlib-shop">
 			<div class="container">
+				<?php
+					if ($Nuevos) {
+				?>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
 						<h2><span>Nuevos productos</span></h2>
 					</div>
 				</div>
 				<div class="row">
+					<?php
+						if ($Nuevos[0]) {
+					?>
 					<div class="col-md-3 text-center">
 						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/nuevo4.jpg);">
+							<div class="product-img" style="background-image: url(images/articulos/<?php echo $Nuevos[0]->getID().'_1'; ?>);background-size:contain;">
 								<p class="tag"><span class="new">Nuevo</span></p>
 								<div class="cart">
 									<p>
+										<span><a href="product<?php echo '/'.$Nuevos[0]->getID(); ?>"><i class="icon-eye"></i></a></span> 
+										<!--
 										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
-										
+										-->
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop">Canon EOS Rebel T6</a></h3>
-								<p class="price"><span>$12,279.00</span></p>
+								<h3><a href="shop"><?php echo $Nuevos[0]->getNombre(); ?></a></h3>
+								<p class="price"><span>$<?php echo $Nuevos[0]->getPrecio(); ?></span></p>
 							</div>
 						</div>
 					</div>
+					<?php
+						}
+						if ($Nuevos[1]) {
+					?>
 					<div class="col-md-3 text-center">
 						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/nuevo2.jpg);">
+							<div class="product-img" style="background-image: url(images/articulos/<?php echo $Nuevos[1]->getID().'_1'; ?>);background-size:contain;">
 								<p class="tag"><span class="new">Nuevo</span></p>
 								<div class="cart">
 									<p>
+										<span><a href="product<?php echo '/'.$Nuevos[1]->getID(); ?>"><i class="icon-eye"></i></a></span> 
+										<!--
 										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
-									
+										-->
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop">Impresora Inalámbrica HP</a></h3>
-								<p class="price"><span>$1,289.00</span></p>
+								<h3><a href="shop"><?php echo $Nuevos[1]->getNombre(); ?></a></h3>
+								<p class="price"><span>$<?php echo $Nuevos[1]->getPrecio(); ?></span></p>
 							</div>
 						</div>
 					</div>
+					<?php
+						}
+						if ($Nuevos[2]) {
+					?>
 					<div class="col-md-3 text-center">
 						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/nuevo3.png);">
+							<div class="product-img" style="background-image: url(images/articulos/<?php echo $Nuevos[2]->getID().'_1'; ?>);background-size:contain;">
 								<p class="tag"><span class="new">Nuevo</span></p>
 								<div class="cart">
 									<p>
+										<span><a href="product<?php echo '/'.$Nuevos[2]->getID(); ?>"><i class="icon-eye"></i></a></span> 
+										<!--
 										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
-							
+										-->
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop">Audífonos inalámbricos RP-BTD10</a></h3>
-								<p class="price"><span>$3,575.00</span></p>
+								<h3><a href="shop"><?php echo $Nuevos[2]->getNombre(); ?></a></h3>
+								<p class="price"><span>$<?php echo $Nuevos[2]->getPrecio(); ?></span></p>
 							</div>
 						</div>
 					</div>
+					<?php
+						}
+						if ($Nuevos[3]) {
+					?>
 					<div class="col-md-3 text-center">
 						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/nuevo1.jpg);">
+							<div class="product-img" style="background-image: url(images/articulos/<?php echo $Nuevos[3]->getID().'_1'; ?>);background-size:contain;">
 								<p class="tag"><span class="new">Nuevo</span></p>
 								<div class="cart">
 									<p>
+										<span><a href="product<?php echo '/'.$Nuevos[3]->getID(); ?>"><i class="icon-eye"></i></a></span> 
+										<!--
 										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
-										
+										-->
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="shop">Laptop Hp Stream 11</a></h3>
-								<p class="price"><span>$5,399.00</span></p>
+								<h3><a href="shop"><?php echo $Nuevos[3]->getNombre(); ?></a></h3>
+								<p class="price"><span>$<?php echo $Nuevos[3]->getPrecio(); ?></span></p>
 							</div>
 						</div>
 					</div>
+					<?php
+							}
+						}
+					?>
 				</div>
 			</div>
 		</div>

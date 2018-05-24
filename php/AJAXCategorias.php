@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo '<option value="'.$Cat->ID.'">'.$Cat->Nombre.'</option>';
         }
     } elseif(isset($_GET['getSubCategorias']) && isset($_GET['ID']) && !empty($ID = $_GET['ID'])) {
-        $SQL = 'SELECT ID, NOMBRE FROM SUBCATEGORIA WHERE ID = '.$ID.';';
+        $SQL = 'SELECT ID, NOMBRE FROM SUBCATEGORIA WHERE IDCat = '.$ID.';';
         $STMT = ConectarBD($SQL);
         $STMT->execute();
         while ($fila = $STMT->fetch()) {

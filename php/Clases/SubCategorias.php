@@ -68,6 +68,7 @@
             $conex->desconectar();
             }catch(PDOException $e){
                 $this->Error = true;
+                echo $e->getMessage();
             }
         }
         public function EliminarCategoria() {
