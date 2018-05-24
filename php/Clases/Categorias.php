@@ -134,4 +134,24 @@
         }
         return $Resultado;
     }
+
+    function ObtenerCategoriasActivas() {
+        $Resultado = array();
+        try {
+            $SQL = "CALL ObtenerCategorias();";
+            $conex = new conexion();
+            $Conn = $conex->conectar();
+            $STMT = $Conn->prepare($SQL);
+            $STMT->execute();
+            while ($fila = $STMT->fetch()) {
+                $cat = new Categoria(
+                    $fila['ID'],  $fila['Nombre'], $fila['IDEmpAlta'], $fila['Activo']
+                );
+                $Resultado[] = $cat;
+            }
+        } catch (PDOExeption $e) {
+            echo "ERROR: ".$SQL."<br>".$e->getMessage();
+        }
+        return $Resultado;
+    }
 ?>

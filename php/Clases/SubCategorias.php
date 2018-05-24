@@ -158,4 +158,25 @@
         }
         return $Resultado;
     }
+
+    function ObtenerSubCategoriasActivas($ID) {
+        $Resultado = array();
+        try {
+            $SQL = "CALL ObtenerSubCategorias(".$ID.");";
+            $conex = new conexion();
+            $Conn = $conex->conectar();
+            $STMT = $Conn->prepare($SQL);
+            $STMT->execute();
+            while ($fila = $STMT->fetch()) {
+                $cat = new SubCategoria(
+                    $fila['ID'], $fila['Nombre'],
+                    $fila['IDCat'], $fila['Activo'], $fila['IDEmpMod']
+                );
+                $Resultado[] = $cat;
+            }
+        } catch (PDOExeption $e) {
+            echo "ERROR: ".$SQL."<br>".$e->getMessage();
+        }
+        return $Resultado;
+    }
 ?>

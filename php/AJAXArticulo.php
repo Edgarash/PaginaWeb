@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             (isset($_POST['FechaAlta']) ? $_POST['FechaAlta'] : ''),
             (isset($_POST['Activo']) ? $_POST['Activo'] : '')
         );
-        $Usuario->ActualizarUsuario();
+        #$Usuario->ActualizarUsuario();
     }
     elseif (isset($_POST['Eliminar'])) {
         $Usuario = new usuario(
@@ -32,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $Usuario = new usuario('', $_SESSION['Usuario'], '', $_SESSION['Info']);
         $Usuario = $Usuario->HacerLogin();
         $temp = $Usuario->getID();
-        var_dump($_POST);
         $Articulo = new articulo(
             '',
             isset($_POST['Nombre']) ? $_POST['Nombre'] : '',
@@ -46,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ''
         );
         $ID = $Articulo->registrarArticulo();
-        var_dump($Articulo);
         if ($ID) {
             $i = 1; $j = 1;
             foreach ($_FILES['files']['tmp_name'] as $key => $tmp_name) {

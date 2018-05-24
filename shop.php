@@ -1,5 +1,9 @@
 <?php
 session_start();
+include_once 'php/Clases/Categorias.php';
+include_once 'php/Clases/SubCategorias.php';
+$Categorias = null;
+$Categorias = ObtenerCategoriasActivas();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -308,69 +312,37 @@ session_start();
 								<h2>Categorías</h2>
 								<div class="fancy-collapse-panel">
 			                  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-			                     <div class="panel panel-default">
-			                         <div class="panel-heading" role="tab" id="headingOne">
-			                             <h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed" style="width: 150px;">Computadoras
-											</a>
-			                             </h4>
-			                         </div>
-			                         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-			                             <div class="panel-body">
-			                                 <ul>
-			                                 	<li><a href="#">Laptops</a></li>
-			                                 	<li><a href="#">Desktops</a></li>
-			                                 </ul>
-			                             </div>
-			                         </div>
-			                     </div>
-			                     <div class="panel panel-default">
-			                         <div class="panel-heading" role="tab" id="headingTwo">
-			                             <h4 class="panel-title">
-			                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="width: 150px">Almacenamiento
-			                                 </a>
-			                             </h4>
-			                         </div>
-			                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-			                             <div class="panel-body">
-			                                <ul>
-			                                 	<li><a href="#"> unidades flash USB, </a></li>
-			                                 	<li><a href="#">disco duros</a></li>
-			                                 </ul>
-			                             </div>
-			                         </div>
-			                     </div>
-			                     <div class="panel panel-default">
-			                         <div class="panel-heading" role="tab" id="headingThree">
-			                             <h4 class="panel-title">
-			                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="width: 150px">Telefonía
-			                                 </a>
-			                             </h4>
-			                         </div>
-			                         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-			                             <div class="panel-body">
-			                                
-			                             </div>
-			                         </div>
-			                     </div>
-			                     <div class="panel panel-default">
-			                         <div class="panel-heading" role="tab" id="headingFour">
-			                             <h4 class="panel-title">
-			                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree" style="width: 150px">Accesorios
-			                                 </a>
-			                             </h4>
-			                         </div>
-			                         <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-			                             <div class="panel-body">
-			                                <ul>
-			                                 	<li><a href="#">Jeans</a></li>
-			                                 	<li><a href="#">T-Shirt</a></li>
-			                                 	<li><a href="#">Jacket</a></li>
-			                                 	<li><a href="#">Shoes</a></li>
-			                                 </ul>
-			                             </div>
-			                         </div>
-			                     </div>
+			                     <?php
+								 if ($Categorias) {
+									 $i = 1;
+									 $Numbers = array('One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten');
+									 
+									 foreach ($Categorias as $Cat) {
+										 $Subs = ObtenerSubCategoriasActivas($Cat->getID());
+										 ?>
+										<div class="panel panel-default">
+										<div class="panel-heading" role="tab" id="headingTwo">
+											<h4 class="panel-title">
+												<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $Numbers[$i];?>" aria-expanded="false" aria-controls="collapseTwo" style="width: 150px"><?php echo $Cat->getNombre();?>
+												</a>
+											</h4>
+										</div>
+										<div id="collapse<?php echo $Numbers[$i++];?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+											<div class="panel-body">
+												<ul>
+												<?php
+													foreach ($Subs as $SubCat) {
+														echo '<li><a href="#">'.$SubCat->getNombre().'</a></li>';
+													}
+												?>
+												</ul>
+											</div>
+										</div>
+										</div>
+										 <?php
+									 }
+								 }
+								 ?>
 			                  </div>
 			               </div>
 							</div>
