@@ -38,9 +38,9 @@ function AJAXCallUpdate() {
         var Categoria = $(this).parent().siblings();
         $.confirm({
             title: 'AVISO',
-            content: '¿Esta seguro que desea eliminar este usuario?',
+            content: '¿Esta seguro que desea eliminar esta Categoría?',
             type: 'red',
-            icon: 'fa fa-user-times',
+            icon: 'fa fa-cog',
             theme: 'modern',
             buttons: {
                 Eliminar: {
@@ -132,7 +132,7 @@ function Actualizar(ID = '',Nombre = '' ,idEmpAlta='') {
                     '<label>ID:'+ID+'</label>'+
                 '</div>'+
                 '<div class="col-md-4">'+
-                    '<label>idEmpAlta:'+idEmpAlta+'</label>'+
+                    '<label>Empleado de Alta: '+idEmpAlta+'</label>'+
                 '</div>'+
                 '<div class="col-md-4">'+
                     '<input class="form-check-input" type="checkbox" name="activo" id="Activo" checked="true">'+

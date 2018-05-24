@@ -151,7 +151,7 @@ class TablaInfo {
         echo '<thead><tr>'.
                 '<th>ID</th>'.
                 '<th>Nombre</th>'.
-                '<th>IDEmpAlta</th>'.
+                '<th>Empleado de Alta</th>'.
                 '<th>Acciones</th>'.
             '</tr></thead><tbody>';
         $temp = ObtenerCategorias();
@@ -160,7 +160,7 @@ class TablaInfo {
             echo '<tr class="'.($Activ ? 'success' : 'danger').'">'.
             '<th>'.$cate->getID().'</th>'.
             '<th>'.$cate->getNombre().'</th>'.
-            '<th>'.$cate->getIDEmpAlta().'</th>'.
+            '<th>'.$cate->NombreUsuario.'</th>'.
             '<th class="text-center">'.
             '<i class="fa fa-edit selectable-link""></i> '.
             ($Activ ? '<i class="fa fa-trash selectable-link"></i>' : '').
@@ -174,8 +174,8 @@ class TablaInfo {
         echo '<thead><tr>'.
                 '<th>ID</th>'.
                 '<th>Nombre</th>'.
-                '<th>IDCat</th>'.
-                '<th>IDEmpMod</th>'.
+                '<th>Categoria</th>'.
+                '<th>Usuario Alta</th>'.
                 '<th>Acciones</th>'.
             '</tr></thead><tbody>';
         $temp = ObtenerSubCategorias();
@@ -184,8 +184,9 @@ class TablaInfo {
             echo '<tr class="'.($Activ ? 'success' : 'danger').'">'.
             '<th>'.$subcate->getID().'</th>'.
             '<th>'.$subcate->getNombre().'</th>'.
-            '<th>'.$subcate->getIDCat().'</th>'.
-            '<th>'.$subcate->getIDEmpMod().'</th>'.
+            '<th>'.$subcate->NombreCategoria.'</th>'.
+            '<th>'.$subcate->NombreUsuario.'</th>'.
+            '<th style="display:none;">'.$subcate->getIDCat().'</th>'.
             '<th class="text-center">'.
             '<i class="fa fa-edit selectable-link""></i> '.
             ($Activ ? '<i class="fa fa-trash selectable-link"></i>' : '').

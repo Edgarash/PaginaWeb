@@ -86,6 +86,28 @@
             }
         }
 
+        public function ActualizarSubCategoria() {
+            try {
+                $temp = ($this->Activo == 'true' ? 1 : 0);
+                $cat = $this->getIDCat();
+                $SQL = "UPDATE SubCategoria SET 
+                Nombre = :Nombre, Activo = $temp, IDCat = :IDCat
+                WHERE SubCategoria.ID = :ID;";
+                $conex = new conexion();
+                $Conn = $conex->conectar();
+                $STMT = $Conn->prepare($SQL);
+                $STMT->bindParam(':Nombre', $this->Nombre);
+                $STMT->bindParam(':ID', $this->ID);
+                $STMT->bindParam(':IDCat', $this->IDCat);
+                $STMT->execute();
+                return 'Modificacion Lograda';
+            } catch (PDOException $e) {
+                $this->Error = true;
+                echo "ERROR: ".$SQL."<br>".$e->getMessage();
+                echo 'false';
+            }
+        }
+
         public function llenarTabla(){
             try {
                 $SQL = "call DesplegarCategorias();";
@@ -106,7 +128,14 @@
     function ObtenerSubCategorias() {
         $Resultado = array();
         try {
-            $SQL = "SELECT * FROM SubCategoria;";
+            $SQL = "SELECT
+            `SubCategoria`.*, `Categoria`.`Nombre` AS 'NombreCategoria', `Usuario`.`Usuario` AS 'NombreUsuario'
+          FROM
+            `SubCategoria`,
+            `Categoria`,
+            `Usuario`
+          WHERE
+            `Categoria`.`ID` = `SubCategoria`.`IDCat` AND `SubCategoria`.`IDEmpMod` = `Usuario`.`ID`;";
             $conex = new conexion();
             $Conn = $conex->conectar();
             $STMT = $Conn->prepare($SQL);
@@ -119,6 +148,8 @@
                     $fila['Activo'],
                     $fila['IDEmpMod']
                 );
+                $cat->NombreCategoria = $fila['NombreCategoria'];
+                $cat->NombreUsuario = $fila['NombreUsuario'];
                 $Resultado[] = $cat;
             }
         } catch (PDOExeption $e) {

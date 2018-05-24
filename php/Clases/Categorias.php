@@ -107,7 +107,13 @@
     function ObtenerCategorias() {
         $Resultado = array();
         try {
-            $SQL = "SELECT * FROM Categoria;";
+            $SQL = "SELECT
+            `Categoria`.*, `Usuario`.`Usuario` AS 'NombreUsuario'
+          FROM
+            `Categoria`,
+            `Usuario`
+          WHERE
+            `Categoria`.`IDEmpAlta` = `Usuario`.`ID`;";
             $conex = new conexion();
             $Conn = $conex->conectar();
             $STMT = $Conn->prepare($SQL);
@@ -119,6 +125,7 @@
                     $fila['IDEmpAlta'],
                     $fila['Activo']
                 );
+                $cat->NombreUsuario = $fila['NombreUsuario'];
                 $Resultado[] = $cat;
             }
         } catch (PDOExeption $e) {

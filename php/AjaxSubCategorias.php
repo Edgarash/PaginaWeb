@@ -4,14 +4,14 @@ include_once('Tablas.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['Modificar'])) {
         //Modificando
-        $subCat = new categoria (
+        $subCat = new subcategoria (
             isset($_POST['ID']) ? $_POST['ID'] : '',
             isset($_POST['Nombre']) ? $_POST['Nombre'] : '',
             isset($_POST['IDCat']) ? $_POST['IDCat'] : '',
             isset($_POST['Activo']) ? $_POST['Activo'] : '',
-            isset($_POST['Id']) ? $_POST['Nombre'] : ''
+            ''
         );
-        $subCat->ActualizarCategoria();
+        $subCat->ActualizarSubCategoria();
     }
     elseif (isset($_POST['Eliminar'])) {
         $subCat = new subcategoria(
@@ -28,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             '',
             isset($_POST['Nombre']) ? $_POST['Nombre'] : '',
             isset($_POST['IDCat']) ? $_POST['IDCat'] : '',
-            '',(int) $temp
-            
+            1,
+            $temp
         );
         $subCat->RegistrarSubCategoria();
     }
