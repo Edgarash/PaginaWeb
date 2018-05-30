@@ -7,7 +7,7 @@ include_once('Clases/articulos.php');
 include_once('Clases/Categorias.php');
 
 echo '<h1>';
-$temp = ActualizarCategoria();
+$temp = ObtenerClientes();
 echo json_encode(get_object_vars($temp));
 //$temp ="";
 //session_start();

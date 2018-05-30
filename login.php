@@ -31,6 +31,7 @@
                 if ($Cliente) {
                     $_SESSION['Sesion'] = true;
                     $_SESSION['Nombre'] = $Cliente->getNombre();
+                    $_SESSION['ID'] = $Cliente->getID();
                     if (isset($_SESSION['URL_Origen'])) {
                         header('Location: '.$_SESSION['URL_Origen']);
                     } else {

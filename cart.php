@@ -1,5 +1,26 @@
 <?php
+include_once('php/Clases/conexion.php'); 
 session_start();
+if (isset($_SESSION['Sesion']) && !empty($_SESSION['Sesion'])) {
+$IDcliente = $_SESSION['ID'];
+} else {
+	header('Location: Login');
+	exit();
+}
+//Aqui estoy trabajando 
+$Resultado = array();
+        try {
+            $SQL = "SELECT * FROM (SELECT @prmin_cliente :=". $IDcliente. " as IDCliente) alias, `MostrarCarrito`;";
+            $conex = new conexion();
+            $Conn = $conex->conectar();
+            $STMT = $Conn->prepare($SQL);
+            $STMT->execute();
+            while ($fila = $STMT->fetch()) {
+				$Resultado[] = array($fila['IDCliente'], $fila['Nombre'], $fila['Precio'], $fila['Cantidad'],$fila['IDArt']);
+            }
+        } catch (PDOExeption $e) {
+            echo "ERROR: ".$SQL."<br>".$e->getMessage();
+        }
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -8,6 +29,7 @@ session_start();
 	<?php
 	include_once('php/head.php');
 	?>
+	<script src="js/cart.js"></script>
 	<title>Carrito - TecnoCompra</title>
 </head>
 
@@ -102,95 +124,60 @@ session_start();
 								<span>Eliminar</span>
 							</div>
 						</div>
-						<div class="product-cart">
+						<!--ESTO OCUPO -->
+						<?php
+						$total = 0;
+						$i = 0;
+						while($i < count($Resultado)){
+							$total = $total +( (int) $Resultado[$i][2] * (int) $Resultado[$i][3] );
+						echo(
+						'
+						
+						<form action="php/cart_proceso.php" method="POST">
+						<input type="hidden" style ="display:none" name="IDArticulo" value="'. $Resultado[$i][4].'">'.' 
+						<input type="hidden" style ="display:none" name="IDCliente" value="'. $Resultado[$i][0].'">'.' 
+						<div class="product-cart">	
 							<div class="one-forth">
 								<div class="product-img" style="background-image: url(images/nuevo4.jpg);">
-								</div>
-								<div class="display-tc">
-									<h3>Canon EOS Rebel T6</h3>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$12,279.00</span>
+								</div>.
+								<div class="display-tc">.
+									<h3>'. $Resultado[$i][1] .'</h3>
 								</div>
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
-									<input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
+									<span class="price" id="precio'.$i.'" >'. $Resultado[$i][2] .'</span>
 								</div>
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
-									<span class="price">$12,279.00</span>
+									<input type="number" id="cantidad'.$i.'" name="quantity" class="form-control input-number text-center" value="'. $Resultado[$i][3] .'" min="1" max="100">
 								</div>
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
-									<a href="#" class="closed"></a>
+									<span class="price" id="total'.$i.'">'."$". ($Resultado[$i][2] * $Resultado[$i][3]).".00".'</span>
+								</div>
+							</div>
+							<div class="one-eight text-center">
+								<div class="display-tc">
+									<button type="submit" class="Closed" name="btnBorrar" style="border:none"> x </button>
 								</div>
 							</div>
 						</div>
-						<div class="product-cart">
-							<div class="one-forth">
-								<div class="product-img" style="background-image: url(images/nuevo2.jpg);">
-								</div>
-								<div class="display-tc">
-									<h3>Impresora Inalámbrica HP</h3>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$1,289.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<form action="#">
-										<input type="text" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
-									</form>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$1,289.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<a href="#" class="closed"></a>
-								</div>
-							</div>
-						</div>
-						<div class="product-cart">
-							<div class="one-forth">
-								<div class="product-img" style="background-image: url(images/nuevo3.png);">
-								</div>
-								<div class="display-tc">
-									<h3>Audífonos inalámbricos RP-BTD10</h3>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$3,575.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$3,575.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<a href="#" class="closed"></a>
-								</div>
-							</div>
-						</div>
+						</form>
+						'
+						
+						);
+						$i++;
+					}
+					echo('<div id="puto" class="puto" style="display:none" >'.$i.'</div>')
+					?>
+					
+						<!--aqui -->
+
+						
+						
 						<div class="row">
 								<div class="col-md-6 col-md-offset-1">
 									<div class="total-wrap">
@@ -199,12 +186,12 @@ session_start();
 											<div class="col-md-9 col-md-push-1 text-center">
 												<div class="total">
 													<div class="sub">
-														<p><span>Subtotal:</span> <span>$17,143.00</span></p>
+														<p><span>Subtotal:</span> <span id="Subtotal"> <?php echo('$'.$total.'.00')?></span></p>
 														<p><span>Envio:</span> <span>$0.00</span></p>
 														<p><span>Descuento:</span> <span>$0.00</span></p>
 													</div>
 													<div class="grand-total">
-														<p><span><strong>Total:</strong></span> <span>$17,143.00</span></p>
+														<p><span><strong>Total:</strong></span> <span id="totalfinal"><?php echo('$'.$total.'.00')?></span></p>
 													</div>
 												</div>
 											</div>

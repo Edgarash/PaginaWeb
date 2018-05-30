@@ -40,7 +40,7 @@ function AJAXCallUpdate() {
             title: 'AVISO',
             content: '¿Esta seguro que desea eliminar este usuario?',
             type: 'red',
-            icon: 'fa fa-user-times',
+            icon: 'fa fa-exclamation-triangle',
             theme: 'modern',
             buttons: {
                 Eliminar: {
@@ -66,7 +66,7 @@ function AJAXCallUpdate() {
             theme: 'supervan',
             content: Registrar(),
             columnClass: 'col-md-10 col-md-offset-1',
-            icon: 'fa fa-user-plus',
+            icon: 'fa fa-cog',
             buttons: {
                 submit: {
                     text: 'Registrar',

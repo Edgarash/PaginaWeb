@@ -1,4 +1,6 @@
 $(document).on('ready',function() {
+    
+    getPuestos();
     AJAXCallUpdate();
 });
 
@@ -6,6 +8,7 @@ function AJAXCallUpdate() {
     $('#addUser').off('click');
     $('th > i.fa-edit').on('click', function(){
         var subCategoria = $(this).parent().siblings();
+        
         $.confirm({
             title: 'Editar subCategoria',
             icon: 'fa fa-cog',
@@ -43,7 +46,7 @@ function AJAXCallUpdate() {
             title: 'AVISO',
             content: '¿Esta seguro que desea eliminar este usuario?',
             type: 'red',
-            icon: 'fa fa-user-times',
+            icon: 'fa fa-exclamation-triangle',
             theme: 'modern',
             buttons: {
                 Eliminar: {
@@ -64,12 +67,13 @@ function AJAXCallUpdate() {
     });
     
     $('#addUser').on('click', function() {
+            getPuestos();
         $.confirm({
             title: 'Agregar subCategoria',
             theme: 'supervan',
             content: Registrar(),
             columnClass: 'col-md-10 col-md-offset-1',
-            icon: 'fa fa-user-plus',
+            icon: 'fa fa-cogs',
             buttons: {
                 submit: {
                     text: 'Registrar',
@@ -159,12 +163,8 @@ function Actualizar(ID = '',Nombre = '' ,idEmpAlta='', idCat='') {
 }
 
 function Registrar() {
-    Puestos = getPuestos();
-    opciones = "";
-    Puestos.forEach(function(cadena, indice, array){
-        opciones+='<option value="'+cadena+'" '+ (cadena == 'Empleado' ? 'selected' : '') + '>'+cadena+'</option>';
-    });
-    return '<form action="" class="colorlib-form" style="color:black;">'+
+    getPuestos();
+    var content = '<form action="" class="colorlib-form" style="color:black;">'+
         '<div class="row">'+
             '<div class="form-group">'+
                 //Usuario
@@ -176,25 +176,24 @@ function Registrar() {
                 '</div>'+
                 '<div class="col-md-6">'+
                     '<label>Puesto: </label>'+
-                    '<select id="IDCat" name="IDCat" class="form-control" value="'+'">'+
-                        opciones+
+                    '<select id="IDCat" name="IDCat" class="form-control">'+
+                        window.cats+
                     '</select>'+
                 '</div>'+
             '</div>'+
             '</div>'+
         '</div>'+
     '</form>'
+    return content;
 }
 function getPuestos(){
-    return new Array(1,2,3);
-    
-    /*var xhttp = new XMLHttpRequest();
+    var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status==200) {
-            
+            window.cats = this.responseText;
         }
     }
-    xhttp.open("POST", "php/AjaxSubCategorias.php", true);
+    xhttp.open("GET", "php/ajaxSubCategorias.php?opcion", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send(Sending);*/
+    xhttp.send();
 }

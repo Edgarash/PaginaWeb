@@ -20,6 +20,7 @@
         private $FechaAlta;
         private $Activo;
         private $Val;
+        private $Error;
         
         public function getID() {
             return $this->ID;
@@ -34,7 +35,9 @@
         public function getTelefono() {
             return $this->Telefono;
         }
-
+        public function getError() {
+            return $this->Error;
+        }
         public function getNumExterior() {
             return $this->NumExterior;
         }
@@ -86,6 +89,9 @@
             $this->setEmail($Email);
             $this->setContraseña($Contraseña);
         }
+        function __construct1($ID) {
+            $this->ID = $ID;
+        }
 
         private function __construct4($Email, $Contraseña, $Nombre, $Apellidos) {
             $this->__construct2($Email, $Contraseña);
@@ -131,6 +137,57 @@
             $Conn = null;
             return $filas;
         }
+        public function RegistrarUsuario2() {
+            try {
+                
+                $SQL = "call registrarCliente2(:email, :contrasena,:Nombre,:Apellidos,:Telefono, 
+                :NumExterior,:NumInterior,:Calle, :EntreCalle,
+                :Referencia, :CP, :Colonia, :Municipio, :Estado, :FechaAlta);";
+                #$SQL = "call registrarCliente2('lalalolo1221@yahoo.com','Tsubasa6','Edgar Michell','Cisneros','612','12','1','melgar','josefa y zapata','casa blanca','23000','maguey','plomo','plomeria','2018-06-06');";
+                $conex = new conexion();
+                $Conn = $conex->conectar();
+                $STMT = $Conn->prepare($SQL);
+                
+                $STMT->bindParam(':email',$this->Email);
+                $STMT->bindParam(':contrasena',$this->Contraseña);
+                //$STMT->bindParam(':contrasena','Tsubasa6');
+                $STMT->bindParam(':Nombre',$this->Nombre);
+                $STMT->bindParam(':Apellidos',$this->Apellidos);
+                $STMT->bindParam(':Telefono',$this->Telefono);
+                $STMT->bindParam(':NumExterior',$this->NumExterior);
+                $STMT->bindParam(':NumInterior',$this->NumInterior);
+                $STMT->bindParam(':Calle',$this->Calle);
+                $STMT->bindParam(':EntreCalle',$this->EntreCalles);
+                $STMT->bindParam(':Referencia',$this->Referencia);
+                $STMT->bindParam(':CP',$this->CP);
+                $STMT->bindParam(':Colonia',$this->Colonia);
+                $STMT->bindParam(':Municipio',$this->Municipio);
+                $STMT->bindParam(':Estado',$this->Estado);
+                
+                $Fecha = date('Y-m-d');
+                $STMT->bindParam(':FechaAlta', $Fecha);
+                $STMT->execute();
+                $fila = $STMT->rowCount();
+            } catch (PDOException $e) {
+                $this->Error = true;
+                #echo "ERROR: ".$SQL."<br>".$e->getMessage();
+            }
+        }
+        public function EliminarCliente() {
+            try {
+                #$SQL = "DELETE FROM USUARIO WHERE ID = :ID";
+                $SQL = "UPDATE cliente SET Activo = 0 WHERE ID = :ID;";
+                $conex = new conexion();
+                $Conn = $conex->conectar();
+                $STMT = $Conn->prepare($SQL);
+                $STMT->bindParam(':ID', $this->ID);
+                $STMT->execute();
+                'Eliminacion Lograda';
+            } catch (PDOException $e) {
+                $this->Error = true;
+                #echo "ERROR: ".$SQL."<br>".$e->getMessage();
+            }
+        }
 
         public function existeCliente() {
             try {
@@ -159,7 +216,7 @@
                     $STMT->execute();
                     $fila = $STMT->fetch();
                     $Cliente = new Cliente(
-                        $fila['ID'], $fila['Email'], $fila['Contraseña'], $fila['Nombre'],
+                        $fila['ID'], $fila['Email'], $fila['Contrasena'], $fila['Nombre'],
                         $fila['Apellidos'], $fila['Telefono'], $fila['NumExterior'],
                         $fila['NumInterior'], $fila['Calle'], $fila['EntreCalles'],
                         $fila['Referencia'], $fila['CP'], $fila['Colonia'], $fila['Municipio'],
@@ -241,23 +298,11 @@
             $STMT->execute();
             while ($fila = $STMT->fetch()) {
                 $User = new cliente(
-                    $fila['ID'],
-                    $fila['Email'],
-                    $fila['Contrasena'],
-                    $fila['Nombre'],
-                    $fila['Apellidos'], 
-                    $fila['Telefono'],
-                    $fila['NumExterior'],
-                    $fila['NumInterior'],
-                    $fila['Calle'],
-                    $fila['EntreCalles'],
-                    $fila['Referencia'],
-                    $fila['CP'],
-                    $fila['Colonia'],
-                    $fila['Municipio'],
-                    $fila['Estado'],
-                    $fila['FechaAlta'],
-                    $fila['Activo']
+                    $fila['ID'], $fila['Email'], $fila['Contrasena'], $fila['Nombre'],
+                    $fila['Apellidos'], $fila['Telefono'], $fila['NumExterior'],
+                    $fila['NumInterior'], $fila['Calle'], $fila['EntreCalles'],
+                    $fila['Referencia'], $fila['CP'], $fila['Colonia'], $fila['Municipio'],
+                     $fila['Estado'], $fila['FechaAlta'], $fila['Activo']
                 );
                 $Resultado[] = $User;
             }

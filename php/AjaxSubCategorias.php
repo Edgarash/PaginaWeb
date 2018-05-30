@@ -41,5 +41,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $Tabla->getTabla();
         }
     }
+}else {
+    if (isset($_GET['opcion'])) {
+        $SQL = 'SELECT ID, NOMBRE FROM CATEGORIA where Activo = 1';
+        $STMT = ConectarBD($SQL);
+        $STMT->execute();
+        while ($fila = $STMT->fetch()) {
+            $temp = new stdClass();
+            $temp->ID = $fila['ID'];
+            $temp->Nombre = $fila['NOMBRE'];
+            $Resultado[] = $temp;
+        }
+        //echo 'value='.$Cat->ID;
+        foreach ($Resultado as $Cat) {
+            echo '<option value="'.$Cat->ID.'">'.$Cat->Nombre.'</option>';
+        }
+        //echo '</select>';
+    }
 }
 ?>
