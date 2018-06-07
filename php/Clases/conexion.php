@@ -2,7 +2,7 @@
     //Incluir validaciones
     class Conexion
     {
-        private $Servidor = "localhost";
+        private $Servidor = "servidor";
         private $Usuario = "Tecno";
         private $Contraseña = "TecnoCompra#123";
         private $BD = "TecnoCompra";

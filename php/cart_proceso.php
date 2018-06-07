@@ -18,6 +18,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     elseif(isset($_POST['actualizar'])){
         actualizar();
     }
+    elseif(isset($_POST['anadir'])){
+        $cantidad = $_POST['cantidad'];
+        $IdCliente = $_POST['IdCliente'];
+        $IdArticulo = $_POST['IdArticulo'];
+
+        try {
+            $SQL = "INSERT INTO carrito VALUES (:ID, :IDART, :CANTIDAD)";
+            $conex = new conexion();
+            $Conn = $conex->conectar();
+            $STMT = $Conn->prepare($SQL);
+            $STMT->bindParam(':ID', $IdCliente);
+            $STMT->bindParam(':IDART', $IdArticulo);
+            $STMT->bindParam(':CANTIDAD', $cantidad);
+            $STMT->execute();
+
+            header("Location:/cart.php"); 
+            exit();
+
+        } catch (PDOExeption $e) {
+            echo "ERROR: ".$SQL."<br>".$e->getMessage();
+        }
+        
+    }
 }
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $Cantidad = $_REQUEST["q"];

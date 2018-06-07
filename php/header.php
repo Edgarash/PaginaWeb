@@ -4,7 +4,7 @@ $Nombre;
 $Link;
 $CierraSesion='';
 define('_IMAGENES', 'http://'.$_SERVER['SERVER_NAME'].'/images/');
-define('_ARTICULO', 'http://'.$_SERVER['SERVER_NAME'].'/images/articulos/');
+define('_ARTICULO', 'http://servidor/images/articulos/');
 if (isset($_SESSION['Sesion'])) {
     $Nombre = $_SESSION['Nombre'];
     if (isset($_SESSION['Empleado'])) {
