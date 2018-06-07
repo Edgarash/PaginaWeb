@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $STMT->bindParam(':CANTIDAD', $cantidad);
             $STMT->execute();
 
-            header("Location:/cart.php"); 
+            header("Location:/cart"); 
             exit();
 
         } catch (PDOExeption $e) {
@@ -77,8 +77,9 @@ function examinar(){
     } catch (PDOExeption $e) {
         echo "ERROR: ".$SQL."<br>".$e->getMessage();
     }
-    header("Location:/cart.php"); 
-    exit();
+    var_dump($_POST);
+    #header("Location:/cart.php"); 
+    #exit();
 }
 
 function UsuarioCompleto($camino){

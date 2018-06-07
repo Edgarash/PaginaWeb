@@ -34,7 +34,7 @@ $Nuevos = obtenerNuevos();
 										   <h1 class="head-2">Nueva</h2>
 					   					<h2 class="head-3">Colección</h2>
 					   					<p class="category"><span>Las mejores marcas</span></p>
-					   					<p><a href="#" class="btn btn-primary">  Ver   ahora </a></p>
+					   					<p><a href="shop?subcat=5" class="btn btn-primary">  Ver   ahora </a></p>
 				   					</div>
 				   				</div>
 				   			</div>
@@ -52,7 +52,7 @@ $Nuevos = obtenerNuevos();
 					   					<h2 class="head-2">Colección</h2>
 					   					<h2 class="head-3">Cámaras</h2>
 					   					<p class="category"><span>Los mejores precios</span></p>
-					   					<p><a href="#" class="btn btn-primary">Ver ahora</a></p>
+					   					<p><a href="shop?subcat=2" class="btn btn-primary">Ver ahora</a></p>
 				   					</div>
 				   				</div>
 				   			</div>
@@ -70,7 +70,7 @@ $Nuevos = obtenerNuevos();
 					   					<h2 class="head-2">Colección</h2>
 					   					<h2 class="head-3">Accesorios</h2>
 					   					<p class="category"><span>Todo lo que buscas</span></p>
-					   					<p><a href="#" class="btn btn-primary">Ver ahora</a></p>
+					   					<p><a href="shop?subcat=8" class="btn btn-primary">Ver ahora</a></p>
 				   					</div>
 				   				</div>
 				   			</div>
@@ -84,7 +84,7 @@ $Nuevos = obtenerNuevos();
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<a href="shop" class="f-product-1" style="background-image: url(images/publi1.png);">
+						<a href="shop?subcat=26" class="f-product-1" style="background-image: url(images/publi1.png);">
 							<div class="desc">
 								<h2>Smart <br>phones</h2>
 							</div>
@@ -93,21 +93,21 @@ $Nuevos = obtenerNuevos();
 					<div class="col-md-6">
 						<div class="row">
 							<div class="col-md-6">
-								<a href="" class="f-product-2" style="background-image: url(images/publi2.jpg);">
+								<a href="shop?subcat=5" class="f-product-2" style="background-image: url(images/publi2.jpg);">
 									<div class="desc">
 										<h2>Nuevo <br>Laptops</h2>
 									</div>
 								</a>
 							</div>
 							<div class="col-md-6">
-								<a href="" class="f-product-2" style="background-image: url(images/publi3.jpg);">
+								<a href="shop?subcat=27" class="f-product-2" style="background-image: url(images/publi3.jpg);">
 									<div class="desc">
 										<h2>Impre <br>soras</h2>
 									</div>
 								</a>
 							</div>
 							<div class="col-md-12">
-								<a href="" class="f-product-2" style="background-image: url(images/publi4.jpg);">
+								<a href="shop?subcat=2" class="f-product-2" style="background-image: url(images/publi4.jpg);">
 									<div class="desc">
 										<h2>Cáma<br>ras</h2>
 									</div>
@@ -251,7 +251,7 @@ $Nuevos = obtenerNuevos();
 								<div class="text-rights">
 									<h3 class="title">Apresúrate oferta limitada!</h3>
 									<h2>Laptops</h2>
-									<p><a href="shop" class="btn btn-primary">Ver Colección</a></p>
+									<p><a href="shop?subcat=5" class="btn btn-primary">Ver Colección</a></p>
 								</div>
 							</div>
 						</div>
@@ -260,160 +260,7 @@ $Nuevos = obtenerNuevos();
 			</div>
 		</div>
 
-		<div class="colorlib-shop">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
-						<h2><span>Lo más vendido</span></h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/vendido1.jpg);">
-								<p class="tag"><span class="sale">Oferta</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop">Lenovo Desktop Rs 18000</a></h3>
-								<p class="price"><span>$15,000.00</span> <span class="sale">$18,000.00</span> </p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/vendido2.jpg);">
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop">Alienware 15 R3 Supreme Gaming</a></h3>
-								<p class="price"><span>$25,000.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/vendido3.jpg);">
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop">LG V30+Dual-SIM LG-H930DS</a></h3>
-								<p class="price"><span>$10,000.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/vendido4.jpg);">
-								
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop">Samsung Galaxy J7</a></h3>
-								<p class="price"><span>$2,300.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/vendido5.jpg);">
-								
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop">Audífonos Sony Mdrxb650bt Bluetooth</a></h3>
-								<p class="price"><span>$1,859.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/vendido6.jpg);">
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop">Ropch Funda para Ordenadores Portátiles</a></h3>
-								<p class="price"><span>$730.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/vendido7.jpg);">
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop">Zelotes F-14 Wireless gaming </a></h3>
-								<p class="price"><span>$642.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/vendido8.jpg);">
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop">Huawei GR3 2017</a></h3>
-								<p class="price"><span>$2,500.00</span></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		
+				
 		
 		<div id="colorlib-subscribe">
 			<div class="overlay"></div>

@@ -205,4 +205,32 @@
         }
         return $Resultado;
     }
+
+    function obtenerPorSubCategorias($SubCategoria) {
+        try {
+            if ($SubCategoria == -1) {
+                return null;
+            }
+            $SQL = "CALL ArticulosCategoria(:Cat);";
+            $conex = new conexion();
+            $Conn = $conex->conectar();
+            $STMT = $Conn->prepare($SQL);
+            $STMT->bindParam(':Cat', $SubCategoria);
+            $STMT->execute();
+            $Resultado = null;
+            while ($fila = $STMT->fetch()) {
+                $Articulo= new Articulo(
+                $fila['ID'],$fila['Nombre'],
+                $fila['Precio'],$fila['Caracteristicas'],
+                $fila['Descripcion'],$fila['Stock'],
+                $fila['IDSubCat'],$fila['IDEmpAlta'],
+                $fila['FechaAlta'],$fila['Activo']
+                );
+                $Resultado[] = $Articulo;
+            }
+        } catch (PDOExeption $e) {
+            echo "ERROR: ".$SQL."<br>".$e->getMessage();
+        }
+        return $Resultado;
+    }
 ?>

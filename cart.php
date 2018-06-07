@@ -147,7 +147,7 @@ $Resultado = array();
 						
 						<input type="hidden" style ="display:none" name="IDArticulo" id="IdARt'.$i.'" value="'. $Resultado[$i][4].'">'.' 
 						<input type="hidden" style ="display:none" name="IDCliente" id="Idclie'.$i.'"  value="'. $Resultado[$i][0].'">'.' 
-						<input type="hidden" style ="display:none" name="IDCliente" id="stock'.$i.'"  value="'. $Resultado[$i][5].'">'.'
+						<input type="hidden" style ="display:none" name="Stock" id="stock'.$i.'"  value="'. $Resultado[$i][5].'">'.'
 						<div class="row">
 						<div class="col-md-12">
 						<div class="product-cart">	

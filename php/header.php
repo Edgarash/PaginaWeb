@@ -53,7 +53,7 @@ if (isset($_SESSION['Sesion'])) {
                     ?>
                     <li>
                         <a href="cart">
-                            <i class="icon-shopping-cart"></i> Carrito (0)</a>
+                            <i class="icon-shopping-cart"></i> Carrito </a>
                     </li>
                     <li>
                         <a href="shop">

@@ -5,7 +5,8 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 	if (isset($_GET['ID']) && !empty($ID = $_GET['ID']))
 	$Articulo = ObtenerUnArticulo($ID);
 	$idArticulo = $Articulo->getID();
-	$IDcliente = $_SESSION['ID'];
+	if (!isset($_SESSION['Empleado']))
+		$IDcliente = isset($_SESSION['ID']) ? $_SESSION['ID'] : "";
 	if (!$Articulo) {
 		header('Location: shop');
 		exit();
@@ -108,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 										</ul>
 										<div class="row row-pb-sm">
 											<div class="col-md-4">
-									<form action="php/cart_proceso.php" method="POST">											
+									<form action="<?php echo (isset($_SESSION['ID']) ? "php/cart_proceso" : "login"); ?>" method="POST">											
 									<div class="input-group">
 										<span class="input-group-btn">
 										   <button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
@@ -127,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 									
 										</div>
 										<input type="hidden" style ="display:none" name="IdArticulo" id="IdArticulo" value="<?php echo($idArticulo) ?>"> 
-										<input type="hidden" style ="display:none" name="IdCliente" id="IdCliente" value="<?php echo($IDcliente) ?>"> 
+										<input type="hidden" style ="display:none" name="IdCliente" id="IdCliente" value="<?php echo(isset($IDcliente) ? $IDcliente : 1); ?>"> 
 										<button name="anadir" id="anadir" class="btn btn-primary btn-addtocart">Añadir al carrito</button>
 										
 										</div>
@@ -178,92 +179,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 		<?php
 			}
 		?>
-		<div class="colorlib-shop">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
-						<h2><span>Productos similares</span></h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image:url(images/eduardo-Laptop.jpg);">
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-										<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop">HP LAPTOP PAVILION</a></h3>
-								<p class="price"><span>$6,499.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/eduardo-Laptop2.jpg);">
-								
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-										<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop">HP STREAM INTEL</a></h3>
-								<p class="price"><span>$3,990.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/eduardo-pc.jpg);">
-								
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-										<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop">DELL VOSTRO 3250</a></h3>
-								<p class="price"><span>$11,500.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/eduardo-teclado.jpg);">
-								
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-										<span><a href="add-to-wishlist"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop">TECLADO RAZER CYNOSA PRO</a></h3>
-								<p class="price"><span>$700.00</span></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+
 
 		
 		<div id="colorlib-subscribe">

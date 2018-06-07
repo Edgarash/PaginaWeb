@@ -11,7 +11,13 @@ function AJAXCallUpdate() {
             icon: 'fa fa-edit',
             theme: 'supervan',
             columnClass: 'col-md-10 col-md-offset-1',
-            content: Actualizar(),
+            content: Actualizar(
+                Articulo.eq(1).text(),
+                Articulo.eq(2).text(),
+                Articulo.eq(5).text(),
+                Articulo.eq(3).text(),
+                Articulo.eq(4).text()
+            ),
             buttons: {
                 formSubmit: {
                     btnClass: 'btn btn-green btn-green',
@@ -24,6 +30,40 @@ function AJAXCallUpdate() {
                     text: 'Cancelar',
                     btnClass: 'btn-red'
                 }
+            },
+            onContentReady: function () {
+                $('#Categorias').on('change', function () {
+                    $.ajax({
+                        data: 'getSubCategoria=&ID='+$('#Categorias').val(),
+                        url: 'php/AJAXCategorias.php?getSubCategorias',
+                        type: 'GET',
+                        processData: false,
+                        contentType: false,
+                        success: function (data, status) {
+                            $('#SubCategorias').html(data);
+                            var x = Articulo.eq(7).text();
+                            $('#SubCategorias').val(x);
+                        },
+                        error: function (xhr, desc, err) {
+                            MensajeError("Hubo un error, vuelva a intentar más tarde");
+                        }
+                    });
+                });
+                $.ajax({
+                    data: 'getCategoria=',
+                    url: 'php/AJAXCategorias.php?getCategorias',
+                    type: 'GET',
+                    processData: false,
+                    contentType: false,
+                    success: function (data, status) {
+                        $('#Categorias').html(data);
+                        var x = Articulo.eq(6).text();
+                        $('#Categorias').val(x);
+                    },
+                    error: function (xhr, desc, err) {
+                        MensajeError("Hubo un error, vuelva a intentar más tarde");
+                    }
+                });
             }
         });
     });
@@ -232,17 +272,17 @@ function Actualizar() {
         //Nombre Artículo
         '<div class="col-md-6">' +
         '<label>Nombre</label>' +
-        '<input type="text" class="form-control" name="Nombre" id="Nombre" placeholder="Nombre" required>' +
+        '<input type="text" class="form-control" name="Nombre" id="Nombre" placeholder="Nombre" required value="'+ arguments[0] +'">' +
         '</div>' +
         //Precio
         '<div class="col-md-3">' +
         '<label>Precio</label>' +
-        '<input type="number" step="any" min="0" name="Precio" id="Precio" placeholder="Precio" class="form-control" required>' +
+        '<input type="number" step="any" min="0" name="Precio" id="Precio" placeholder="Precio" class="form-control" required value="'+ arguments[1] +'">' +
         '</div>' +
         //Stock
         '<div class="col-md-3">' +
         '<label>Stock</label>' +
-        '<input type="number" step="1" min="0" max="9999" name="Stock" id="Stock" placeholder="Stock" class="form-control" required>' +
+        '<input type="number" step="1" min="0" max="9999" name="Stock" id="Stock" placeholder="Stock" class="form-control" required value="'+ arguments[2] +'">' +
         '</div>' +
         '</div>' +
         //
@@ -267,12 +307,12 @@ function Actualizar() {
         //Características
         '<div class="col-md-6">' +
         '<label>Características</label>' +
-        '<textarea class="form-control" name="Caracteristicas" id="Caracteristicas" placeholder="Características" required></textarea>' +
+        '<textarea class="form-control" name="Caracteristicas" id="Caracteristicas" placeholder="Características" required>'+ arguments[3].substring(0, arguments[3].indexOf("...")) +'</textarea>' +
         '</div>' +
         //Descripcion
         '<div class="col-md-6">' +
         '<label>Descripción</label>' +
-        '<textarea class="form-control" name="Descripcion" id="Descripcion" placeholder="Descripción" required></textarea>' +
+        '<textarea class="form-control" name="Descripcion" id="Descripcion" placeholder="Descripción" required>'+ arguments[4].substring(0, arguments[4].indexOf("...")) +'</textarea>' +
         '</div>' +
         '</div>' +
         '<div class="form-group">' +
