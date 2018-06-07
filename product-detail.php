@@ -101,7 +101,8 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 										</p>
 										<ul>
 											<?php
-											$lineas = explode("\\n",$Articulo->getCaracteristicas());
+											$tee = nl2br($Articulo->getCaracteristicas());
+											$lineas = explode("<br />",$tee);
 											foreach ($lineas as $Caracteristica) {
 												echo '<li>'.$Caracteristica.'</li>';
 											}
