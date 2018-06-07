@@ -95,6 +95,7 @@ function AJAXCallUpdate() {
             }
         });
     });
+    
     //Agregar evento a Eliminar
     $('th > i.fa-trash').on('click', function () {
         var Usuario = $(this).parent().siblings();
@@ -216,7 +217,8 @@ function ActualizarTabla(Sending) {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText.substr(0, 5) != "ERROR") {
                 $('#Tabla').html(this.responseText);
-                AJAXCallUpdate();
+                $('#hola').html()
+                
                 $.alert({
                     title: 'Hurra!!!',
                     icon: 'fa fa-check',

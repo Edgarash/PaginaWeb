@@ -1,5 +1,62 @@
 <?php
+include_once('php/Clases/conexion.php'); 
 session_start();
+if (isset($_SESSION['Sesion']) && !empty($_SESSION['Sesion'])) {
+$IDcliente = $_SESSION['ID'];
+} else {
+	header('Location: Login');
+	exit();
+}
+//Aqui estoy trabajando 
+$Cantidad = array();
+$NomArticulos = array();
+$precios = array();
+$Resultado = array();
+        try {
+            $SQL = "SELECT * FROM (SELECT @prmin_cliente :=". $IDcliente. " as IDCliente) alias, `MostrarCarrito`;";
+            $conex = new conexion();
+            $Conn = $conex->conectar();
+            $STMT = $Conn->prepare($SQL);
+            $STMT->execute();
+            while ($fila = $STMT->fetch()) {
+				array_push($Cantidad,$fila['Cantidad'].',');
+				array_push($NomArticulos,$fila['Nombre'].',');
+				array_push($precios,$fila['Precio'].',');
+				$Resultado[] = array($fila['IDCliente'], $fila['Nombre'], $fila['Precio'], $fila['Cantidad'],$fila['IDArt']);
+            }
+        } catch (PDOExeption $e) {
+            echo "ERROR: ".$SQL."<br>".$e->getMessage();
+		}
+		$IDcliente = $_SESSION['ID'];
+        $val = true;
+        try {
+            $cliente =  array();
+            $SQL = "SELECT * FROM cliente where id = :idc ";
+            $conex = new conexion();
+            $Conn = $conex->conectar();
+            $STMT = $Conn->prepare($SQL);
+            $STMT->bindParam(':idc', $IDcliente);
+            $STMT->execute();
+            while ($fila = $STMT->fetch()) {
+                array_push($cliente,$fila['ID']);
+                array_push($cliente,$fila['Email']);
+                array_push($cliente,$fila['Contrasena']);
+                array_push($cliente,$fila['Nombre']);
+                array_push($cliente,$fila['Apellidos']);
+                array_push($cliente,$fila['Telefono']);
+                array_push($cliente,$fila['NumExterior']);
+                array_push($cliente,$fila['NumInterior']);
+                array_push($cliente,$fila['Calle']);
+                array_push($cliente,$fila['EntreCalles']);
+                array_push($cliente,$fila['Referencia']);
+                array_push($cliente,$fila['CP']);
+                array_push($cliente,$fila['Colonia']);
+                array_push($cliente,$fila['Municipio']);
+                array_push($cliente,$fila['Estado']);
+            }
+        } catch (PDOExeption $e) {
+            echo "ERROR: ".$SQL."<br>".$e->getMessage();
+        }
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -81,50 +138,44 @@ session_start();
 			               <div class="form-group">
 									<div class="col-md-6">
 										<label for="fname">Nombre</label>
-										<input type="text" id="fname" class="form-control" placeholder="Su nombre">
+										<input type="text" id="fname" class="form-control" placeholder="Su nombre" value="<?php echo($cliente[3])?>">
 									</div>
 									<div class="col-md-6">
 										<label for="lname">Apellido</label>
-										<input type="text" id="lname" class="form-control" placeholder="Su apellido">
+										<input type="text" id="lname" class="form-control" placeholder="Su apellido" value="<?php echo($cliente[4])?>">
 									</div>
 								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<label for="companyname">Compañia</label>
-			                    	<input type="text" id="companyname" class="form-control" placeholder="Nombre de la compañia">
-			                  </div>
-			               </div>
 			               <div class="col-md-12">
 									<div class="form-group">
 										<label for="fname">Dirección</label>
-			                    	<input type="text" id="address" class="form-control" placeholder="Introduce su dirección">
+			                    	<input type="text" id="address" class="form-control" placeholder="Introduce su dirección" value="<?php echo("calle ".$cliente[8]." Numero #". $cliente[6])?>">
 			                  </div>
 			                  
 			               </div>
 			               <div class="col-md-12">
 									<div class="form-group">
 										<label for="companyname">Ciudad</label>
-			                    	<input type="text" id="towncity" class="form-control" placeholder="Nombre de la ciudad">
+			                    	<input type="text" id="towncity" class="form-control" placeholder="Nombre de la ciudad" value="<?php echo($cliente[13])?>">
 			                  </div>
 			               </div>
 			               <div class="form-group">
 									<div class="col-md-6">
 										<label for="stateprovince">Estado</label>
-										<input type="text" id="fname" class="form-control" placeholder="Nombre del estado">
+										<input type="text" id="fname" class="form-control" placeholder="Nombre del estado" value="<?php echo($cliente[14])?>">
 									</div>
 									<div class="col-md-6">
 										<label for="lname">Código Postal</label>
-										<input type="text" id="zippostalcode" class="form-control" placeholder="Código Postal">
+										<input type="text" id="zippostalcode" class="form-control" placeholder="Código Postal" value="<?php echo($cliente[11])?>">
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-md-6">
 										<label for="email">Correo electrónico</label>
-										<input type="text" id="email" class="form-control" placeholder="Introduce email">
+										<input type="text" id="email" class="form-control" placeholder="Introduce email" value="<?php echo($cliente[1])?>">
 									</div>
 									<div class="col-md-6">
 										<label for="Phone">Número telefónico</label>
-										<input type="text" id="zippostalcode" class="form-control" placeholder="Teléfono">
+										<input type="text" id="zippostalcode" class="form-control" placeholder="Teléfono" value="<?php echo($cliente[5])?>">
 									</div>
 								</div>
 								<!--<div class="form-group">
@@ -143,15 +194,29 @@ session_start();
 							<h2>Total del carro</h2>
 							<ul>
 								<li>
-									<span>Subtotal</span> <span>$17,143.00</span>
+									<?php
+									$total = 0;
+									$i =0;
+									while($i < count($Resultado)){
+										$total = $total +( (int) $Resultado[$i][2] * (int) $Resultado[$i][3] );
+										$i++;
+									}
+									?>
+									<span>Subtotal</span> <span><?php echo('$'.$total.'.00')?></span>
 									<ul>
-										<li><span>1 x Canon EOS Rebel T6</span> <span>$12,279.00</span></li>
-										<li><span>1 x Impresora Inalámbrica HP</span> <span>$1,289.00</span></li>
-										<li><span>1 x Audífonos inalámbricos RP-BTD10</span> <span>$3,575.00</span></li>
+										<?php 
+										$i=0;
+										while($i < count($Resultado)){
+											echo('<li><span>'.$Resultado[$i][3].' x '.$Resultado[$i][1] .'</span> <span>$'.$Resultado[$i][2]*$Resultado[$i][3].'.00</span></li>');
+											$i++;
+										}
+										?>
+										
+										<!-- <li><span>1 x Audífonos inalámbricos RP-BTD10</span> <span>$3,575.00</span></li> --> 
 									</ul>
 								</li>
 								<li><span>Envio</span> <span>$0.00</span></li>
-								<li><span>Total</span> <span>$17,143.00</span></li>
+								<li><span>Total</span> <span> <?php echo('$'.$total.'.00')?></span></li>
 							</ul>
 						</div>
 						<div class="cart-detail">

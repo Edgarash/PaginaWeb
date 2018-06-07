@@ -1,6 +1,10 @@
 var cantidad = new Array();
+var cantidadDefault = new Array();
 var precio = new Array();
 var total= new Array();
+var IdA = new Array();
+var IdC = new Array();
+var stock = new Array();
 var cantArt;
 var totalFinal = 0;
 var asignar_eventos = function(){
@@ -10,8 +14,12 @@ var asignar_eventos = function(){
     while (i <cantArt){
         var esta = "cantidad"+i;
         cantidad.push(document.getElementById("cantidad"+i));
+        cantidadDefault.push(parseInt(cantidad[i].value));
         precio.push(document.getElementById("precio"+i));
         total.push(document.getElementById("total"+i));
+        IdA.push(document.getElementById("IdARt"+i));
+        IdC.push(document.getElementById("Idclie"+i));
+        stock.push(document.getElementById("stock"+i));
         cantidad[i].addEventListener("input",hola);
         i++;
     }
@@ -23,17 +31,33 @@ var hola = function(){
     var pre = 0;
     while(i < cantArt){
         cant = parseInt(cantidad[i].value);
-        pre = parseInt(precio[i].innerHTML);
-
-        if(!isNaN(cant) && !isNaN(pre)){
-            total[i].innerHTML ="$"+(pre*cant)+".00";
-            if(totalFinal == 0)
-                totalFinal = (pre*cant);
-            else
-            totalFinal += (pre*cant);
+        cantAux = parseInt(cantidadDefault[i]);
+        if( cant >= parseInt(stock[i].value)){
+            cant = parseInt(stock[i].value);
+            cantidad[i].value = cant;
         }
-        else{
-            total[i].innerHTML ="$ "+0.00;
+        if (cantAux != cant) {
+            cantidadDefault[i] = cant;
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                }
+            };
+            xmlhttp.open("GET", "php/cart_proceso.php?q="+cant+"&ida="+IdA[i].value+"&idc="+IdC[i].value, true);
+            xmlhttp.send()
+
+            pre = parseInt(precio[i].innerHTML);
+            if (!isNaN(cant) && !isNaN(pre)) {
+                total[i].innerHTML = "$" + (pre * cant) + ".00";
+                if (totalFinal == 0)
+                    totalFinal = (pre * cant);
+                else
+                    totalFinal += (pre * cant);
+            }
+            else {
+                total[i].innerHTML = "$ " + 0.00;
+            }
         }
         i++;
     }
@@ -41,21 +65,9 @@ var hola = function(){
     var subt = document.getElementById("Subtotal");
     subt.innerHTML = "$"+totalFinal+".00";
     tf.innerHTML ="$"+totalFinal+".00";
-    /*
-    var cant = parseInt(cantidad.value);
-    var pre = parseInt(precio.innerHTML);
     
-    if(!isNaN(cant) && !isNaN(pre)){
-        total.innerHTML ="$"+(pre*cant)+".00";
-    }
-    else{
-        total.innerHTML ="$ "+0.00;
-    }
-    */
-   
+    
+        
 }
-setInterval(function(){
-    $.php("<?php echo "+Holamundo+"; ?>");
-  },1)
 
 window.onload = asignar_eventos;

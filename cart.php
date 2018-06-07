@@ -8,6 +8,9 @@ $IDcliente = $_SESSION['ID'];
 	exit();
 }
 //Aqui estoy trabajando 
+$Cantidad = array();
+$NomArticulos = array();
+$precios = array();
 $Resultado = array();
         try {
             $SQL = "SELECT * FROM (SELECT @prmin_cliente :=". $IDcliente. " as IDCliente) alias, `MostrarCarrito`;";
@@ -16,13 +19,17 @@ $Resultado = array();
             $STMT = $Conn->prepare($SQL);
             $STMT->execute();
             while ($fila = $STMT->fetch()) {
-				$Resultado[] = array($fila['IDCliente'], $fila['Nombre'], $fila['Precio'], $fila['Cantidad'],$fila['IDArt']);
+				array_push($Cantidad,$fila['Cantidad'].',');
+				array_push($NomArticulos,$fila['Nombre'].',');
+				array_push($precios,$fila['Precio'].',');
+				$Resultado[] = array($fila['IDCliente'], $fila['Nombre'], $fila['Precio'], $fila['Cantidad'],$fila['IDArt'],$fila['Stock']);
             }
         } catch (PDOExeption $e) {
             echo "ERROR: ".$SQL."<br>".$e->getMessage();
         }
 ?>
 <!DOCTYPE HTML>
+<meta http-equiv="Cache-Control" content="no-store" />
 <html>
 
 <head>
@@ -50,7 +57,7 @@ $Resultado = array();
 							<div class="row">
 								<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 									<div class="slider-text-inner text-center">
-										<h1>Carrito de compra</h1>
+										<h1 id="putavida">Carrito de compra</h1>
 										<h2 class="bread">
 											<span>
 												<a href="index">
@@ -132,10 +139,13 @@ $Resultado = array();
 							$total = $total +( (int) $Resultado[$i][2] * (int) $Resultado[$i][3] );
 						echo(
 						'
-						
 						<form action="php/cart_proceso.php" method="POST">
-						<input type="hidden" style ="display:none" name="IDArticulo" value="'. $Resultado[$i][4].'">'.' 
-						<input type="hidden" style ="display:none" name="IDCliente" value="'. $Resultado[$i][0].'">'.' 
+						
+						<input type="hidden" style ="display:none" name="IDArticulo" id="IdARt'.$i.'" value="'. $Resultado[$i][4].'">'.' 
+						<input type="hidden" style ="display:none" name="IDCliente" id="Idclie'.$i.'"  value="'. $Resultado[$i][0].'">'.' 
+						<input type="hidden" style ="display:none" name="IDCliente" id="stock'.$i.'"  value="'. $Resultado[$i][5].'">'.'
+						<div class="row">
+						<div class="col-md-12">
 						<div class="product-cart">	
 							<div class="one-forth">
 								<div class="product-img" style="background-image: url(images/nuevo4.jpg);">
@@ -151,7 +161,7 @@ $Resultado = array();
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
-									<input type="number" id="cantidad'.$i.'" name="quantity" class="form-control input-number text-center" value="'. $Resultado[$i][3] .'" min="1" max="100">
+									<input   type="number" id="cantidad'.$i.'" name="quantity" class="form-control input-number text-center" value="'. $Resultado[$i][3] .'" min="1" max="'.$Resultado[$i][5].'">
 								</div>
 							</div>
 							<div class="one-eight text-center">
@@ -165,6 +175,8 @@ $Resultado = array();
 								</div>
 							</div>
 						</div>
+						</div>
+						</div>
 						</form>
 						'
 						
@@ -173,17 +185,13 @@ $Resultado = array();
 					}
 					echo('<div id="puto" class="puto" style="display:none" >'.$i.'</div>')
 					?>
-					
 						<!--aqui -->
-
-						
-						
 						<div class="row">
-								<div class="col-md-6 col-md-offset-1">
+								<div class="col-md-6 col-md-offset-6">
 									<div class="total-wrap">
 										<div class="row">
 									
-											<div class="col-md-9 col-md-push-1 text-center">
+											<div class="col-md-9 col-md-push-0 text-center">
 												<div class="total">
 													<div class="sub">
 														<p><span>Subtotal:</span> <span id="Subtotal"> <?php echo('$'.$total.'.00')?></span></p>
@@ -201,7 +209,17 @@ $Resultado = array();
 							</div>
 					</div>
 				</div>
-
+				<div class="row">
+							<div class="col-md-3 col-md-push-9 text-center">
+							<input type="hidden" name="Cantidad">
+							<form action="php/cart_proceso.php" method="POST">
+							<input type="hidden" style ="display:none" name="carrito" id="IdARt'.$i.'" value="carrito"> 
+							<?php $_SESSION['carrito'] = "carrito" ?>
+							<button type="submit" class="btn btn-primary " name="enviar"> Pagar Orden </button>
+							</form>
+							</div>
+				</div>
+				
 
 				<div class="colorlib-shop">
 					<div class="container">
