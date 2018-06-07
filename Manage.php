@@ -21,13 +21,14 @@
         array('imagenes', 'Imágenes', 'fa fa-camera')
     );
     unset($Tabla, $TableName, $TablaActual);
-    if (isset($_GET['Tabla'])&& !empty($_GET['Tabla'])) {
+    if (isset($_GET['Tabla'])&& !empty($_GET['Tabla']))
         $TableName = $_GET['Tabla'];
-        foreach ($TablasDisponibles as $Tablas) {
-            if ($Tablas[0] === $TableName) {
-                $Tabla = new TablaInfo($TableName);
-                $TablaActual = $Tablas;
-            }
+    else
+        $TableName = 'usuario';
+    foreach ($TablasDisponibles as $Tablas) {
+        if ($Tablas[0] === $TableName) {
+            $Tabla = new TablaInfo($TableName);
+            $TablaActual = $Tablas;
         }
     }
 ?>
@@ -119,8 +120,8 @@
                                 </div>
                             </div>
                             <?php
-                            if (isset($TablaActual) && $TablaActual[0]!="imagenes") 
-                                echo '<button class="btn btn-primary" name="addUser" id="addUser">Agregar '.substr($TablaActual[1], 0, strlen($TablaActual[1])-1).'</button>'
+                            if (isset($TablaActual) && $TablaActual[0]!="imagenes" && $TablaActual[0]!="cliente") 
+                                echo '<button style="margin-top:10px" class="btn btn-primary" name="addUser" id="addUser">Agregar '.substr($TablaActual[1], 0, strlen($TablaActual[1])-1).'</button>'
                             ?>
                         </div>
                     </div>

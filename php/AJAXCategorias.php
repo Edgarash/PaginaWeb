@@ -3,7 +3,7 @@ include_once 'Clases/conexion.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
 } else {
-    if (isset($_GET['opcion'])) {
+    if (isset($_GET['getCategorias'])) {
         $SQL = 'SELECT ID, NOMBRE FROM CATEGORIA;';
         $STMT = ConectarBD($SQL);
         $STMT->execute();
@@ -13,11 +13,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $temp->Nombre = $fila['NOMBRE'];
             $Resultado[] = $temp;
         }
-        echo '<select>';
+        echo '<option value="">Seleccione una Categoria</option>';
         foreach ($Resultado as $Cat) {
             echo '<option value="'.$Cat->ID.'">'.$Cat->Nombre.'</option>';
         }
-        echo '</select>';
+    } elseif(isset($_GET['getSubCategorias']) && isset($_GET['ID']) && !empty($ID = $_GET['ID'])) {
+        $SQL = 'SELECT ID, NOMBRE FROM SUBCATEGORIA WHERE IDCat = '.$ID.';';
+        $STMT = ConectarBD($SQL);
+        $STMT->execute();
+        while ($fila = $STMT->fetch()) {
+            $temp = new stdClass();
+            $temp->ID = $fila['ID'];
+            $temp->Nombre = $fila['NOMBRE'];
+            $Resultado[] = $temp;
+        }
+        foreach ($Resultado as $Cat) {
+            echo '<option value="'.$Cat->ID.'">'.$Cat->Nombre.'</option>';
+        }
     }
 }
 ?>

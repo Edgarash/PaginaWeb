@@ -7,7 +7,8 @@
         if ($Usuario->getPuesto() != 'Administrador')
             header('Location: Index');
         else
-        header('Location: Manage?Tabla=usuario');
+            header('Location: Manage?Tabla=usuario');
+        exit();
     }
     //Inicio de Sesión
     $luser = "";
@@ -26,6 +27,7 @@
                     $_SESSION['Empleado'] = true;
                     $_SESSION['Info'] = $Usuario->getContraseña();
                     $_SESSION['Usuario'] = $Usuario->getUsuario();
+                    $_SESSION['Usuario_ID'] = $Usuario->getID();
                     if (isset($_SESSION['URL_Origen'])) {
                         header('Location: '.$_SESSION['URL_Origen']);
                     } else {
