@@ -176,7 +176,7 @@ $Resultado = array();
 										</div>
 									</div>
 								</div>-->
-								<a href="profile1 "class="btn btn-primary btn-outline">Editar Datos</a>
+								<a href="profile" class="btn btn-primary btn-outline">Editar Datos</a>
 		              </div>
 		            </form>
 					</div>

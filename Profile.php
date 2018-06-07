@@ -101,41 +101,9 @@
                                             </div>
                                             <div class="panel">
                                                 <h4 class="panel-title">
-                                                    <a href="payment">
-                                                        <i class="icon-credit-card"></i>
-                                                        Formas de Pago
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div class="panel">
-                                                <h4 class="panel-title">
-                                                    <a href="sell">
-                                                        <i class="icon-tags"></i>
-                                                        Mis Ventas
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div class="panel">
-                                                <h4 class="panel-title">
-                                                    <a href="bought">
-                                                        <i class="icon-tag"></i>
-                                                        Mis Compras
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div class="panel">
-                                                <h4 class="panel-title">
-                                                    <a href="add-to-wishlist">
-                                                        <i class="icon-heart"></i>
-                                                        Favoritos
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div class="panel">
-                                                <h4 class="panel-title">
                                                     <a href="cart">
                                                         <i class="icon-shopping-cart"></i>
-                                                        Carrito [0]
+                                                        Carrito
                                                     </a>
                                                 </h4>
                                             </div>
