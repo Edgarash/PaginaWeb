@@ -120,8 +120,8 @@
                                 </div>
                             </div>
                             <?php
-                            if (isset($TablaActual) && $TablaActual[0]!="imagenes") 
-                                echo '<button class="btn btn-primary" name="addUser" id="addUser">Agregar '.substr($TablaActual[1], 0, strlen($TablaActual[1])-1).'</button>'
+                            if (isset($TablaActual) && $TablaActual[0]!="imagenes" && $TablaActual[0]!="cliente") 
+                                echo '<button style="margin-top:10px" class="btn btn-primary" name="addUser" id="addUser">Agregar '.substr($TablaActual[1], 0, strlen($TablaActual[1])-1).'</button>'
                             ?>
                         </div>
                     </div>

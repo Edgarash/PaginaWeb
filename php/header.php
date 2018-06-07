@@ -45,21 +45,21 @@ if (isset($_SESSION['Sesion'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="shop">
-                            <i class="icon-tags"></i> Comprar</a>
-                    </li>
-                    <li>
                         <a href="<?php echo $Link; ?>">
                             <i class="icon-user"></i> <?php echo $Nombre; ?></a>
                     </li>
-                    <li>
-                        <a href="add-to-wishlist">
-                            <i class="icon-heart"></i> Favoritos</a>
-                    </li>
+                    <?php
+                        if ($Link == 'Profile' || $Link == 'Login') {
+                    ?>
                     <li>
                         <a href="cart">
                             <i class="icon-shopping-cart"></i> Carrito (0)</a>
                     </li>
+                    <li>
+                        <a href="shop">
+                            <i class="icon-tags"></i> Comprar</a>
+                    </li>
+                    <?php } ?>  
                     <?php echo $CierraSesion; ?>
                 </ul>
             </div>
