@@ -119,63 +119,53 @@ $Resultado = array();
 						<form method="post" class="colorlib-form">
 							<h2>Detalles de Facturación</h2>
 		              	<div class="row">
-			               <div class="col-md-12">
-			                  <div class="form-group">
-			                  	<label for="country">Seleccione País</label>
-			                     <div class="form-field">
-			                     	<i class="icon icon-arrow-down3"></i>
-			                        <select name="people" id="people" class="form-control">
-				                      	<option value="#">Seleccione País</option>
-				                        <option value="#">México</option>
-				                        <option value="#">China</option>
-				                        <option value="#">EUA</option>
-				                        <option value="#">Colombia</option>
-				                        <option value="#">Ecuador</option>
-			                        </select>
-			                     </div>
-			                  </div>
-			               </div>
+			               
 			               <div class="form-group">
 									<div class="col-md-6">
-										<label for="fname">Nombre</label>
-										<input type="text" id="fname" class="form-control" placeholder="Su nombre" value="<?php echo($cliente[3])?>">
+									<label for="lname">Nombre</label>
+										<label for="fname" id="fname" class="form-control"><?php echo($cliente[3])?></label>
 									</div>
 									<div class="col-md-6">
 										<label for="lname">Apellido</label>
-										<input type="text" id="lname" class="form-control" placeholder="Su apellido" value="<?php echo($cliente[4])?>">
+										<label for="lname" id="lname" class="form-control"> <?php echo($cliente[4]) ?> </label>
 									</div>
 								</div>
 			               <div class="col-md-12">
 									<div class="form-group">
 										<label for="fname">Dirección</label>
-			                    	<input type="text" id="address" class="form-control" placeholder="Introduce su dirección" value="<?php echo("calle ".$cliente[8]." Numero #". $cliente[6])?>">
+			                    	<label id="address" class="form-control"> <?php echo("calle ".$cliente[8]." Numero #". $cliente[6])?> </label>
 			                  </div>
 			                  
 			               </div>
 			               <div class="col-md-12">
 									<div class="form-group">
 										<label for="companyname">Ciudad</label>
-			                    	<input type="text" id="towncity" class="form-control" placeholder="Nombre de la ciudad" value="<?php echo($cliente[13])?>">
+										<label for="lname" id="towncity" class="form-control"> <?php echo($cliente[13])?> </label>
+			                    	
 			                  </div>
 			               </div>
 			               <div class="form-group">
 									<div class="col-md-6">
 										<label for="stateprovince">Estado</label>
-										<input type="text" id="fname" class="form-control" placeholder="Nombre del estado" value="<?php echo($cliente[14])?>">
+										<label for="lname" id="fname" class="form-control"> <?php echo($cliente[14])?></label>
+										
 									</div>
 									<div class="col-md-6">
 										<label for="lname">Código Postal</label>
-										<input type="text" id="zippostalcode" class="form-control" placeholder="Código Postal" value="<?php echo($cliente[11])?>">
+										<label for="lname" id="fname" class="form-control"> <?php echo($cliente[11])?></label>
+										
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-md-6">
 										<label for="email">Correo electrónico</label>
-										<input type="text" id="email" class="form-control" placeholder="Introduce email" value="<?php echo($cliente[1])?>">
+										<label for="lname" id="email" class="form-control"> <?php echo($cliente[1])?></label>
+										
 									</div>
 									<div class="col-md-6">
 										<label for="Phone">Número telefónico</label>
-										<input type="text" id="zippostalcode" class="form-control" placeholder="Teléfono" value="<?php echo($cliente[5])?>">
+										<label for="lname" id="zippostalcode" class="form-control"> <?php echo($cliente[5])?></label>
+										
 									</div>
 								</div>
 								<!--<div class="form-group">
@@ -186,6 +176,7 @@ $Resultado = array();
 										</div>
 									</div>
 								</div>-->
+								<a href="profile1 "class="btn btn-primary btn-outline">Editar Datos</a>
 		              </div>
 		            </form>
 					</div>
