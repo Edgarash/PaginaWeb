@@ -4,6 +4,8 @@ include_once 'php/Clases/articulos.php';
 if ($_SERVER['REQUEST_METHOD']=='GET') {
 	if (isset($_GET['ID']) && !empty($ID = $_GET['ID']))
 	$Articulo = ObtenerUnArticulo($ID);
+	$idArticulo = $Articulo->getID();
+	$IDcliente = $_SESSION['ID'];
 	if (!$Articulo) {
 		header('Location: shop');
 		exit();
@@ -110,13 +112,15 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 										</ul>
 										<div class="row row-pb-sm">
 											<div class="col-md-4">
+									<form action="php/cart_proceso.php" method="POST">											
 									<div class="input-group">
 										<span class="input-group-btn">
 										   <button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
 										  <i class="icon-minus2"></i>
 										   </button>
 										   </span>
-										<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+	
+										<input type="text" id="quantity" name="cantidad" class="form-control input-number" value="1" min="1" max="100">
 										<span class="input-group-btn">
 										   <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
 											<i class="icon-plus2"></i>
@@ -124,9 +128,14 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 										</span>
 									 </div>
 									</div>
+									
 										</div>
-										<p><a href="cart" class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i>Añadir al carrito</a></p>
-									</div>
+										<input type="hidden" style ="display:none" name="IdArticulo" id="IdArticulo" value="<?php echo($idArticulo) ?>"> 
+										<input type="hidden" style ="display:none" name="IdCliente" id="IdCliente" value="<?php echo($IDcliente) ?>"> 
+										<button name="anadir" id="anadir" class="btn btn-primary btn-addtocart">Añadir al carrito</button>
+										
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
