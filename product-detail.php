@@ -57,28 +57,24 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 								<div class="col-md-5">
 									<div class="product-entry">
 										<div class="product-img" style="background-image: 
-										url(<?php
-										echo _ARTICULO.$Articulo->getImagenes()[0];
-										?>);">
-											<!-- Tag de Oferta -->
-											<!-- <p class="tag"><span class="sale">Oferta</span></p> -->
+										url(<?php echo _ARTICULO.$Articulo->getImagenes()[0]; ?>);background-size:contain;">
 										</div>
 										<div class="thumb-nail">
 											<a href="#" class="thumb-img" style="background-image: url(
 											<?php
 											echo _ARTICULO.$Articulo->getImagenes()[1];
 											?>
-											);"></a>
+											);background-size:contain;"></a>
 											<a href="#" class="thumb-img" style="background-image: url(
 											<?php
 											echo _ARTICULO.$Articulo->getImagenes()[2];
 											?>
-											);"></a>
+											);background-size:contain;"></a>
 											<a href="#" class="thumb-img" style="background-image: url(
 											<?php
 											echo _ARTICULO.$Articulo->getImagenes()[3];
 											?>
-											);"></a>
+											);background-size:contain;"></a>
 										</div>
 									</div>
 								</div>
@@ -103,8 +99,8 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 											<?php
 											$tee = nl2br($Articulo->getCaracteristicas());
 											$lineas = explode("<br />",$tee);
-											foreach ($lineas as $Caracteristica) {
-												echo '<li>'.$Caracteristica.'</li>';
+											for ($i=0; $i < count($lineas) && $i < 7; $i++) { 
+												echo '<li>'.$lineas[$i].'</li>';
 											}
 											?>
 										</ul>

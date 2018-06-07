@@ -248,7 +248,7 @@
                                 </div>
                                 <div class="col-md-3 col-md-push-9 text-center">
 							    <input type="hidden" name="Cantidad">
-							    <button type="submit" class="btn btn-primary " name="actualizar"> Pagar Orden </button>
+							    <button type="submit" class="btn btn-primary " name="actualizar"> Guardar Datos </button>
 							    </div>
                                 </div>
                         </form>

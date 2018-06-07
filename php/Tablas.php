@@ -209,7 +209,7 @@ class TablaInfo {
                 '<th>ID SubCat</th>'.
                 '<th>ID Empleado</th>'.
                 '<th>Fecha de Alta</th>'.
-           #     '<th>Acciones</th>'.
+                '<th>Acciones</th>'.
             '</tr></thead><tbody>';
         $temp = ObtenerArticulos();
         foreach ($temp as $articulo) {
@@ -243,10 +243,10 @@ class TablaInfo {
             '<th>'.$articulo->getIDSubCat().'</th>'.
             '<th>'.$articulo->getIDEmpAlta().'</th>'.
             '<th>'.$articulo->getFechaAlta().'</th>'.
-            #'<th class="text-center">'.
-            #'<i class="fa fa-edit selectable-link""></i> '.
-            #($Activ ? '<i class="fa fa-trash selectable-link"></i>' : '').
-            #'</th>'.
+            '<th class="text-center">'.
+            '<i class="fa fa-edit selectable-link""></i> '.
+            ($Activ ? '<i class="fa fa-trash selectable-link"></i>' : '').
+            '</th>'.
             '</tr>';
         }
         echo '</tbody>';

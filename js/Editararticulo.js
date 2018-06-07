@@ -6,18 +6,18 @@ function AJAXCallUpdate() {
     $('#addUser').off('click');
     $('th > i.fa-edit').on('click', function () {
         var Articulo = $(this).parent().siblings();
-        $.confirm({
+        var reg = $.confirm({
             title: 'Editar Artículo',
             icon: 'fa fa-edit',
             theme: 'supervan',
             columnClass: 'col-md-10 col-md-offset-1',
-            content: '',
+            content: Actualizar(),
             buttons: {
                 formSubmit: {
                     btnClass: 'btn btn-green btn-green',
                     text: 'Guardar',
                     action: function () {
-
+                        
                     }
                 },
                 cancel: {
@@ -40,7 +40,32 @@ function AJAXCallUpdate() {
                     text: 'ELIMINAR',
                     btnClass: 'btn-red',
                     action: function () {
-
+                        var Form = document.getElementById('registrar');
+                        if (Form.checkValidity()) {
+                            var formData = new FormData(Form);
+                            var exito = false;
+                            formData.append('Modificar', 'Fierro');
+                            formData.append('SubCategorias', $('#SubCategorias').val())
+                            exito = $.ajax({
+                                data: formData,
+                                url: "php/AJAXArticulo.php",
+                                type: 'POST',
+                                processData: false,
+                                contentType: false,
+                                success: function (data, status) {
+                                    //$.alert({content:data});
+                                    $('#Tabla').html(data);
+                                    reg.close();
+                                },
+                                error: function (xhr, desc, err) {
+                                    MensajeError("Hubo un error, vuelva a intentar más tarde");
+                                }
+                            });
+                            return false;
+                        } else {
+                            $('#enviar').click();
+                            return false;
+                        }
                     }
                 },
                 cancel: {
@@ -130,6 +155,75 @@ function AJAXCallUpdate() {
 }
 
 function Registrar() {
+    return '' +
+        '<form id="registrar" class="colorlib-form" style="color:black;">' +
+        '<input id="enviar" type="submit" style="display:none">' +
+        '<div class="row">' +
+        '<div class="form-group">' +
+        //Nombre Artículo
+        '<div class="col-md-6">' +
+        '<label>Nombre</label>' +
+        '<input type="text" class="form-control" name="Nombre" id="Nombre" placeholder="Nombre" required>' +
+        '</div>' +
+        //Precio
+        '<div class="col-md-3">' +
+        '<label>Precio</label>' +
+        '<input type="number" step="any" min="0" name="Precio" id="Precio" placeholder="Precio" class="form-control" required>' +
+        '</div>' +
+        //Stock
+        '<div class="col-md-3">' +
+        '<label>Stock</label>' +
+        '<input type="number" step="1" min="0" max="9999" name="Stock" id="Stock" placeholder="Stock" class="form-control" required>' +
+        '</div>' +
+        '</div>' +
+        //
+        '<div class="form-group">' +
+        '<div class="col-md-6">' +
+        '<label>Categoria</label>' +
+        '<div class="form-field">' +
+        '<i class="icon icon-arrow-down3"></i>' +
+        '<select id="Categorias" class="form-control" value="" required>'+
+        '</select>' +
+        '</div>' +
+        '</div>' +
+        '<div class="col-md-6">' +
+        '<label>SubCategoria</label>' +
+        '<div class="form-field">' +
+        '<i class="icon icon-arrow-down3"></i>' +
+        '<select id="SubCategorias" class="form-control" required></select>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="form-group">' +
+        //Características
+        '<div class="col-md-6">' +
+        '<label>Características</label>' +
+        '<textarea class="form-control" name="Caracteristicas" id="Caracteristicas" placeholder="Características" required></textarea>' +
+        '</div>' +
+        //Descripcion
+        '<div class="col-md-6">' +
+        '<label>Descripción</label>' +
+        '<textarea class="form-control" name="Descripcion" id="Descripcion" placeholder="Descripción" required></textarea>' +
+        '</div>' +
+        '</div>' +
+        '<div class="form-group">' +
+        '<input id="files[]" name="files[]" type="file" required style="margin: 0 auto;" multiple onchange="readURL(this);">' +
+        '<div id="img" style="overflow:auto;border:1px dashed black;width:80%;' +
+        'min-height:100px;margin:10px auto;" ondrop="drop(event);" ondragover="allowDrop(event);">' +
+        '<img id="Message4" src="#" alt="Arrastre aquí para subir archivos\nMáximo 4 imágenes" style="max-width:100%;padding:10px">' +
+        '<div>' +
+        '<img src="" id="U1" style="Display:none;">' +
+        '<img src="" id="U2" style="Display:none;">' +
+        '<img src="" id="U3" style="Display:none;">' +
+        '<img src="" id="U4" style="Display:none;">' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</form>';
+}
+
+function Actualizar() {
     return '' +
         '<form id="registrar" class="colorlib-form" style="color:black;">' +
         '<input id="enviar" type="submit" style="display:none">' +

@@ -2,6 +2,10 @@
 include_once('php/Clases/conexion.php'); 
 session_start();
 if (isset($_SESSION['Sesion']) && !empty($_SESSION['Sesion'])) {
+	if (isset($_SESSION['Empleado'])) {
+		header('Location: index');
+		exit();
+	}
 $IDcliente = $_SESSION['ID'];
 } else {
 	header('Location: Login');
@@ -148,7 +152,7 @@ $Resultado = array();
 						<div class="col-md-12">
 						<div class="product-cart">	
 							<div class="one-forth">
-								<div class="product-img" style="background-image: url(images/nuevo4.jpg);">
+								<div class="product-img" style="background-image: url('._ARTICULO.$Resultado[$i][4].'_1);background-size:contain;">
 								</div>.
 								<div class="display-tc">.
 									<h3>'. $Resultado[$i][1] .'</h3>
